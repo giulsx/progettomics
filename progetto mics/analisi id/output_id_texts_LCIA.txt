@@ -1,0 +1,45 @@
+ID: 487df68b-4994-4027-8fdc-a4dc298257b7, Key: @unitId, Value: kg
+ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45, Key: @unitId, Value: dimensionless
+ID: cacb6d36-694d-4e4f-9e79-6c9c73146839, Key: @unitId, Value: kg/m3
+ID: 15a259d2-4417-45e8-9f67-7459326c5eb2, Key: @unitId, Value: m3/kg
+ID: 35716c60-7337-4442-9f3a-42effd692b82, Key: @impactMethodId, Value: CML v4.8 2016
+ID: 9f706f7a-3b76-47f8-ad14-c97d61c06e63, Key: @impactMethodId, Value: CML v4.8 2016 no LT
+ID: 73998dad-83a3-4212-b61d-ec1a50ce5898, Key: @impactMethodId, Value: Cumulative Energy Demand (CED)
+ID: 4774e3fa-dbf0-4ba1-b15d-9ff90110f950, Key: @impactMethodId, Value: Cumulative Exergy Demand (CExD)
+ID: 1bdce405-4884-4dea-ba55-397eba6ed51e, Key: @impactMethodId, Value: EF v3.0
+ID: 208ef1bf-6c80-401e-b773-54f0960c09d9, Key: @impactMethodId, Value: EF v3.0 no LT
+ID: f1d1c1a0-8ecf-441c-8576-a18d463df41b, Key: @impactMethodId, Value: EF v3.1
+ID: 78594638-6ea2-4bd2-b8ca-371494d952a7, Key: @impactMethodId, Value: EF v3.1 no LT
+ID: a0eb6ad1-a4aa-47aa-a80e-a94961846fc7, Key: @impactMethodId, Value: EPS 2020d
+ID: ac3b6c62-8053-4725-9756-07064cfcc810, Key: @impactMethodId, Value: EPS 2020d no LT
+ID: 1dc61e56-76cb-474b-91b5-9ff9011116ff, Key: @impactMethodId, Value: Ecological Footprint
+ID: 6aa69c4d-9315-4ec7-802b-22e5ce740ea4, Key: @impactMethodId, Value: Ecological Scarcity 2021
+ID: f7ccc5f2-24df-4135-bab9-d6d0d7eff96f, Key: @impactMethodId, Value: Ecological Scarcity 2021 no LT
+ID: 5ea371a5-944c-431b-b9a5-9ff901112067, Key: @impactMethodId, Value: Ecosystem Damage Potential
+ID: bfef4255-3377-4a5e-9df2-7f5e1945a604, Key: @impactMethodId, Value: IMPACT World+ v2.0.1, footprint version
+ID: 11e3b622-f745-4742-ad90-57c3efeef416, Key: @impactMethodId, Value: IPCC 2013
+ID: 4d49bc9f-dfbf-4c8d-9a98-f9bf7c6e8114, Key: @impactMethodId, Value: IPCC 2013 no LT
+ID: 167c6bac-650c-4413-adfe-9f93b2b22488, Key: @impactMethodId, Value: IPCC 2021
+ID: e57693cf-ed07-416c-8831-58f044f1bd76, Key: @impactMethodId, Value: IPCC 2021 no LT
+ID: 25583383-5a50-4fbf-9850-c9f2d57607b5, Key: @impactMethodId, Value: Inventory results and indicators
+ID: 87a57579-d6c4-477c-a327-f863804a15aa, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (E)
+ID: b42b5d7d-371c-4c00-a601-cf9572670e00, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (E) no LT
+ID: dccd97fd-bfe2-4ff9-8616-50a835ddc2f0, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (H)
+ID: e1ba87fc-66bd-4be7-8b09-e4d14da279be, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (H) no LT
+ID: 4d9ac60a-73ab-40cf-bc71-d967ef59865e, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (I)
+ID: 48197fde-fc9e-4563-8eb0-6ea9a5598a5c, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, endpoint (I) no LT
+ID: 3b556c4d-862e-4fef-b735-ce7bd31a0217, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (E)
+ID: 6e67b147-f0eb-48eb-bc09-0260d78a8f59, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (E) no LT
+ID: 0310cf09-b06f-45ef-af69-b5a41880170d, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (H)
+ID: 81928238-d7ba-45fc-9f28-af354c2b7dd3, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (H) no LT
+ID: be309eb5-a03c-4546-9608-81b504e08735, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (I)
+ID: 1b75e464-5938-4fbb-abc6-c15790d99ea7, Key: @impactMethodId, Value: ReCiPe 2016 v1.03, midpoint (I) no LT
+ID: 7c75c405-5084-429a-9edf-3f1d1fefad82, Key: @impactMethodId, Value: TRACI v2.1
+ID: 24cd9adc-bbf8-49bc-a452-7f57073d7c6f, Key: @impactMethodId, Value: TRACI v2.1 no LT
+ID: 45ce7db6-4f98-48be-b7da-70fed54ab279, Key: @impactMethodId, Value: USEtox v2.13, endpoint
+ID: ebc9c6e7-cb4d-4531-bfeb-284a9696c3e1, Key: @impactMethodId, Value: USEtox v2.13, endpoint no LT
+ID: abe1bab4-939a-41ea-bf79-6db62d2c8a93, Key: @impactMethodId, Value: USEtox v2.13, midpoint
+ID: 4c67589f-536d-484e-aa38-a2d5fe0e1e0d, Key: @impactMethodId, Value: USEtox v2.13, midpoint no LT
+ID: c4597934-ecac-422c-b431-382e85fdcb83, Key: @reviewerId, Value: [System]
+ID: 847a56f5-d9e5-4a65-ab51-b056e0039130, Key: @reviewerId, Value: Avraam Symeonidis
+ID: 3860cfbd-a932-45c0-90c7-658d5bea9ea3, Key: @personId, Value: Thomas Kägi

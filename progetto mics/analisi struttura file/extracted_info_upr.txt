@@ -1,0 +1,1228 @@
+XML Namespaces:
+- xmlns: http://www.EcoInvent.org/EcoSpold02
+- xsi: http://www.w3.org/2001/XMLSchema-instance
+- schemaLocation: http://www.EcoInvent.org/EcoSpold02 ../../schemas/datasets/EcoSpold02.xsd http://www.EcoInvent.org/UsedUserMasterData ../../schemas/datasets/EcoSpold02UserMasterData.xsd
+Activity Description:
+- Special Activity Type: 0
+- Activity ID: 9234a4a0-7860-5096-8054-74ab5e0982b4
+- Parent Activity ID: 45a7ea4f-40ba-56f1-8b2b-e3641c37d972
+- Activity Name: anaerobic digestion of manure
+- Included Activities Start: Input of livestock manure (cattle slurry, pig slurry, cattle manure) to incoming storage at the biogas plant.
+- Included Activities End: The treatment includes storage of the substrates at the biogas fermentation plant, anerobic fermentation, as well as the storage of digestate after fermentation. The activity ends with the biogas and digestate being available at the biogas plant. Furthermore, the calorific value of the biogas only accounts for the methane content excluding the H2S presence in it. Glycerine was removed as input in the anaerobic digestion (AD) process. Water content of digestate is 95% in wet weight basis. Finally, the dataset incorporates emissions of CO2, CH4, NH3 and N2O to air due to the storage of the substrates before the AD process as well as from storage of the digestate after the AD process. The storage of the substrate before and after the AD process is assumed to be an under cover system.
+
+General Comments:
+- Inventory refers to 1m3 of biogas (which corresponds to 33 kg of farmyard manure). Electricity consumption and emissions represent the average biogas production in a digestion plant based on 34 biogas plants in Switzerland.  Infrastructure expenditures are included.
+- Reference:
+- Dinkel & Kägi (2022). Stoffflüsse landwirtschaftliche Biogasproduktion und Ökobilanz
+Classification:
+- Classification ID: 9a63625a-358b-4c1d-bf95-50ba038a759b
+- Classification System: ISIC rev.4 ecoinvent
+- Classification Value: 3821:Treatment and disposal of non-hazardous waste
+Geography:
+- Geography ID: 131278d6-7d7e-11de-9ae2-0019e336be3a
+- Shortname: CH
+- Comment: Conditions refer to anaerobic digestion of manure in Switzerland.
+Technology:
+- Technology Level: 3
+- Comment: The storage of the substrate and the storage of the digestate (before and after the anaerobic digestion process respectively) are both considered to be closed.
+Time Period:
+- Start Date: 2018-01-01
+- End Date: 2023-12-31
+- Data Valid for Entire Period: true
+Macro-Economic Scenario:
+- Scenario ID: d9f57f0a-a01f-42eb-a57b-8f18d6635801
+- Name: Business-as-Usual
+Flow Data:
+- Flow ID: 1691b97d-b3fd-5158-92e0-584f45171c42
+  - Name: biogas
+  - Amount: 1.0
+  - Unit: m3
+  - Comment: Gas derived from fermentation of sewage sludge. Sewage gas is well suited as a fuel for co-generation. The obtained heat is sufficient to cover the overall heat consumption of a WWTP, including the heat demand for the fermentation process. Furthermore, sewage gas may be directly burnt for heating purposes. In principle, the generated sewage gas can be upgraded to natural gas quality and then used as a fuel for road vehicles or fed into the natural gas network. In the year 2004 the waste water treatment plant Buholz was equipped with a biogas upgrading plant. The quantity (degradation rate) and quality of the biogas depend on several factors: • composition of the input material (share of dry organic matter) • duration of digestion • temperature inside digestion tank • quality and quantity of co-substrates
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.5355558519011999
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.4534524
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.4534524
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.181063
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 48c987bb-3144-4872-b5c7-b1389c40be25
+      - Name: heating value, net
+      - Amount: 22.73
+      - Unit ID: 980b811e-3905-4797-82a5-173f5568bc7e
+      - Unit: MJ
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 38f94dd1-d5aa-41b8-b182-c0c42985d9dc
+      - Name: price
+      - Amount: 0.109
+      - Unit ID: 7b75baf0-cbee-45e6-bf66-af119da06553
+      - Unit: EUR2005
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 1ffacfb6-8f96-43fa-beac-844ad4444716
+      - Name: share of methane in biogas
+      - Amount: 0.556049397469526
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.181063
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+- Flow ID: 49000534-a853-5ae0-be4d-cec00e804c84
+  - Name: anaerobic digestion plant, agriculture, with methane recovery
+  - Amount: 2.8600029991482477E-07
+  - Unit: unit
+  - Comment: Lifespan is taken as being equal to 20 years.In order to take account of the scale effect, the following formula is applied: Ui = U0 x (Ci/C0)^0,7 where Ui is the number of infrastructure units for the reference case i, in “units”; U0 = 1 [unit] is the number of infrastructure units for the reference facility "anaerobic digestion plant, agriculture, with methane recovery"; Ci is the annual biogas production for the reference case i, en m3/year; C0 = 350,000 [m3/year] is the annual biogas production of the reference facility "anaerobic digestion plant, agriculture, with methane recovery". The infrastructure input per kg of substrate is calculated according to the following formula: Ii = Ui x Yi / (20 x Ci) where Ii is the infrastructure input “anaerobic digestion plant, covered, agriculture” for the reference case i, in “units” per kg of substrates; Ui is the number of infrastructure units for the reference case i, in “units”; Yi is the biogas production yield for the reference case i, in m3 of biogas per kg of substrates; Ci is the annual biogas production for the reference case i, in m3/year.
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+  - Lognormal Distribution:
+    - Mean Value: 2.8600029991482477E-07
+    - Mu: -15.067272977473875
+    - Variance: 0.3
+- Flow ID: 08c1a390-366b-5bfb-9fdb-eb94dfaf2cd2
+  - Name: digester sludge
+  - Amount: -36.18257393164085
+  - Unit: kg
+  - Comment: Calculated as residual from the mass balance: input manure - outputs and emissions. The density of biogas is assumed to be 1.185628256 kg /m3 of BG in normal conditions of temperature and pressure.
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.02975
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.595
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.595
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 0.05
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 48c987bb-3144-4872-b5c7-b1389c40be25
+      - Name: heating value, net
+      - Amount: 2.42
+      - Unit ID: 980b811e-3905-4797-82a5-173f5568bc7e
+      - Unit: MJ
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 38f94dd1-d5aa-41b8-b182-c0c42985d9dc
+      - Name: price
+      - Amount: 0.0
+      - Unit ID: 7b75baf0-cbee-45e6-bf66-af119da06553
+      - Unit: EUR2005
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 18.9999999999999
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.95
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+  - Lognormal Distribution:
+    - Mean Value: 36.18257393164085
+    - Mu: 3.588577619825838
+    - Variance: 0.0006
+- Flow ID: 9af55f26-be65-5fa8-9bf6-e48b6f91dced
+  - Name: electricity, high voltage
+  - Amount: 0.1580000000000005
+  - Unit: kWh
+  - Comment: Based on Dinkel & Kägi (2022). Stoffflüsse landwirtschaftliche Biogasproduktion und Ökobilanz
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+  - Lognormal Distribution:
+    - Mean Value: 0.1580000000000005
+    - Mu: -1.845160245955167
+    - Variance: 0.0006
+- Flow ID: 081882af-5492-591d-b661-0733996b99cf
+  - Name: heat, central or small-scale, other than natural gas
+  - Amount: 3.469999999999998
+  - Unit: MJ
+  - Comment: Based on Dinkel & Kägi (2022). Stoffflüsse landwirtschaftliche Biogasproduktion und Ökobilanz
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+  - Lognormal Distribution:
+    - Mean Value: 3.469999999999998
+    - Mu: 1.2441545939587673
+    - Variance: 0.0006
+- Flow ID: 86757974-d3aa-5a9d-ae26-67fa874ea053
+  - Name: manure, liquid, cattle
+  - Amount: 20.451988955925916
+  - Unit: kg
+  - Comment: Shares of substrates as in Switzerland 2009
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.05076
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.6345
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.6345
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 0.08
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: f53a5dbc-3bd3-4570-adff-b00790ea3ffc
+      - Name: nitrogen content
+      - Amount: 0.047
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 11.5
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.92
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+  - Lognormal Distribution:
+    - Mean Value: 20.451988955925916
+    - Mu: 3.0180801372178965
+    - Variance: 0.0006
+- Flow ID: d466338d-2612-56db-999e-4bb232f820a0
+  - Name: manure, liquid, swine
+  - Amount: 12.271193373555528
+  - Unit: kg
+  - Comment: Shares of substrates as in Switzerland 2009
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.031724999999999996
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.6345
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.6345
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 0.05
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: f53a5dbc-3bd3-4570-adff-b00790ea3ffc
+      - Name: nitrogen content
+      - Amount: 0.047
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 19.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.95
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+  - Lognormal Distribution:
+    - Mean Value: 12.271193373555528
+    - Mu: 2.5072545134519038
+    - Variance: 0.0006
+- Flow ID: 9d2aed5d-71fc-5049-9719-59254c6236a3
+  - Name: manure, solid, cattle
+  - Amount: 4.46225213583838
+  - Unit: kg
+  - Comment: Shares of substrates as in Switzerland 2009
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.09867000000000001
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.4485
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.4485
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 0.22
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: f53a5dbc-3bd3-4570-adff-b00790ea3ffc
+      - Name: nitrogen content
+      - Amount: 0.023
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 3.54545454545455
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.78
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+  - Lognormal Distribution:
+    - Mean Value: 4.46225213583838
+    - Mu: 1.4956536017734252
+    - Variance: 0.0006
+Elementary Exchanges:
+    - Exchange ID: 451d7a1e-1a91-5e1b-b3a3-b1ea97659951
+     - Name: Ammonia
+     - Amount: 0.00024999875598520535
+     - Unit: kg
+     - Input Group: N/A
+     - Comment: It was assumed that the ammonia emissions between pre-storage and biogas production including post-storage are in a similar ratio to the reported methane emissions between pre-storage and biogas production including post-storage. This approximation results in about 0.25 g NH3 per m3 of biogas.
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Exchange ID: 6f7c3fc0-d96a-5f95-9274-0003c367309a
+     - Name: Carbon dioxide, non-fossil
+     - Amount: 0.07089489660796666
+     - Unit: kg
+     - Input Group: N/A
+     - Comment: Calculated value according to literature: ES(CO2) = (44/12) x C(C) x EF4 x t where ES(CO2) is the carbon dioxide emissions in kg CO2/t of wet substrate; C(C) is the average carbon content of the substrates in kg C/t of wet substrate; EF4 = 7% is the carbon dioxide emission factor; t is the percentage of the time that the substrate is stored at the biogas producer’s (0.1, supposed that the substrates are stored at the biogas producer’s for 10% of the stockage time before digestion). The value includes emissions from the storage of the substrate until its use from the anaerobic digestion process but also emissions from the storage of the digestate until its final use. The CO2 emissions are calculated on the basis of the CH4 emissions, with the hypothesis that 30% of the carbon is emitted in the form of methane and 70% in the form of carbon dioxide (Jungbluth et al., 2007). EDB(CO2) = (44/12) x (0.7/0.3) x (12/16) x EDB(CH4) where EDB(CO2) is the carbon dioxide emissions in kg CO2/t raw digestate; EDB(CH4) is the methane emissions in kg CH4/t raw digestate. Reference: Dauriat A., Gaillard G., Alig M., Scharfy D., Membrez Y., Bachmann N., Steiner R., Charles R., Maltas A., Sinaj S., Analyse de cycle de vie de la production centralisée et décentralisée de biogaz en exploitations agricoles : Rapport final. Hrsg. Station de recherche Agroscope Reckenholz-Tänikon ART & Station de recherche Agroscope Changins-Wädenswil ACW, Zürich et Nyon. Avril, 2012, 1-147 S. Jungbluth, N., Chudacoff, M., Dauriat, A., Dinkel, F., Doka, G., Faist Emmenegger, M., Gnansounou, E., Kljun, N., Schleiss, K., Spielmann, M., Stettler, C., Sutter, J. 2007: Life Cycle Inventories of Bioenergy. ecoinvent report No. 17, Swiss Centre for Life Cycle Inventories, Dübendorf, CH.
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.272727272727273
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.272727272727273
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.272727272727273
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Exchange ID: 3b6ac8ae-4762-5a3c-9127-02c665fb68c4
+     - Name: Dinitrogen monoxide
+     - Amount: 7.499962679556158E-05
+     - Unit: kg
+     - Input Group: N/A
+     - Comment: It was assumed that the nitrous oxide emissions between pre-storage and biogas production incl. post-storage are in a similar ratio to the reported methane emissions between pre-storage and biogas production incl. post-storage. This approximation results in around 0.075 g N2O per m3 of biogas.
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Exchange ID: 37881827-cab9-5ac1-9c1d-0ed05292e026
+     - Name: Hydrogen sulfide
+     - Amount: 4.1275832256505E-05
+     - Unit: kg
+     - Input Group: N/A
+     - Comment: Emission factors from Dauriat 2011
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: f816fdd3-6033-449b-937b-d8de44d687a5
+      - Source Year: 2011
+      - Source Year: Dauriat A.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Exchange ID: 6ae1b489-64be-5b1c-ab80-20e22596ead5
+     - Name: Methane, non-fossil
+     - Amount: 0.005279973726407536
+     - Unit: kg
+     - Input Group: N/A
+     - Comment: Based on Dinkel & Kägi (2022). Stoffflüsse landwirtschaftliche Biogasproduktion und Ökobilanz
+  - Properties:
+    - Property ID: f2283db2-62e4-467f-b9ac-c4f45be563b4
+      - Name: carbon allocation
+      - Amount: 0.75
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: a301a838-7975-4d89-9e74-8eb77ad03cd1
+      - Name: carbon content
+      - Amount: 0.75
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: N/A
+      - Source Year: N/A
+      - Source Year: N/A
+      - Is Defining Value: false
+      - Is Calculated Amount: false
+    - Property ID: c74c3729-e577-4081-b572-a283d2561a75
+      - Name: carbon content, fossil
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6393c14b-db78-445d-a47b-c0cb866a1b25
+      - Name: carbon content, non-fossil
+      - Amount: 0.75
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: true
+    - Property ID: 3a0af1d6-04c3-41c6-a3da-92c4f61e0eaa
+      - Name: dry mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: a9358458-9724-4f03-b622-106eda248916
+      - Name: water content
+      - Amount: 0.0
+      - Unit ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+      - Unit: dimensionless
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 6d9e1462-80e3-4f10-b3f4-71febd6f1168
+      - Name: water in wet mass
+      - Amount: 0.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+    - Property ID: 67f102e2-9cb6-4d20-aa16-bf74d8a03326
+      - Name: wet mass
+      - Amount: 1.0
+      - Unit ID: 487df68b-4994-4027-8fdc-a4dc298257b7
+      - Unit: kg
+      - Source ID: 1f8b29a4-3434-4934-9f26-684369073381
+      - Source Year: 2012
+      - Source Year: Alig, M.
+      - Is Defining Value: N/A
+      - Is Calculated Amount: N/A
+Parameters:
+    - Parameter ID: c44fc5c3-c54c-4416-b606-7603b863acd0
+     - NameVariable: C_conversion_cattle_slurry
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: carbon conversion efficiency of cattle slurry in digester
+     - UnitName: dimensionless
+    - Parameter ID: 71f227ad-ad49-46a3-9798-cea311ab5169
+     - NameVariable: C_conversion_cattleFYM
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: carbon conversion efficiency of solid cattle manure in digester
+     - UnitName: dimensionless
+    - Parameter ID: c5004f06-3a72-4a79-8115-460bb23f81f3
+     - NameVariable: C_conversion_swine_slurry
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: carbon conversion efficiency of swine slurry in digester
+     - UnitName: dimensionless
+    - Parameter ID: 4220aa61-fa9e-44c3-a62e-ccee298ca55c
+     - NameVariable: CO2_density
+     - UnitID: cacb6d36-694d-4e4f-9e79-6c9c73146839
+     - Name: carbon dioxide density (ntp)
+     - UnitName: kg/m3
+    - Parameter ID: bb85e2df-c4be-4771-8a63-5ee28cfe8cc8
+     - NameVariable: EF_cattle_slurryDM
+     - UnitID: 15a259d2-4417-45e8-9f67-7459326c5eb2
+     - Name: efficiency of biogas production from cattle slurry dry mass
+     - UnitName: m3/kg
+    - Parameter ID: 5233bb01-732b-43b4-a847-4906ac941cb7
+     - NameVariable: EF_cattle_FYM_DM
+     - UnitID: 15a259d2-4417-45e8-9f67-7459326c5eb2
+     - Name: efficiency of biogas production from solid cattle manure
+     - UnitName: m3/kg
+    - Parameter ID: 7a726b6b-b2b9-4b34-b3a2-a7f2eb01181c
+     - NameVariable: EF_swine_slurryDM
+     - UnitID: 15a259d2-4417-45e8-9f67-7459326c5eb2
+     - Name: efficiency of biogas production from swine slurry dry matter
+     - UnitName: m3/kg
+    - Parameter ID: a028902f-046a-4ece-bef5-06a402f28a53
+     - NameVariable: factor_el
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: electricity use factor
+     - UnitName: dimensionless
+    - Parameter ID: 93d1d4cb-0170-439e-86a3-e7d6781f92db
+     - NameVariable: EF_CH4_cattle_slurryDM
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor CH4 cattle slurry dry mass
+     - UnitName: dimensionless
+    - Parameter ID: 62ac947a-aa4f-4252-bba3-3aadce6150e7
+     - NameVariable: EF_CH4_digestateDM
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor CH4 digestate
+     - UnitName: dimensionless
+    - Parameter ID: a4663225-8140-4fad-bfba-d2c3670bbeca
+     - NameVariable: EF_CH4_cattle_FYM_DM
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor CH4 solid cattle manure dry mass
+     - UnitName: dimensionless
+    - Parameter ID: e1ec9a01-4238-4a7a-8283-87bc201391f1
+     - NameVariable: EF_CH4_swine_slurryDM
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor CH4 swine slurry dry mass
+     - UnitName: dimensionless
+    - Parameter ID: ac6e573d-416c-4cb7-b532-43a669954c1c
+     - NameVariable: EF_CO2
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor CO2
+     - UnitName: dimensionless
+    - Parameter ID: 2743ad6b-b444-4af2-a9bb-88ee5e84bf9c
+     - NameVariable: EF_N2O
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor N2O
+     - UnitName: dimensionless
+    - Parameter ID: 1a287c42-37a8-47aa-bcb9-6c549341584f
+     - NameVariable: EF_NH3
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: emission factor ammonia
+     - UnitName: dimensionless
+    - Parameter ID: 5fe0ebf6-6ef1-4c48-a347-e8d12e8f09c9
+     - NameVariable: lifetime
+     - UnitID: 2cf92850-0f92-4004-9dba-a6ceb6a414c2
+     - Name: lifetime of facility
+     - UnitName: year
+    - Parameter ID: e4f20404-22a6-4ddb-8216-49463e74ab50
+     - NameVariable: methane_density
+     - UnitID: cacb6d36-694d-4e4f-9e79-6c9c73146839
+     - Name: methane density (ntp)
+     - UnitName: kg/m3
+    - Parameter ID: 4d55c22e-d080-4569-9517-55af739c1ac9
+     - NameVariable: factor_process_heat
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: process heat use factor
+     - UnitName: dimensionless
+    - Parameter ID: 7f50d3b2-674e-42e6-8ebd-e7a68ea30073
+     - NameVariable: share_CO2_manure
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of carbon dioxide in biogas from manure
+     - UnitName: dimensionless
+    - Parameter ID: 024e2a07-d396-46cb-9561-41d663393490
+     - NameVariable: share_CH4_cattle
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of methane in biogas from cattle
+     - UnitName: dimensionless
+    - Parameter ID: 5b0d10ad-1787-4fbd-bffd-bc5631f2a793
+     - NameVariable: share_CH4_manure
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of methane in biogas from manure (mixture)
+     - UnitName: dimensionless
+    - Parameter ID: 2a4c5848-c1d4-41d7-8228-ef0b66a150ee
+     - NameVariable: share_CH4_swine
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of methane in biogas from swine
+     - UnitName: dimensionless
+    - Parameter ID: 29db582f-122a-43ab-be50-341a271209d1
+     - NameVariable: share_1400000m3
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of size class 14E5 m3
+     - UnitName: dimensionless
+    - Parameter ID: 37c3e67e-33a5-4217-b553-565ce60b25f2
+     - NameVariable: share_200000m3
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of size class 2E5 m3
+     - UnitName: dimensionless
+    - Parameter ID: da606068-65c6-41bd-bb54-2e5711156681
+     - NameVariable: share_600000m3
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of size class 6E5 m3
+     - UnitName: dimensionless
+    - Parameter ID: 6b479324-0a7e-4a18-b194-8025b85d0c2d
+     - NameVariable: N_soluble_digestate
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of soluble nitrogen in digestate
+     - UnitName: dimensionless
+    - Parameter ID: 0b45b390-5e30-4225-aced-5c5f5a35398c
+     - NameVariable: N_soluble_substrate
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of soluble nitrogen in substrate
+     - UnitName: dimensionless
+    - Parameter ID: b7aca90e-1cc1-44b8-ba72-62c70ff1ebdc
+     - NameVariable: time_share
+     - UnitID: 577e242a-461f-44a7-922c-d8e1c3d2bf45
+     - Name: share of storage time
+     - UnitName: dimensionless

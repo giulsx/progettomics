@@ -1,0 +1,2 @@
+include ecoinvent_interface/VERSION
+include ecoinvent_interface/data/mappings.zip

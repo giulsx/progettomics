@@ -1,0 +1,38 @@
+import json
+import csv
+
+# Carica il file JSON
+with open('progetto mics/output.json', 'r') as json_file:
+    data = json.load(json_file)
+
+# Estrai i dati dagli impact_indicators
+impact_indicators = data.get('impact_indicators', [])
+
+# Crea una lista per le righe del CSV
+csv_data = []
+
+# Itera sugli indicatori di impatto e aggiungi le informazioni desiderate
+for indicator in impact_indicators:
+    impactIndicatorId = indicator.get('@impactIndicatorId', '')
+    impactMethodName = indicator.get('impactMethodName', '')
+    impactCategoryName = indicator.get('impactCategoryName', '')
+    impactName = indicator.get('name', '')
+    unitName = indicator.get('unitName', '')
+    amount = indicator.get('@amount', '')
+
+    # Aggiungi una riga alla lista dei dati
+    csv_data.append([impactIndicatorId, impactMethodName, impactCategoryName, impactName, unitName, amount])
+
+# Crea un file CSV
+with open('progetto mics/DATI.csv', 'w', newline='') as csv_file:
+    writer = csv.writer(csv_file)
+    
+    # Scrivi l'intestazione
+    writer.writerow(['impactIndicatorId', 'impactMethodName', 'impactCategoryName', 'impactName', 'unitName', 'amount'])
+    
+    # Scrivi i dati
+    writer.writerows(csv_data)
+
+print("File CSV creato con successo!")
+
+

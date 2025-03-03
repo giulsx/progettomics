@@ -1,0 +1,33 @@
+ID: de5b3c87-0e35-4fb0-9765-4f3ba34c99e5, Key: @unitId, Value: m3
+ID: 487df68b-4994-4027-8fdc-a4dc298257b7, Key: @unitId, Value: kg
+ID: 577e242a-461f-44a7-922c-d8e1c3d2bf45, Key: @unitId, Value: dimensionless
+ID: 980b811e-3905-4797-82a5-173f5568bc7e, Key: @unitId, Value: MJ
+ID: be7e06e9-0bf5-462e-99dc-fe4aee383c48, Key: @subcompartmentId, Value: non-urban air or from high stacks
+ID: 7011f0aa-f5f9-4901-8c10-884ad8296812, Key: @subcompartmentId, Value: unspecified
+ID: e8d7772c-55ca-4dd7-b605-fee5ae764578, Key: @subcompartmentId, Value: urban air close to ground
+ID: 4923348e-591b-4772-b224-d19df86f04c9, Key: @unitId, Value: kBq
+ID: 23dbff79-8037-43e7-b270-5a3da416a284, Key: @subcompartmentId, Value: low population density, long-term
+ID: f335ce0e-b830-475a-adab-03858d9cbdaf, Key: @subcompartmentId, Value: lower stratosphere + upper troposphere
+ID: c0fd7b13-1661-4e9a-905c-d49fb247c0d2, Key: @subcompartmentId, Value: waste
+ID: e1bc9a16-5b6a-494f-98ef-49f461b1a11e, Key: @subcompartmentId, Value: agricultural
+ID: 15f47463-77ea-40d0-bfe8-ca632819f556, Key: @subcompartmentId, Value: forestry
+ID: 912f1ae3-734e-4cc6-bbf7-0f36843cd7de, Key: @subcompartmentId, Value: industrial
+ID: dbeb0ac7-0dec-439e-887a-9924cc8005dd, Key: @subcompartmentId, Value: unspecified
+ID: 963f8022-3e2e-4be9-ad4d-b3b7a2282099, Key: @subcompartmentId, Value: surface water
+ID: e47f0a6c-3be8-4027-9eee-de251784f708, Key: @subcompartmentId, Value: unspecified
+ID: a119c440-7e83-4655-a874-97fe1468315a, Key: @subcompartmentId, Value: ground-
+ID: 65f8d2a1-63ed-479c-b86c-3bcf38e86320, Key: @subcompartmentId, Value: ocean
+ID: aa4362e0-b20a-448b-b2a0-261f4510deb5, Key: @subcompartmentId, Value: ground-, long-term
+ID: 6a098164-9f04-4f65-8104-ffab7f2677f3, Key: @subcompartmentId, Value: in ground
+ID: 45bb416c-a63b-429f-8754-b3f76a069c43, Key: @subcompartmentId, Value: in air
+ID: 30347aef-a90b-46ba-8746-b53741aa779d, Key: @subcompartmentId, Value: in water
+ID: 2d0acbd3-2083-4011-9a29-20c626b23dc3, Key: @subcompartmentId, Value: biotic
+ID: 225da0bd-ba54-48bc-9a0e-5fa27d722185, Key: @unitId, Value: Sm3
+ID: eb955b7c-7bed-401f-9c76-5db716ca3640, Key: @unitId, Value: m2*year
+ID: 7d704b6f-d455-4f41-9c28-50b4f372f315, Key: @subcompartmentId, Value: land
+ID: 1017f68a-f818-4f9d-a34d-a31e7386f628, Key: @unitId, Value: m2
+ID: cacb6d36-694d-4e4f-9e79-6c9c73146839, Key: @unitId, Value: kg/m3
+ID: 15a259d2-4417-45e8-9f67-7459326c5eb2, Key: @unitId, Value: m3/kg
+ID: c4597934-ecac-422c-b431-382e85fdcb83, Key: @reviewerId, Value: [System]
+ID: 847a56f5-d9e5-4a65-ab51-b056e0039130, Key: @reviewerId, Value: Avraam Symeonidis
+ID: 3860cfbd-a932-45c0-90c7-658d5bea9ea3, Key: @personId, Value: Thomas Kägi

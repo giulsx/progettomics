@@ -1,0 +1,615 @@
+impactIndicatorId,impactMethodName,impactCategoryName,impactName,unitName,amount
+bfbecdfe-7374-4c10-9fe7-c886fdd1978d,CML v4.8 2016,acidification,"acidification (incl. fate, average Europe total, A&B)",kg SO2-Eq,0.0007234402188958692
+0e8ded58-82fd-491c-a5d3-1c2e100cb843,CML v4.8 2016,climate change,global warming potential (GWP100),kg CO2-Eq,0.2254104889690696
+690cf42b-2716-414f-9532-2f33e0e8cf07,CML v4.8 2016,ecotoxicity: freshwater,freshwater aquatic ecotoxicity (FAETP inf),"kg 1,4-DCB-Eq",0.10348786844253563
+2089f8c8-5d7a-42b6-8287-22554b2f7013,CML v4.8 2016,ecotoxicity: marine,marine aquatic ecotoxicity (MAETP inf),"kg 1,4-DCB-Eq",264.92479402666856
+15aa9cec-9211-40fa-b6cf-014e7ff73bd4,CML v4.8 2016,ecotoxicity: terrestrial,terrestrial ecotoxicity (TETP inf),"kg 1,4-DCB-Eq",0.005426801428631743
+a731d4ee-5daa-44c2-9254-3a619bc5c328,CML v4.8 2016,energy resources: non-renewable,abiotic depletion potential (ADP): fossil fuels,MJ,0.47838175917276965
+36a9b35e-9698-4efc-a602-5f582666f069,CML v4.8 2016,eutrophication,eutrophication (fate not incl.),kg PO4-Eq,0.00023152008759442963
+de31245f-5c3a-4780-bc82-9c03e3a0be88,CML v4.8 2016,human toxicity,human toxicity (HTP inf),"kg 1,4-DCB-Eq",0.7346734222861928
+f9a48cde-8ca6-426a-8b6c-d55e529566f8,CML v4.8 2016,material resources: metals/minerals,abiotic depletion potential (ADP): elements (ultimate reserves),kg Sb-Eq,7.739379742388564E-07
+b6647543-8832-4c2f-af46-75927f851c05,CML v4.8 2016,ozone depletion,ozone layer depletion (ODP steady state),kg CFC-11-Eq,3.8941969553347227E-10
+a377c6b5-3b02-43fc-8038-c35c573e17d4,CML v4.8 2016,photochemical oxidant formation,photochemical oxidation (high NOx),kg ethylene-Eq,6.039592477099296E-05
+7b3693dc-ff80-4b1b-918a-cadaf68f1260,CML v4.8 2016 no LT,acidification no LT,"acidification (incl. fate, average Europe total, A&B) no LT",kg SO2-Eq,0.0007234402141288838
+66c59480-22c7-48eb-9e8b-701303ce2c8e,CML v4.8 2016 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.22541048842818726
+9ac3f757-68d0-4f42-aa63-0d9aba482aa8,CML v4.8 2016 no LT,ecotoxicity: freshwater no LT,freshwater aquatic ecotoxicity (FAETP inf) no LT,"kg 1,4-DCB-Eq",0.03975860050385404
+ad9efc45-c113-4107-b70a-50473f8fb268,CML v4.8 2016 no LT,ecotoxicity: marine no LT,marine aquatic ecotoxicity (MAETP inf) no LT,"kg 1,4-DCB-Eq",197.39819544435252
+48d5358a-c607-46b3-92b4-8bd21c9c2500,CML v4.8 2016 no LT,ecotoxicity: terrestrial no LT,terrestrial ecotoxicity (TETP inf) no LT,"kg 1,4-DCB-Eq",0.005418486118449845
+14fe8df0-64d7-4b27-b6fd-ae64f299bdd9,CML v4.8 2016 no LT,energy resources: non-renewable no LT,abiotic depletion potential (ADP): fossil fuels no LT,MJ,0.47838175917276965
+6219b1b2-420f-4526-9c05-f24c937965ec,CML v4.8 2016 no LT,eutrophication no LT,eutrophication (fate not incl.) no LT,kg PO4-Eq,0.00019278525172710466
+d470b058-c8db-49e6-a319-b844dbd0a9b2,CML v4.8 2016 no LT,human toxicity no LT,human toxicity (HTP inf) no LT,"kg 1,4-DCB-Eq",0.6840820798473897
+73102fa2-9586-4c0a-8716-4c2d03e16eb6,CML v4.8 2016 no LT,material resources: metals/minerals no LT,abiotic depletion potential (ADP): elements (ultimate reserves) no LT,kg Sb-Eq,7.739379742388564E-07
+7f6a3ebd-7d54-4f1a-b013-e6c84f7e90bd,CML v4.8 2016 no LT,ozone depletion no LT,ozone layer depletion (ODP steady state) no LT,kg CFC-11-Eq,3.8941969553347227E-10
+59b91456-8db7-48f5-a27c-fe047068d072,CML v4.8 2016 no LT,photochemical oxidant formation no LT,photochemical oxidation (high NOx) no LT,kg ethylene-Eq,6.039592475899149E-05
+570edca8-461d-48d9-a832-d254693467c9,Crustal Scarcity Indicator 2020,material resources: metals/minerals,crustal scarcity potential (CSP),kg Si-Eq,9.358949912275355
+2c95265f-7b5e-41cd-8213-74c367a9406b,Cumulative Energy Demand (CED),energy resources: non-renewable,energy content (HHV),MJ-Eq,0.5389800921456194
+49187a1b-4ae2-4a04-8180-9ff90110f8d2,Cumulative Energy Demand (CED),"energy resources: non-renewable, biomass",energy content (HHV),MJ-Eq,0.0003725016206488829
+cbb32d67-3f16-48a5-8a97-8a7ce298720a,Cumulative Energy Demand (CED),"energy resources: non-renewable, fossil",energy content (HHV),MJ-Eq,0.5107816647954039
+4dbb4156-0d24-48eb-9960-ba17eb11feb3,Cumulative Energy Demand (CED),"energy resources: non-renewable, nuclear",energy content (HHV),MJ-Eq,0.02782592572956671
+00c00f7c-4beb-4f00-b493-385f4f86de11,Cumulative Energy Demand (CED),energy resources: renewable,energy content (HHV),MJ-Eq,0.4941767855006407
+3c8975c6-02b3-4a35-8e12-9ff90110f8d3,Cumulative Energy Demand (CED),"energy resources: renewable, biomass",energy content (HHV),MJ-Eq,0.4670731225394297
+c2132dd1-2b89-474c-aa74-9ff90110f8d0,Cumulative Energy Demand (CED),"energy resources: renewable, geothermal",energy content (HHV),MJ-Eq,0.0007885605465759751
+4c36e827-3652-4a8a-a69c-bef1ab6652d8,Cumulative Energy Demand (CED),"energy resources: renewable, geothermal, solar, wind",energy content (HHV),MJ-Eq,0.00440056075219739
+a0e57689-999a-4a71-bc68-f00fa62c2857,Cumulative Energy Demand (CED),"energy resources: renewable, solar",energy content (HHV),MJ-Eq,0.00023766670533325606
+ebe274b0-e5a7-4994-8f8f-7417373b3df7,Cumulative Energy Demand (CED),"energy resources: renewable, water",energy content (HHV),MJ-Eq,0.02270310220901364
+d7c94f33-6c5d-4141-8f8e-e7cbc946fabb,Cumulative Energy Demand (CED),"energy resources: renewable, wind",energy content (HHV),MJ-Eq,0.0033743335002881583
+81847c0e-d484-47e4-a4e0-409628c402f5,Cumulative Energy Demand (CED),total,energy content (HHV),MJ-Eq,1.0331568776462599
+e028050b-ffbc-44e1-99b7-ea90da292abb,Cumulative Exergy Demand (CExD),energy resources: non-renewable,exergy content,MJ-Eq,0.542803805484637
+53d40518-8816-430e-adc0-9ff90110f964,Cumulative Exergy Demand (CExD),"energy resources: non-renewable, biomass",exergy content,MJ-Eq,0.0003911267016813271
+be5a1026-6127-44fb-9936-9ff90110f966,Cumulative Exergy Demand (CExD),"energy resources: non-renewable, fossil",exergy content,MJ-Eq,0.5145867530533891
+964ce2d3-8e77-4eeb-bb56-9ff90110f965,Cumulative Exergy Demand (CExD),"energy resources: non-renewable, nuclear",exergy content,MJ-Eq,0.02782592572956671
+cb1f769c-22c4-4832-8a70-ccba173d9c4c,Cumulative Exergy Demand (CExD),energy resources: renewable,exergy content,MJ-Eq,0.5167252444116629
+801e9680-d622-469c-868c-9ff90110f963,Cumulative Exergy Demand (CExD),"energy resources: renewable, biomass",exergy content,MJ-Eq,0.49042677866640116
+e8b252d2-d8db-434b-8e46-2f4a1e8eefe6,Cumulative Exergy Demand (CExD),"energy resources: renewable, solar",exergy content,MJ-Eq,0.00022103003595992814
+1b240255-0703-4e95-9dc7-ec8fb556df6d,Cumulative Exergy Demand (CExD),"energy resources: renewable, water",exergy content,MJ-Eq,0.02270310220901364
+277d242c-069f-457c-af48-fd6b619c457a,Cumulative Exergy Demand (CExD),"energy resources: renewable, wind",exergy content,MJ-Eq,0.0033743335002881583
+ed9ddb06-0725-4bda-a81d-15f9f36c8fb7,Cumulative Exergy Demand (CExD),material resources,exergy content,MJ-Eq,0.09124687152833591
+ec475dd2-9d30-4c09-b0a3-9ff90110f950,Cumulative Exergy Demand (CExD),material resources: metals,exergy content,MJ-Eq,0.020979643425892588
+7b8889d1-a029-4939-b649-9ff90110f968,Cumulative Exergy Demand (CExD),material resources: minerals,exergy content,MJ-Eq,0.009901895032424916
+64953b5c-452e-4173-bc6e-9ff90110f972,Cumulative Exergy Demand (CExD),material resources: water,exergy content,MJ-Eq,0.06036533307001841
+ffc173e2-dd66-4195-b7ac-3527508d5b75,Cumulative Exergy Demand (CExD),total,exergy content,MJ-Eq,1.1507759214246363
+65801681-631d-4951-86f0-0ee7f4e31469,EF v3.0,acidification,accumulated exceedance (AE),mol H+-Eq,0.0011703236811728421
+eabe9472-7546-434a-888f-2efdcf9cac46,EF v3.0,climate change,global warming potential (GWP100),kg CO2-Eq,0.26366534179944723
+fdfcb4ec-c287-4968-9800-59d743a265b3,EF v3.0,climate change: biogenic,global warming potential (GWP100),kg CO2-Eq,0.1923418664877846
+5a89afc9-2da6-40f1-914f-2d6003fbd5b9,EF v3.0,climate change: fossil,global warming potential (GWP100),kg CO2-Eq,0.07121629362856624
+28c1148d-9b84-4f6d-8a93-03d1d536c9b3,EF v3.0,climate change: land use and land use change,global warming potential (GWP100),kg CO2-Eq,0.00010718168309644253
+52218547-9e6f-4052-b96a-44419138abfd,EF v3.0,ecotoxicity: freshwater,comparative toxic unit for ecosystems (CTUe),CTUe,2.656355657993371
+ea50f3da-0c1a-44f6-97c0-277e1d17ce74,EF v3.0,"ecotoxicity: freshwater, inorganics",comparative toxic unit for ecosystems (CTUe),CTUe,0.8129435771978157
+51a9770f-362e-4893-8042-11b6659036e1,EF v3.0,"ecotoxicity: freshwater, metals",comparative toxic unit for ecosystems (CTUe),CTUe,1.5669877729345736
+282a3d9a-cd36-447a-8e37-f36bdedb082a,EF v3.0,"ecotoxicity: freshwater, organics",comparative toxic unit for ecosystems (CTUe),CTUe,0.27642430786097916
+2cf2273b-97d5-4b82-8273-3e1f8d2e128d,EF v3.0,energy resources: non-renewable,abiotic depletion potential (ADP): fossil fuels,"MJ, net calorific value",0.5062320032619648
+cd8b1928-725a-4938-bc05-1142b47d93f5,EF v3.0,eutrophication: freshwater,fraction of nutrients reaching freshwater end compartment (P),kg P-Eq,1.205765240793773E-05
+6f81bd98-1bcd-464b-834e-ea187a65d3b1,EF v3.0,eutrophication: marine,fraction of nutrients reaching marine end compartment (N),kg N-Eq,0.00010558624609374732
+3caa626f-0029-458c-9888-4419c5de2923,EF v3.0,eutrophication: terrestrial,accumulated exceedance (AE),mol N-Eq,0.0044620941836843765
+603e0581-fa30-41a3-9896-5208fb3d2bd8,EF v3.0,human toxicity: carcinogenic,comparative toxic unit for human (CTUh),CTUh,9.99167776026548E-10
+3a904ba2-8735-418c-9866-ad60af4e86e9,EF v3.0,"human toxicity: carcinogenic, inorganics",comparative toxic unit for human (CTUh),CTUh,0.0
+80abd8ca-12c2-438a-b2d1-d6ea5c2b6b9c,EF v3.0,"human toxicity: carcinogenic, metals",comparative toxic unit for human (CTUh),CTUh,1.203445892828842E-11
+74d170fd-2906-4421-b752-0823657b4810,EF v3.0,"human toxicity: carcinogenic, organics",comparative toxic unit for human (CTUh),CTUh,9.87133317098259E-10
+00e1d906-0690-4dbb-b7b2-0f43969bd4f9,EF v3.0,human toxicity: non-carcinogenic,comparative toxic unit for human (CTUh),CTUh,1.6318282978734117E-09
+3ab73c73-989f-4734-86ce-5de0d6bc0788,EF v3.0,"human toxicity: non-carcinogenic, inorganics",comparative toxic unit for human (CTUh),CTUh,4.504507759987959E-10
+cb1634ee-0d60-4b96-bc3f-93fed63b87fe,EF v3.0,"human toxicity: non-carcinogenic, metals",comparative toxic unit for human (CTUh),CTUh,8.568897683481847E-10
+87e6c4ea-7160-4f48-b3f0-ba12b974e295,EF v3.0,"human toxicity: non-carcinogenic, organics",comparative toxic unit for human (CTUh),CTUh,3.395194071316387E-10
+38b01290-887c-4a05-9104-e6f9a0b05dd0,EF v3.0,ionising radiation: human health,human exposure efficiency relative to u235,kBq U235-Eq,0.0016011804915858146
+f31c8140-e43b-4e10-96e0-c8bae37279b1,EF v3.0,land use,soil quality index,dimensionless,1.7169519775150104
+0a4b9a20-8894-4b03-8259-791299e05f93,EF v3.0,material resources: metals/minerals,abiotic depletion potential (ADP): elements (ultimate reserves),kg Sb-Eq,7.980262606067527E-07
+48e0c42a-ce68-4c6e-ade6-df6514e20acc,EF v3.0,ozone depletion,ozone depletion potential (ODP),kg CFC-11-Eq,4.785987973316595E-10
+eb0c1bab-9e02-4f52-b70b-0aaa5b591f21,EF v3.0,particulate matter formation,impact on human health,disease incidence,1.1003172486926586E-08
+64fabe6b-adbe-4919-87eb-87ba8e775232,EF v3.0,photochemical oxidant formation: human health,tropospheric ozone concentration increase,kg NMVOC-Eq,0.0003592872967806423
+3afed437-ffe2-40d3-860a-f83a5baa8421,EF v3.0,water use,user deprivation potential (deprivation-weighted water consumption),m3 world Eq deprived,0.010679215498031485
+a172fc5e-9b07-4bff-b141-e6c74208d6a3,EF v3.0 no LT,acidification no LT,accumulated exceedance (AE) no LT,mol H+-Eq,0.001170323672262489
+a40fe95d-41b1-4c41-8bc0-a977abb6f03c,EF v3.0 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.2636653411912097
+a831c91f-8585-4eb1-9fd7-c1572641766e,EF v3.0 no LT,climate change: biogenic no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.1923418664877846
+c2fea617-d15b-489f-9766-8dcc15264a64,EF v3.0 no LT,climate change: fossil no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.07121629302032875
+c326868d-45d9-47a7-8606-fbeaeee25a64,EF v3.0 no LT,climate change: land use and land use change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.00010718168309644253
+819796fd-389f-491f-8d99-54df3f8d288f,EF v3.0 no LT,ecotoxicity: freshwater no LT,comparative toxic unit for ecosystems (CTUe) no LT,CTUe,2.656355657993371
+96c5dcdd-dd80-47ae-9038-a8be63afad8f,EF v3.0 no LT,"ecotoxicity: freshwater, inorganics no LT",comparative toxic unit for ecosystems (CTUe) no LT,CTUe,0.8129435771978157
+62b80ae3-00a8-4618-93c1-931385bb51d5,EF v3.0 no LT,"ecotoxicity: freshwater, metals no LT",comparative toxic unit for ecosystems (CTUe) no LT,CTUe,1.5669877729345736
+d38460b2-2d8f-4286-84e1-4a508a5597b6,EF v3.0 no LT,"ecotoxicity: freshwater, organics no LT",comparative toxic unit for ecosystems (CTUe) no LT,CTUe,0.27642430786097916
+39523b9b-a47d-4221-8c01-74038d4f07b3,EF v3.0 no LT,energy resources: non-renewable no LT,abiotic depletion potential (ADP): fossil fuels no LT,"MJ, net calorific value",0.5062320032619648
+b3480b12-7eb7-489b-9041-20549455f485,EF v3.0 no LT,eutrophication: freshwater no LT,fraction of nutrients reaching freshwater end compartment (P) no LT,kg P-Eq,1.8029732976090005E-06
+cb275952-9e2d-4093-916d-62ecb4d9179b,EF v3.0 no LT,eutrophication: marine no LT,fraction of nutrients reaching marine end compartment (N) no LT,kg N-Eq,0.00010409077382892347
+52578fbf-6cd7-4942-a669-e1806ec63e99,EF v3.0 no LT,eutrophication: terrestrial no LT,accumulated exceedance (AE) no LT,mol N-Eq,0.004462082825544007
+e628278c-eab7-4993-aae0-e9119f7c6186,EF v3.0 no LT,human toxicity: carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,9.99167776026548E-10
+84739be4-3009-4dae-9814-e4cb2496f0dd,EF v3.0 no LT,"human toxicity: carcinogenic, inorganics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,0.0
+c90c3def-c200-4e96-834f-981af85f2fae,EF v3.0 no LT,"human toxicity: carcinogenic, metals no LT",comparative toxic unit for human (CTUh) no LT,CTUh,1.203445892828842E-11
+57410f50-9279-4e52-8122-3f09874046fb,EF v3.0 no LT,"human toxicity: carcinogenic, organics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,9.87133317098259E-10
+4bd1bbc8-b959-40f2-a169-b341cea2a2b8,EF v3.0 no LT,human toxicity: non-carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,1.6318282978734117E-09
+fff97ea0-ff89-4475-b382-17ecea16b240,EF v3.0 no LT,"human toxicity: non-carcinogenic, inorganics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,4.504507759987959E-10
+810a53db-7673-43d5-8c36-fa61945b9a05,EF v3.0 no LT,"human toxicity: non-carcinogenic, metals no LT",comparative toxic unit for human (CTUh) no LT,CTUh,8.568897683481847E-10
+44e5a6c6-1bc1-4627-81c0-a6edb46fe7be,EF v3.0 no LT,"human toxicity: non-carcinogenic, organics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,3.395194071316387E-10
+d42a2a42-a3f4-4acd-8369-cb17e29668f6,EF v3.0 no LT,ionising radiation: human health no LT,human exposure efficiency relative to u235 no LT,kBq U235-Eq,0.0005997191118731298
+9bc8b2cc-751c-4082-868a-8a75f5b43124,EF v3.0 no LT,land use no LT,soil quality index no LT,dimensionless,1.7169519775150104
+3501fb86-6565-4bd7-86f7-7d899da9b5c5,EF v3.0 no LT,material resources: metals/minerals no LT,abiotic depletion potential (ADP): elements (ultimate reserves) no LT,kg Sb-Eq,7.980262606067527E-07
+06b3f6f6-b061-4040-ace6-c2cf5693fc3d,EF v3.0 no LT,ozone depletion no LT,ozone depletion potential (ODP) no LT,kg CFC-11-Eq,4.785987973316595E-10
+906bc131-d0ab-44be-aeba-cf72a9eae864,EF v3.0 no LT,particulate matter formation no LT,impact on human health no LT,disease incidence,1.098568633447718E-08
+5ed398b6-48bd-4327-8853-c9b908855870,EF v3.0 no LT,photochemical oxidant formation: human health no LT,tropospheric ozone concentration increase no LT,kg NMVOC-Eq,0.00035928729635201857
+d64aec8a-8a72-491d-a8d3-6fb1419fc854,EF v3.0 no LT,water use no LT,user deprivation potential (deprivation-weighted water consumption) no LT,m3 world Eq deprived,0.010679215498031485
+28a96c58-e913-4a6f-b007-87204806c70b,EF v3.1,acidification,accumulated exceedance (AE),mol H+-Eq,0.0011703236811728421
+6d85469e-cb4b-430d-8dbf-d83a3ce07c22,EF v3.1,climate change,global warming potential (GWP100),kg CO2-Eq,0.22068966995755715
+87ce6e5b-4e30-4eda-a1fb-014cc3c18db7,EF v3.1,climate change: biogenic,global warming potential (GWP100),kg CO2-Eq,0.1527420704461819
+bbdbca96-2d5e-4347-9305-7d7b4bf8f225,EF v3.1,climate change: fossil,global warming potential (GWP100),kg CO2-Eq,0.067842233986449
+6f6a4f26-0293-4594-adff-019560c7c50b,EF v3.1,climate change: land use and land use change,global warming potential (GWP100),kg CO2-Eq,0.00010536552492620949
+c304cfe1-f5a7-43ba-bab2-22a2ac7a79d6,EF v3.1,ecotoxicity: freshwater,comparative toxic unit for ecosystems (CTUe),CTUe,1.2051781791007283
+2b5cfa69-c109-442f-8f87-74d95d22be45,EF v3.1,"ecotoxicity: freshwater, inorganics",comparative toxic unit for ecosystems (CTUe),CTUe,0.9253023358341828
+9c4ce94d-3d1f-4ee0-9039-72144aa8ca24,EF v3.1,"ecotoxicity: freshwater, organics",comparative toxic unit for ecosystems (CTUe),CTUe,0.27987584326654963
+e4ee3a59-f7b1-4309-a4f0-5fc015602c5a,EF v3.1,energy resources: non-renewable,abiotic depletion potential (ADP): fossil fuels,"MJ, net calorific value",0.5062320032619648
+b1a36ca6-0b16-498f-a9c8-50db2c9084d4,EF v3.1,eutrophication: freshwater,fraction of nutrients reaching freshwater end compartment (P),kg P-Eq,1.205765240793773E-05
+f8975238-4136-4d7d-b975-d7de99c60599,EF v3.1,eutrophication: marine,fraction of nutrients reaching marine end compartment (N),kg N-Eq,0.00010558624609374732
+ce5e8845-bc58-4de2-ad94-9abf66852b3f,EF v3.1,eutrophication: terrestrial,accumulated exceedance (AE),mol N-Eq,0.0044620941836843765
+65a20b7c-61cf-4ede-8c26-18674dc980e3,EF v3.1,human toxicity: carcinogenic,comparative toxic unit for human (CTUh),CTUh,9.991686916432155E-10
+b04006fb-2a92-4e28-8cb7-98ea718898c0,EF v3.1,"human toxicity: carcinogenic, inorganics",comparative toxic unit for human (CTUh),CTUh,1.203445892828842E-11
+23e2dfdf-6a58-48e8-badf-da58aa044422,EF v3.1,"human toxicity: carcinogenic, organics",comparative toxic unit for human (CTUh),CTUh,9.871342327149266E-10
+1f085aa5-291d-497a-b15c-fa08d61d7843,EF v3.1,human toxicity: non-carcinogenic,comparative toxic unit for human (CTUh),CTUh,1.1972414507385945E-09
+b97fc070-d5ec-48f1-83f4-43a17e738c41,EF v3.1,"human toxicity: non-carcinogenic, inorganics",comparative toxic unit for human (CTUh),CTUh,8.577092676066464E-10
+ff6c33ce-a0a1-4cac-a260-6ed06f1c9ebd,EF v3.1,"human toxicity: non-carcinogenic, organics",comparative toxic unit for human (CTUh),CTUh,3.395321831319475E-10
+0fb2572d-6678-4fa6-9f1f-e7c7fa36a162,EF v3.1,ionising radiation: human health,human exposure efficiency relative to u235,kBq U235-Eq,0.0016011804915858146
+1ea16ca2-3ec7-4405-8365-dcaafbc0a312,EF v3.1,land use,soil quality index,dimensionless,1.7169519775150104
+58033092-c1da-4633-9d62-95fb14d21eed,EF v3.1,material resources: metals/minerals,abiotic depletion potential (ADP): elements (ultimate reserves),kg Sb-Eq,7.980262606067527E-07
+53cc24ba-e1b8-457b-bee1-2c178b91a791,EF v3.1,ozone depletion,ozone depletion potential (ODP),kg CFC-11-Eq,4.785987973316595E-10
+9002bb26-3688-4bc0-999a-d952e9798c67,EF v3.1,particulate matter formation,impact on human health,disease incidence,1.1003172486926586E-08
+ee66b76e-71ca-46f2-81d8-d079cc783ecf,EF v3.1,photochemical oxidant formation: human health,tropospheric ozone concentration increase,kg NMVOC-Eq,0.0003592872967806423
+8c6f596e-f515-442d-9172-82956c5e19b5,EF v3.1,water use,user deprivation potential (deprivation-weighted water consumption),m3 world Eq deprived,0.010679215498031485
+26932cc8-689d-4115-9b53-0681cc1b7f95,EF v3.1 no LT,acidification no LT,accumulated exceedance (AE) no LT,mol H+-Eq,0.001170323672262489
+f7ea5ee8-f034-4b92-8922-c64f87c90925,EF v3.1 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.22068966940034632
+fb03f7e1-348c-4fae-bb47-b742b67f4c53,EF v3.1 no LT,climate change: biogenic no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.1527420704461819
+606bc6df-9b64-4fff-848c-f6bc43521719,EF v3.1 no LT,climate change: fossil no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.06784223342923815
+a5b181c1-c7cb-4d4a-a6ec-c191a627085d,EF v3.1 no LT,climate change: land use and land use change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.00010536552492620949
+878d2042-12b1-4677-9e06-fb96dfaa3814,EF v3.1 no LT,ecotoxicity: freshwater no LT,comparative toxic unit for ecosystems (CTUe) no LT,CTUe,1.2051781791007283
+44edf036-d00d-41c6-b76f-b23ca49474fd,EF v3.1 no LT,"ecotoxicity: freshwater, inorganics no LT",comparative toxic unit for ecosystems (CTUe) no LT,CTUe,0.9253023358341828
+23619ebc-a4af-4be9-b295-2fd5851ef216,EF v3.1 no LT,"ecotoxicity: freshwater, organics no LT",comparative toxic unit for ecosystems (CTUe) no LT,CTUe,0.27987584326654963
+b0a38ddf-f9f4-497c-9242-652e20d9e472,EF v3.1 no LT,energy resources: non-renewable no LT,abiotic depletion potential (ADP): fossil fuels no LT,"MJ, net calorific value",0.5062320032619648
+b5fbc39e-0ebb-484a-971b-e8d210909e80,EF v3.1 no LT,eutrophication: freshwater no LT,fraction of nutrients reaching freshwater end compartment (P) no LT,kg P-Eq,1.8029732976090005E-06
+89d271c8-0a1c-4978-a6a6-a68de44d748f,EF v3.1 no LT,eutrophication: marine no LT,fraction of nutrients reaching marine end compartment (N) no LT,kg N-Eq,0.00010409077382892347
+c0577fa1-66be-4107-8f79-6e9fac0d7406,EF v3.1 no LT,eutrophication: terrestrial no LT,accumulated exceedance (AE) no LT,mol N-Eq,0.004462082825544007
+4346c4cd-0afd-466c-afef-48b3e8178877,EF v3.1 no LT,human toxicity: carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,9.991686916432155E-10
+c118797b-9e09-4164-b14f-8edbc26ff385,EF v3.1 no LT,"human toxicity: carcinogenic, inorganics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,1.203445892828842E-11
+facbf17c-8058-479b-8360-040672f9b735,EF v3.1 no LT,"human toxicity: carcinogenic, organics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,9.871342327149266E-10
+11beb0e7-bc11-4ef4-a1c5-499791b29eb1,EF v3.1 no LT,human toxicity: non-carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,1.1972414507385945E-09
+b98a89db-45e0-46ab-b4e0-86442a6030f0,EF v3.1 no LT,"human toxicity: non-carcinogenic, inorganics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,8.577092676066464E-10
+52fbf3f0-fa1a-4ceb-8b41-21401997b6bd,EF v3.1 no LT,"human toxicity: non-carcinogenic, organics no LT",comparative toxic unit for human (CTUh) no LT,CTUh,3.395321831319475E-10
+f3b11a9b-a933-431e-b851-e7ece0856d3d,EF v3.1 no LT,ionising radiation: human health no LT,human exposure efficiency relative to u235 no LT,kBq U235-Eq,0.0005997191118731298
+2716745f-0541-4e79-8dcc-df6aac71903d,EF v3.1 no LT,land use no LT,soil quality index no LT,dimensionless,1.7169519775150104
+384b58f1-3f55-4480-b2d6-eea4d1cb9088,EF v3.1 no LT,material resources: metals/minerals no LT,abiotic depletion potential (ADP): elements (ultimate reserves) no LT,kg Sb-Eq,7.980262606067527E-07
+f5297188-21e5-4e0b-9580-6240d98326ec,EF v3.1 no LT,ozone depletion no LT,ozone depletion potential (ODP) no LT,kg CFC-11-Eq,4.785987973316595E-10
+c1ad9077-c60a-4a77-933a-70ef1ed29f60,EF v3.1 no LT,particulate matter formation no LT,impact on human health no LT,disease incidence,1.098568633447718E-08
+1620f842-98e0-4235-910c-c66785ec7a41,EF v3.1 no LT,photochemical oxidant formation: human health no LT,tropospheric ozone concentration increase no LT,kg NMVOC-Eq,0.00035928729635201857
+cbcc1104-3f2a-4427-893f-2c58572f27b6,EF v3.1 no LT,water use no LT,user deprivation potential (deprivation-weighted water consumption) no LT,m3 world Eq deprived,0.010679215498031485
+67c205e7-5b41-47cd-bfad-7269d5a399a2,EPS 2020d,emissions to air,monetary impact value,EUR 2018,0.05469246885488696
+91c8cb54-252a-4c32-b15f-2fe1499e3eaa,EPS 2020d,emissions to soil,monetary impact value,EUR 2018,3.643845619560796E-07
+76fb1c29-00c4-4f44-9ee8-dcc905a664b2,EPS 2020d,emissions to water,monetary impact value,EUR 2018,0.0035905332641861035
+a6987fc4-680c-4c3e-b3de-d85ec371adb6,EPS 2020d,"energy resources: non-renewable, fossil",monetary impact value,EUR 2018,0.007597869902949901
+9c01aff9-b978-432a-97dd-f864b2e3af09,EPS 2020d,land use,monetary impact value,EUR 2018,0.015148622714903767
+a974b8b6-5f7c-49bc-b559-85f27d1e7c40,EPS 2020d,material resources: metals,monetary impact value,EUR 2018,0.21544856859721978
+f4b9590f-8104-4485-8a4a-bfff0bb7fa00,EPS 2020d,total,monetary impact value,EUR 2018,0.2964784277187084
+acfe9825-0b81-45ae-a5ba-6b898b023367,EPS 2020d no LT,emissions to air no LT,monetary impact value no LT,EUR 2018,0.05467810412928753
+d19f840f-ff36-4061-9db9-ae5daa095ce8,EPS 2020d no LT,emissions to soil no LT,monetary impact value no LT,EUR 2018,3.643845619560796E-07
+c90fe501-1dc5-4bd3-ae2f-7b67310e6d7f,EPS 2020d no LT,emissions to water no LT,monetary impact value no LT,EUR 2018,0.00010076165371333277
+f396625b-597f-4af7-b2c2-7124627f6387,EPS 2020d no LT,"energy resources: non-renewable, fossil no LT",monetary impact value no LT,EUR 2018,0.007597869902949901
+d1c55e45-4318-483c-8ce7-8e35902ae8b3,EPS 2020d no LT,land use no LT,monetary impact value no LT,EUR 2018,0.015148622714903767
+f8a790e7-b535-481e-9dbf-e358581ad8df,EPS 2020d no LT,material resources: metals no LT,monetary impact value no LT,EUR 2018,0.21544856859721978
+f7b96cd4-6286-4091-b44e-00e8f7382e30,EPS 2020d no LT,total no LT,monetary impact value no LT,EUR 2018,0.2929742913826362
+05c6aa82-da5c-4f82-bfd7-9ff901111711,Ecological Footprint,CO2,global hectares,m2a,0.1074430481606766
+4ef35247-767f-4ee1-8b66-9ff901111700,Ecological Footprint,land occupation,global hectares,m2a,0.07415838859049327
+6d3510f7-e2c6-4bec-960b-9ff9011116ff,Ecological Footprint,nuclear,global hectares,m2a,0.005452887659933305
+d863ee91-04f5-43ea-85e4-9ff90111170a,Ecological Footprint,total,global hectares,m2a,0.18705432441110317
+c621b8a6-0fdb-4c90-bf13-3215df559b3c,Ecological Scarcity 2021,climate change,global warming potential (GWP100),UBP,227.79769432839095
+ad79548f-cdf4-4707-9c5e-ad580731f1b8,Ecological Scarcity 2021,emissions to air,air pollutants and PM,UBP,32.09057667693032
+28417738-dc28-48fd-a996-ef5a7e93a55a,Ecological Scarcity 2021,emissions to air,carcinogenic substances into air,UBP,3.327146119290634
+01372422-c2bf-4330-81e4-fe783247da5d,Ecological Scarcity 2021,emissions to air,heavy metals into air,UBP,5.5327545813015835
+27d68e4f-e732-4461-9f9c-81d35862b01d,Ecological Scarcity 2021,emissions to air,radioactive substances into air,UBP,1.7957483153809432E-05
+658d487b-6859-4d70-a7ad-f487e1f13896,Ecological Scarcity 2021,emissions to soil,heavy metals into soil,UBP,0.3255170159746118
+e1b90378-ae4b-4202-b245-599f478f2ebc,Ecological Scarcity 2021,emissions to soil,pesticides into soil,UBP,2.3847317779896096
+97bc1c71-3d20-404b-a049-36192ca8250b,Ecological Scarcity 2021,emissions to water,POP into water,UBP,0.1425003459807785
+84a09662-62ea-4d93-a504-8ca4429fedf8,Ecological Scarcity 2021,emissions to water,heavy metals into water,UBP,0.39655455317936406
+37a3410f-4553-4b3a-8488-0647dbdfcf83,Ecological Scarcity 2021,emissions to water,radioactive substances into water,UBP,0.017805282718550582
+e4a85c6b-9763-4e83-9575-1bbe446a7427,Ecological Scarcity 2021,emissions to water,water pollutants,UBP,2.2051170700920943
+407c53d8-e7d4-4a71-ae84-f516ef950796,Ecological Scarcity 2021,energy resources,energy resources,UBP,5.8399596461571885
+da888017-6288-463a-8d4a-890a70948c9f,Ecological Scarcity 2021,land use,land use,UBP,47.788593408241006
+8a3aa57c-168c-49e7-bf7e-69c9283570cf,Ecological Scarcity 2021,mineral resources,mineral resources,UBP,4.148685211851953
+eb0a1ae3-c799-43a7-93f4-a1d76ffc171d,Ecological Scarcity 2021,natural resources,biotic resources,UBP,8.528247793332282E-17
+7d3f4f2a-7a6d-469a-a670-cc53f3803698,Ecological Scarcity 2021,ozone depletion,ozone depletion,UBP,0.008158029297972186
+7c1522bf-24e6-404a-af22-d31e8089640c,Ecological Scarcity 2021,total,UBP,UBP,335.33098597972236
+8b9c800f-c542-486b-9149-65ea6de975be,Ecological Scarcity 2021,waste disposal,radioactive waste to deposit,UBP,0.8692514752629863
+099df1b9-8d70-436f-a53c-da92e8862955,Ecological Scarcity 2021,waste disposal,"waste, non radioactive",UBP,2.209765960742309
+288cb5a5-d243-4241-a9c5-af3cd581cfed,Ecological Scarcity 2021,water use,"water resources, evaporated",UBP,0.24615653883704702
+96a31173-cb4a-49d1-9b7b-4cd74818bd81,Ecological Scarcity 2021 no LT,climate change no LT,global warming potential (GWP100) no LT,UBP,227.7976937773033
+999b9797-f305-4067-a8ae-552303785e13,Ecological Scarcity 2021 no LT,emissions to air no LT,air pollutants and PM no LT,UBP,32.06875345164254
+9bcfd44d-d626-428d-b496-5d886675ebbe,Ecological Scarcity 2021 no LT,emissions to air no LT,carcinogenic substances into air no LT,UBP,3.3271459544604545
+9e29a8b9-647e-4347-a487-20bb964f1848,Ecological Scarcity 2021 no LT,emissions to air no LT,heavy metals into air no LT,UBP,5.526803732654642
+c71bd085-485d-4031-9b81-d928c063d8eb,Ecological Scarcity 2021 no LT,emissions to air no LT,radioactive substances into air no LT,UBP,6.537309525506885E-06
+b85ade27-a40f-441b-a293-4c54c1cd47ea,Ecological Scarcity 2021 no LT,emissions to soil no LT,heavy metals into soil no LT,UBP,0.3255170159746118
+b21191d8-6488-4c7d-8d61-6b2c2469c6ed,Ecological Scarcity 2021 no LT,emissions to soil no LT,pesticides into soil no LT,UBP,2.3847317779896096
+a94641e4-0bd0-4ead-aef9-0b922a3b0a31,Ecological Scarcity 2021 no LT,emissions to water no LT,POP into water no LT,UBP,0.1425003459807785
+b129cd76-9842-47b6-a38d-d58fdeb322b3,Ecological Scarcity 2021 no LT,emissions to water no LT,heavy metals into water no LT,UBP,0.39655455317936406
+c8ac9bb4-2da4-4aa4-b8d6-b4d618591b8e,Ecological Scarcity 2021 no LT,emissions to water no LT,radioactive substances into water no LT,UBP,0.017805282718550582
+9f92a772-0590-4cd3-8910-537717674ffa,Ecological Scarcity 2021 no LT,emissions to water no LT,water pollutants no LT,UBP,2.2051170700920943
+846a1e06-5ea8-4176-8a8b-2fbf48d9576c,Ecological Scarcity 2021 no LT,energy resources no LT,energy resources no LT,UBP,5.8399596461571885
+9339d7f5-2302-46d2-8aa8-d74904f7fa56,Ecological Scarcity 2021 no LT,land use no LT,land use no LT,UBP,47.788593408241006
+8bd36861-f7d4-4b96-8b1f-72821a398fe0,Ecological Scarcity 2021 no LT,mineral resources no LT,mineral resources no LT,UBP,4.148685211851953
+f087f8a4-4e3e-436a-9270-877c958adac3,Ecological Scarcity 2021 no LT,natural resources no LT,biotic resources no LT,UBP,8.528247793332282E-17
+98c8da61-3063-4f89-aa0e-6279a0661528,Ecological Scarcity 2021 no LT,ozone depletion no LT,ozone depletion no LT,UBP,0.008158029297972186
+0975d108-e3e1-4906-a4f9-c99344b0a6aa,Ecological Scarcity 2021 no LT,total no LT,UBP no LT,UBP,334.3531835596999
+dda079a6-86dc-4142-8e1a-0f47db5c8f83,Ecological Scarcity 2021 no LT,waste disposal no LT,radioactive waste to deposit no LT,UBP,0.8692514752629863
+d84a6a0b-7eb0-487f-b4ea-328b7c0d835e,Ecological Scarcity 2021 no LT,waste disposal no LT,"waste, non radioactive no LT",UBP,1.2597497507459452
+7616fa6a-c402-4d05-b0a1-f6dd5110004b,Ecological Scarcity 2021 no LT,water use no LT,"water resources, evaporated no LT",UBP,0.24615653883704702
+10d025bd-27c8-43b2-b3fc-9ff90111207b,Ecosystem Damage Potential,land occupation,ecosystem damage potential,points,0.01662314830911223
+78af380f-05f6-4cd1-b696-9ff901112067,Ecosystem Damage Potential,land transformation,ecosystem damage potential,points,1.5123332936195737E-05
+8fc2ae4f-c08d-4cc5-b702-9ff901112085,Ecosystem Damage Potential,total,ecosystem damage potential,points,0.01663827164204843
+45eabcab-8419-4e10-ba47-55d483c55ea0,"IMPACT World+ v2.0.1, footprint version",climate change,carbon footprint,kg CO2-Eq,0.22086736439895635
+db459271-c34e-43f9-82a9-68bd3ae8aacf,"IMPACT World+ v2.0.1, footprint version",ecosystem quality,remaining ecosystem quality damage,PDF.m2.yr,0.032577318402108944
+8f235122-1370-48b7-a79a-e80b570796ac,"IMPACT World+ v2.0.1, footprint version",energy resources: non-renewable,fossil and nuclear energy use,MJ deprived,0.5378875584663085
+cb9b077f-308e-4d1c-9d07-4726bfa01f4e,"IMPACT World+ v2.0.1, footprint version",human health,remaining human health damage,DALYs,1.0235132505777894E-07
+bcbf8e6b-c289-4f58-ab57-f6bb7bcda670,"IMPACT World+ v2.0.1, footprint version",water use,water scarcity footprint,m3 world Eq deprived,0.01068009342326899
+56953c93-05f9-4b56-9ad4-a39fda9995a2,IPCC 2013,climate change,global temperature change potential (GTP100),kg CO2-Eq,0.0861668333300185
+ab919d76-fcbe-453f-a588-3ba3aa0952f8,IPCC 2013,climate change,global temperature change potential (GTP20),kg CO2-Eq,0.4570548836871641
+07e6ca75-ea62-4fad-afa1-e11b03a2071f,IPCC 2013,climate change,global warming potential (GWP100),kg CO2-Eq,0.22954221971052985
+097dbc21-18f8-413c-95ad-e2fe9f0f10f0,IPCC 2013,climate change,global warming potential (GWP20),kg CO2-Eq,0.5516753914526827
+9f7b52f8-482a-49d2-bafa-f80fce3cc97a,IPCC 2013 no LT,climate change no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.08616683285200098
+ddd9d364-5bea-401d-b566-387042e180e9,IPCC 2013 no LT,climate change no LT,global temperature change potential (GTP20) no LT,kg CO2-Eq,0.45705488312199316
+0a72b4dd-3468-4ff7-89c1-be783b69e7a6,IPCC 2013 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.22954221917005574
+d53f242b-3ddc-4486-9e84-6f9ab299a13b,IPCC 2013 no LT,climate change no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.5516753909144538
+bd95b56c-dce9-4c46-9325-7566039a7e46,IPCC 2021,climate change,global temperature change potential (GTP100),kg CO2-Eq,0.08815584167093317
+c7812d54-b93b-41f5-ae93-e6213e79bdb1,IPCC 2021,climate change,global temperature change potential (GTP50),kg CO2-Eq,0.12610586201949253
+87d85ddc-eeb7-4c46-bdb2-4ad5fdb0e6b1,IPCC 2021,climate change,global warming potential (GWP100),kg CO2-Eq,0.22068966995755715
+99955917-ccdb-4b71-94fa-b9ca069ba94b,IPCC 2021,climate change,global warming potential (GWP20),kg CO2-Eq,0.5256645067343128
+b672ed92-98a1-4073-91f0-1d1aedd4caf5,IPCC 2021,climate change,global warming potential (GWP500),kg CO2-Eq,0.093647659650523
+d39759d7-2f9e-40bf-b709-11d3692287de,IPCC 2021,climate change: biogenic,global temperature change potential (GTP100),kg CO2-Eq,0.026588434485076105
+d12e197c-cae9-4874-934f-360b3d685114,IPCC 2021,climate change: biogenic,global temperature change potential (GTP50),kg CO2-Eq,0.058833982690381176
+1423407a-76e4-4eb9-ace9-480d24b1e8b2,IPCC 2021,climate change: biogenic,global warming potential (GWP100),kg CO2-Eq,0.1527420704461819
+3a406fa6-f733-4c80-b7f1-a3eb544f5eec,IPCC 2021,climate change: biogenic,global warming potential (GWP20),kg CO2-Eq,0.45087196350224806
+cdc333d9-e027-4472-a112-83a95e15333f,IPCC 2021,climate change: biogenic,global warming potential (GWP500),kg CO2-Eq,0.04073121878564851
+b6285adf-f7a1-4f2b-ad33-bc6edf4a2178,IPCC 2021,"climate change: biogenic, including SLCFs",global temperature change potential (GTP100),kg CO2-Eq,0.026645496862049478
+c9cbddf4-b712-4778-9176-0a7476163ef9,IPCC 2021,"climate change: biogenic, including SLCFs",global warming potential (GWP100),kg CO2-Eq,0.1531099337511526
+cdaa9a76-8e9c-4a5b-8c23-320be6570358,IPCC 2021,"climate change: biogenic, including SLCFs",global warming potential (GWP20),kg CO2-Eq,0.45200169223891035
+2f0f6d0c-7d50-4dcf-9922-b734fd94c49c,IPCC 2021,climate change: fossil,global temperature change potential (GTP100),kg CO2-Eq,0.061463347606898554
+70691b49-0aa9-42e9-b2ce-66c98fdd23c1,IPCC 2021,climate change: fossil,global temperature change potential (GTP50),kg CO2-Eq,0.06716748594333602
+035f4640-8768-44c8-8e45-a9dabd4b8441,IPCC 2021,climate change: fossil,global warming potential (GWP100),kg CO2-Eq,0.067842233986449
+433364aa-f47e-4499-a9c6-2d32d730e710,IPCC 2021,climate change: fossil,global warming potential (GWP20),kg CO2-Eq,0.07468409145814749
+6f607da8-1307-43b8-9c0d-012e71b7badb,IPCC 2021,climate change: fossil,global warming potential (GWP500),kg CO2-Eq,0.052812234879417365
+61165462-6bcb-455b-8804-c58126fd2f03,IPCC 2021,"climate change: fossil, including SLCFs",global temperature change potential (GTP100),kg CO2-Eq,0.06181359610642648
+693eabcd-bc32-458f-b97d-b1fb8d915b2f,IPCC 2021,"climate change: fossil, including SLCFs",global warming potential (GWP100),kg CO2-Eq,0.06857014008238321
+6c874ec5-5f81-41ba-a4ed-b0007f54042c,IPCC 2021,"climate change: fossil, including SLCFs",global warming potential (GWP20),kg CO2-Eq,0.07633778405838493
+8d5412cb-2de3-4354-be4a-2776e4bd4d9d,IPCC 2021,climate change: including SLCFs,global temperature change potential (GTP100),kg CO2-Eq,0.08856490611269899
+a325e272-5742-4771-a19f-252047f7fcf8,IPCC 2021,climate change: including SLCFs,global warming potential (GWP100),kg CO2-Eq,0.22178907797503702
+ab86e68e-59d8-42cf-8b77-4b5c275e0a21,IPCC 2021,climate change: including SLCFs,global warming potential (GWP20),kg CO2-Eq,0.5284561875087087
+baa5cd10-f90c-4472-afae-91e68f681f4a,IPCC 2021,climate change: land use,global temperature change potential (GTP100),kg CO2-Eq,0.00010405957895852114
+e67455c9-339b-475f-94bb-4fee10d09131,IPCC 2021,climate change: land use,global temperature change potential (GTP50),kg CO2-Eq,0.00010439338577537421
+3f855cee-cfcb-459b-99a7-1e6c81e98148,IPCC 2021,climate change: land use,global warming potential (GWP100),kg CO2-Eq,0.00010536552492620949
+1e5720ef-be4b-4c33-8ac4-15eb5b9aa011,IPCC 2021,climate change: land use,global warming potential (GWP20),kg CO2-Eq,0.00010845177391711424
+e5715d15-2455-4ae4-89a6-5fc1eba861ca,IPCC 2021,climate change: land use,global warming potential (GWP500),kg CO2-Eq,0.00010420598545714091
+dc392166-317a-4967-8ced-2e632ad7ad3f,IPCC 2021,"climate change: land use, including SLCFs",global temperature change potential (GTP100),kg CO2-Eq,0.00010581314422303607
+e2790c39-6b4c-44df-9779-f1dade8f658c,IPCC 2021,"climate change: land use, including SLCFs",global warming potential (GWP100),kg CO2-Eq,0.00010900414150122505
+e49593e8-c412-4fc9-85d4-16e09e8015d9,IPCC 2021,"climate change: land use, including SLCFs",global warming potential (GWP20),kg CO2-Eq,0.00011671121141338453
+731e5800-590d-4351-a90a-5aac4921e04d,IPCC 2021 no LT,climate change no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.08815584119536495
+d9e05ff1-95d2-486d-ba69-5e09ba74c626,IPCC 2021 no LT,climate change no LT,global temperature change potential (GTP50) no LT,kg CO2-Eq,0.12610586142758357
+f658773a-7fb6-407f-82db-8e64b4ba41a5,IPCC 2021 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.22068966940034632
+0a741ddd-0482-4065-af80-26b18eb527e5,IPCC 2021 no LT,climate change no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.5256645061771019
+796eeae1-b9e6-43cf-902f-26e474a5106c,IPCC 2021 no LT,climate change no LT,global warming potential (GWP500) no LT,kg CO2-Eq,0.0936476593851845
+f6ffdd36-139b-4c4c-9dcb-c858522e160f,IPCC 2021 no LT,climate change: biogenic no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.026588434485076105
+19e10789-76e2-4d70-bc88-4c64b8f0c491,IPCC 2021 no LT,climate change: biogenic no LT,global temperature change potential (GTP50) no LT,kg CO2-Eq,0.058833982690381176
+38ee8f90-fec5-45f6-8c26-ac0ffcd9e269,IPCC 2021 no LT,climate change: biogenic no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.1527420704461819
+8533a3ee-5637-4b52-8297-396ad3c6eff9,IPCC 2021 no LT,climate change: biogenic no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.45087196350224806
+e0852e5a-74fd-43d1-9615-b76ce049e494,IPCC 2021 no LT,climate change: biogenic no LT,global warming potential (GWP500) no LT,kg CO2-Eq,0.04073121878564851
+d28c8220-6b2c-4eb4-b8ae-7b847b6af406,IPCC 2021 no LT,"climate change: biogenic, including SLCFs no LT",global temperature change potential (GTP100) no LT,kg CO2-Eq,0.026645496862049478
+eef7e952-66d5-4041-9304-2934e6f721b4,IPCC 2021 no LT,"climate change: biogenic, including SLCFs no LT",global warming potential (GWP100) no LT,kg CO2-Eq,0.1531099337511526
+3ada6e69-83a7-4c58-b2fd-3ee9718b4500,IPCC 2021 no LT,"climate change: biogenic, including SLCFs no LT",global warming potential (GWP20) no LT,kg CO2-Eq,0.45200169223891035
+6473807a-c298-4484-a0af-32acc9af1832,IPCC 2021 no LT,climate change: fossil no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.06146334713133033
+9dda273a-5df7-4f56-b7a5-0434c080ba33,IPCC 2021 no LT,climate change: fossil no LT,global temperature change potential (GTP50) no LT,kg CO2-Eq,0.06716748535142705
+989ae6b8-1e4e-45c2-bd8b-b99d010e6328,IPCC 2021 no LT,climate change: fossil no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.06784223342923815
+c8009185-e894-45cb-b756-dd624c3bcd7c,IPCC 2021 no LT,climate change: fossil no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.07468409090093665
+d6ec3d48-eaad-4296-87dd-3e84558dc656,IPCC 2021 no LT,climate change: fossil no LT,global warming potential (GWP500) no LT,kg CO2-Eq,0.052812234614078864
+fe984337-22b3-4d10-99f0-a4cfeb6b2bf9,IPCC 2021 no LT,"climate change: fossil, including SLCFs no LT",global temperature change potential (GTP100) no LT,kg CO2-Eq,0.061813595630858253
+d3953aa0-9169-4f97-ba8d-f032dfce7692,IPCC 2021 no LT,"climate change: fossil, including SLCFs no LT",global warming potential (GWP100) no LT,kg CO2-Eq,0.06857013952517235
+7ebc612b-325f-45d7-bcd0-e90f9f6ef106,IPCC 2021 no LT,"climate change: fossil, including SLCFs no LT",global warming potential (GWP20) no LT,kg CO2-Eq,0.07633778350117407
+f9151be9-6f72-431c-91f5-da030a0b8c2a,IPCC 2021 no LT,climate change: including SLCFs no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.08856490563713076
+fbe03ca1-e311-44b8-ae95-c114867068dc,IPCC 2021 no LT,climate change: including SLCFs no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.2217890774178262
+5db4cd68-8eb8-4e3d-ad1d-a8dc268c0049,IPCC 2021 no LT,climate change: including SLCFs no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.5284561869514978
+db1e229e-e12c-4890-a9d3-dda9d3be4be6,IPCC 2021 no LT,climate change: land use no LT,global temperature change potential (GTP100) no LT,kg CO2-Eq,0.00010405957895852114
+dbc1a5a6-37a3-4afe-be08-95ba81fa4898,IPCC 2021 no LT,climate change: land use no LT,global temperature change potential (GTP50) no LT,kg CO2-Eq,0.00010439338577537421
+a58fc471-35fd-4e97-8ac6-04e8b1f17c01,IPCC 2021 no LT,climate change: land use no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.00010536552492620949
+ffcc86e7-eb1c-4d0e-bbd6-cda33645ed39,IPCC 2021 no LT,climate change: land use no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.00010845177391711424
+53733051-afe6-4e0c-b0ad-3be37d9686b6,IPCC 2021 no LT,climate change: land use no LT,global warming potential (GWP500) no LT,kg CO2-Eq,0.00010420598545714091
+707a7c67-3fa1-4381-b4b3-3a71b876874e,IPCC 2021 no LT,"climate change: land use, including SLCFs no LT",global temperature change potential (GTP100) no LT,kg CO2-Eq,0.00010581314422303607
+d6115562-8112-41a0-aae4-de399ca9dee4,IPCC 2021 no LT,"climate change: land use, including SLCFs no LT",global warming potential (GWP100) no LT,kg CO2-Eq,0.00010900414150122505
+de47088e-1507-4a5a-a4f0-a99afbff1d30,IPCC 2021 no LT,"climate change: land use, including SLCFs no LT",global warming potential (GWP20) no LT,kg CO2-Eq,0.00011671121141338453
+c2f5aa93-8a96-4de2-a8cf-ad01ae16ecbf,Inventory results and indicators,emissions to air,HAPs,kg,7.220711214403675E-06
+a26cb37e-1e1f-4901-8a35-c4ca3ff8b54e,Inventory results and indicators,emissions to air,N2O,kg,8.72145451439565E-05
+7bd038b0-afcc-4da7-a134-015a79e9555d,Inventory results and indicators,emissions to air,NMVOCs,kg,8.502840554799525E-05
+5abc5090-4a21-45a3-9447-54334b88dc31,Inventory results and indicators,emissions to air,NOx,kg,0.00020087401742299488
+576d7c92-6bfb-408d-bcb7-436c20a280af,Inventory results and indicators,emissions to air,SOx,kg,0.000162701394421842
+fc400784-a2d0-41fb-a4a7-80d1cf4f8c62,Inventory results and indicators,emissions to air,ammonia,kg,0.00026772959949673255
+0e4ba7bd-d950-4118-b78f-d9d2abb68982,Inventory results and indicators,emissions to air,"carbon dioxide, fossil and land use",kg,0.040207778346698746
+5c9ad681-8936-4d21-9c20-683d540f557c,Inventory results and indicators,emissions to air,"carbon, non-fossil, fixed",kg,-0.08180356686871909
+39dfb69d-033e-4f83-b96b-fba04d2f18f3,Inventory results and indicators,emissions to air,lead,kg,1.7284239118416537E-07
+6d0decfa-5b9b-4a72-80e6-dafbf31bd4bf,Inventory results and indicators,emissions to air,particulate matter >10 um,kg,6.109023185010384E-05
+944a4cef-1bcd-4af1-96ba-d97f7719a071,Inventory results and indicators,emissions to air,"particulate matter, < 2.5 um",kg,2.939171066107189E-05
+018742e6-e676-43f7-8e51-afe4eb79dfe4,Inventory results and indicators,emissions to air,"particulate matter, >2.5 um and <10",kg,3.3103724261540096E-05
+a40eea0e-9d26-480e-9d16-b762f6f4c5ee,Inventory results and indicators,emissions to air,photochemical oxidants (including ozone),kg,0.006564616141851268
+c7b08e4b-81d3-422f-851e-5e51a20d8c37,Inventory results and indicators,emissions to air,total carbon monoxide,kg,0.0003273482422477448
+2958d5de-5600-4453-a4b2-957295386890,Inventory results and indicators,emissions to air,total methane,kg,0.005787229623727753
+e7f4f52f-5fde-4a68-9dd3-e9ce74993422,Inventory results and indicators,emissions to air,total particulate matter,kg,0.00012358566677271582
+4bf21eb1-3155-47ad-b149-1385cd92eafe,Inventory results and indicators,emissions to air,total radioactive emissions,kg,1.1176832311184781
+7eac7af8-4f20-40ec-ba3d-c2a1b4d5a3a5,Inventory results and indicators,emissions to water,total radioactive emissions,kg,0.024051298488012105
+95ac7546-c28f-4cfd-b95a-e6749398309e,Inventory results and indicators,resources,"freshwater extraction, groundwater",m3,5.2846984161894905E-05
+5ce740d0-ca72-4374-9fff-49fc54e554e4,Inventory results and indicators,resources,"freshwater extraction, surface water",m3,7.423971771351115E-05
+d048d4d4-7c2d-4f3d-9008-f083127679b4,Inventory results and indicators,resources,land occupation,m2a,0.05163898032913106
+7583630d-186b-4012-81a5-9d160fba1bea,Inventory results and indicators,resources,land occupation by flooding,m2a,7.585745559515534E-05
+39e78204-a02d-4549-ae25-a43e94beabb4,Inventory results and indicators,resources,seabed occupation,m2a,6.908516804599751E-07
+7332ef20-5aab-4145-a2c9-018c41c16457,Inventory results and indicators,resources,total freshwater extraction,m3,0.00012708670187540604
+573319ac-5d27-4cce-94ce-ad1bb9098674,Inventory results and indicators,resources,total surface occupation,m2a,0.051715528636406674
+2339e586-dd2b-4b7a-b454-b0658f62000e,Inventory results and indicators,resources,total water extraction,m3,0.001454617360558641
+267acbd8-835b-464c-8b00-9703e78eee15,Inventory results and indicators,resources,"water extraction, saltwater",m3,0.0011348355422100753
+cf91bd79-5d25-47f0-8819-2dee93ebd39a,Inventory results and indicators,resources,"water extraction, undefined",m3,0.00019269511647315984
+41b60739-7bee-45b7-82c3-c79aaf945d3a,Inventory results and indicators,waste disposal,total area for dump sites,m2,3.138134876178017E-06
+6b2df3fd-5ff3-465d-b6b7-89ed6f7f8680,Inventory results and indicators,waste disposal,total mass for dump sites,kg,0.06559005028842306
+683aae51-8801-411a-818b-a7b28ee7ceaa,Inventory results and indicators,waste disposal,total mass for underground deposits,kg,3.669397073305175E-06
+cb0737db-a0e4-49ed-96f5-8030f7ab8df9,Inventory results and indicators,waste disposal,total mass of radioactive waste,kg,3.870676972825667E-07
+873cfbba-22ea-471e-9b12-15a0fc190420,Inventory results and indicators,waste disposal,total mass of waste,kg,0.06559371968549636
+bc12aaff-0568-4603-ac99-879c8a7b9a80,Inventory results and indicators,waste disposal,total volume of radioactive waste,m3,1.3337514077872987E-10
+eb0c300a-20a2-434e-bc62-c008ff16ac9a,Inventory results and indicators,waste disposal,total volume of underground deposits,m3,2.1848310007928598E-09
+be99d856-ce5e-4bc6-be2e-9e3a53f99053,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,acidification: terrestrial,species.yr,1.611950326033032E-10
+13691359-cb85-4e24-b97b-084de6f06550,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,climate change: freshwater ecosystems,species.yr,5.098246018072237E-14
+24dccbd5-953e-4126-894e-4b0eb51344b6,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,climate change: terrestrial ecosystems,species.yr,1.867854083278936E-09
+0ecf1f5e-d9b0-4d0d-815e-25be5e451ce8,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,ecotoxicity: freshwater,species.yr,3.8280410096883575E-12
+3cb9dffb-b638-4741-b6d0-7b2679dc2108,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,ecotoxicity: marine,species.yr,2.544734685795054E-09
+63894ec1-ebc8-4ab5-8478-f419275a489f,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,ecotoxicity: terrestrial,species.yr,3.127207384605232E-11
+6bd1e4bf-fe17-4b6b-bf96-89173b231862,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,eutrophication: freshwater,species.yr,8.07949732311033E-12
+eb5f0306-4e6b-442b-9cae-a86a2e2ef254,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,eutrophication: marine,species.yr,2.0584611841261067E-15
+3bccd4a3-bfd4-4751-81c1-21cae10908d9,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,land use,species.yr,1.516481126240169E-10
+cafd4970-47db-4ec7-8b4d-61308c28056c,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,photochemical oxidant formation: terrestrial ecosystems,species.yr,2.8760198264831183E-11
+08ffa222-717a-4247-bfff-76c160fdae6c,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,water use: aquatic ecosystems,species.yr,1.501803529874509E-16
+139f5062-86a9-490a-a188-1d170bc88c6f,"ReCiPe 2016 v1.03, endpoint (E)",ecosystem quality,water use: terrestrial ecosystems,species.yr,3.3566800750506412E-12
+fefb1980-f209-46b8-8ad6-ec646cfb7470,"ReCiPe 2016 v1.03, endpoint (E)",human health,climate change: human health,DALYs,9.339544705969909E-07
+ec52b51c-d177-4940-a2e6-50eafc680496,"ReCiPe 2016 v1.03, endpoint (E)",human health,human toxicity: carcinogenic,DALYs,1.045624925730882E-05
+37edf047-bea3-4104-9f69-dd87a5cd70cf,"ReCiPe 2016 v1.03, endpoint (E)",human health,human toxicity: non-carcinogenic,DALYs,3.936696766640198E-06
+39ebe7f8-d6f3-451d-8daf-579eb26c3c2b,"ReCiPe 2016 v1.03, endpoint (E)",human health,ionising radiation,DALYs,2.8809482217633908E-11
+1881fd4f-9565-41bd-a1dd-2f15f71241e0,"ReCiPe 2016 v1.03, endpoint (E)",human health,ozone depletion,DALYs,1.9960683980069865E-09
+ba5e9966-9af6-45d6-9f8b-fa7ca56dc999,"ReCiPe 2016 v1.03, endpoint (E)",human health,particulate matter formation,DALYs,1.0242677496317275E-07
+be03d444-a6be-444f-87b9-3bf1b3bca065,"ReCiPe 2016 v1.03, endpoint (E)",human health,photochemical oxidant formation: human health,DALYs,1.9528415136631895E-10
+16f46c44-373d-4336-97b7-c896c57b24d6,"ReCiPe 2016 v1.03, endpoint (E)",human health,water use: human health,DALYs,5.519873901194387E-10
+85eb177c-753a-4c7d-af11-b4ed289bf43d,"ReCiPe 2016 v1.03, endpoint (E)",natural resources,"energy resources: non-renewable, fossil",USD 2013,0.0038791856983461
+9a8c0264-2005-423c-bf77-1cbc4dec9e58,"ReCiPe 2016 v1.03, endpoint (E)",natural resources,material resources: metals/minerals,USD 2013,0.0007792898618147647
+87bb68c9-f05e-4a42-b34c-34d0c7e782ad,"ReCiPe 2016 v1.03, endpoint (E)",total: ecosystem quality,ecosystem quality,species.yr,4.79742491584671E-09
+90bb6b83-0b14-41cc-9209-48544e0f6318,"ReCiPe 2016 v1.03, endpoint (E)",total: human health,human health,DALYs,1.54320994189309E-05
+9dc455f6-7948-4cbd-8fc3-3f9f19be5694,"ReCiPe 2016 v1.03, endpoint (E)",total: natural resources,natural resources,USD 2013,0.004658475560160867
+cdede080-8b97-405a-b469-40b47be5c140,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,acidification: terrestrial no LT,species.yr,1.6119482655915214E-10
+d5b8ba09-3a9f-43a2-a14c-7970b0edec30,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,climate change: freshwater ecosystems no LT,species.yr,5.098246007091306E-14
+a8595565-96dc-41e2-bf4e-91273b4697f2,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,climate change: terrestrial ecosystems no LT,species.yr,1.8678540792580375E-09
+71c40524-afe5-4201-badc-2950836e8320,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,ecotoxicity: freshwater no LT,species.yr,1.7120637498513431E-13
+0b3c979c-ed5d-4a3f-a472-f65d9b083b2d,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,ecotoxicity: marine no LT,species.yr,2.2070273634970648E-10
+9a078003-c3c5-4255-82ff-8a882a1e7726,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,ecotoxicity: terrestrial no LT,species.yr,3.1264390242260203E-11
+8d339272-15f0-4347-be13-a27ad5b1da23,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,eutrophication: freshwater no LT,species.yr,1.2119697977083658E-12
+3e85bb92-af44-44a4-9f5a-439a6cfc0297,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,eutrophication: marine no LT,species.yr,1.2464569511143052E-15
+a8931e79-ac53-4e13-acdb-a1301e0a1935,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,land use no LT,species.yr,1.516481126240169E-10
+4bfbf280-4471-4e92-b29b-4af52ca42c78,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,photochemical oxidant formation: terrestrial ecosystems no LT,species.yr,2.875985623313469E-11
+c10803b3-28fd-49b5-a2b8-0631610a8b96,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,water use: aquatic ecosystems no LT,species.yr,1.501803529874509E-16
+d587aafb-0cfb-4c44-9db3-7391612af876,"ReCiPe 2016 v1.03, endpoint (E) no LT",ecosystem quality no LT,water use: terrestrial ecosystems no LT,species.yr,3.3566800750506412E-12
+9b6377c3-0bd0-4b45-922c-a68a88f2af45,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,climate change: human health no LT,DALYs,9.339544685865415E-07
+48d7bec8-102f-49d8-b211-4b87f363ed3d,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,human toxicity: carcinogenic no LT,DALYs,9.863405792102112E-08
+d645515f-277e-4319-9f7a-23aa34ced432,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,human toxicity: non-carcinogenic no LT,DALYs,3.594189472098053E-07
+3b68ae31-f077-4ca4-b578-a17cee9b50b0,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,ionising radiation no LT,DALYs,1.097644185959224E-11
+492fba11-69da-4bd9-ae80-d2dc8b25c6a6,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,ozone depletion no LT,DALYs,1.996068351470696E-09
+622b8eec-e7ce-4417-abe3-988d97f5f816,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,particulate matter formation no LT,DALYs,1.0239230663969227E-07
+57c8f2e1-e2c4-479b-a4ff-22e8bfa79d87,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,photochemical oxidant formation: human health no LT,DALYs,1.9528174102737173E-10
+1e80527e-0adc-4ebd-bbef-30fcda0be7af,"ReCiPe 2016 v1.03, endpoint (E) no LT",human health no LT,water use: human health no LT,DALYs,5.519873901194387E-10
+a89075ee-aef9-40a8-8e9b-51b2959e9275,"ReCiPe 2016 v1.03, endpoint (E) no LT",natural resources no LT,"energy resources: non-renewable, fossil no LT",USD 2013,0.0038791856983461
+30784ffb-4dda-40f1-9b14-13b92c166916,"ReCiPe 2016 v1.03, endpoint (E) no LT",natural resources no LT,material resources: metals/minerals no LT,USD 2013,0.0007792898618147647
+a99d2dee-5252-4602-bb01-d3a1c7a9ca58,"ReCiPe 2016 v1.03, endpoint (E) no LT",total: ecosystem quality no LT,ecosystem quality no LT,species.yr,2.462859556536378E-09
+b36d4f47-263f-44e3-a259-5065468fe9cb,"ReCiPe 2016 v1.03, endpoint (E) no LT",total: human health no LT,human health no LT,DALYs,1.4971540942815355E-06
+b456af29-d9ad-4f92-acb5-9ff6f649da9f,"ReCiPe 2016 v1.03, endpoint (E) no LT",total: natural resources no LT,natural resources no LT,USD 2013,0.004658475560160867
+e467b17b-9c80-4b14-9089-8089c9d71b5a,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,acidification: terrestrial,species.yr,1.611950326033032E-10
+9bbb7a5b-c424-4f16-816e-edd457b1fcba,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,climate change: freshwater ecosystems,species.yr,2.0135617939883488E-14
+b2c37919-7757-4c22-92c3-bf897da333f5,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,climate change: terrestrial ecosystems,species.yr,7.371971844000604E-10
+eb6abeba-ec02-4977-8910-f0f76aa13c0b,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,ecotoxicity: freshwater,species.yr,3.771810223268888E-12
+9bd1ce7d-7794-4720-b369-d0482ba6ef1f,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,ecotoxicity: marine,species.yr,1.0022954459521847E-12
+76b2143b-f5b7-48fb-b02c-2960704b8b2f,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,ecotoxicity: terrestrial,species.yr,2.905717000585328E-11
+16896d97-4d00-4ca1-8d46-a7f1cd416f56,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,eutrophication: freshwater,species.yr,8.07949732311033E-12
+4558f0dc-cf96-42bc-8e63-466ecde79cdf,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,eutrophication: marine,species.yr,2.0584611841261067E-15
+c6bda385-7eb1-4901-a602-f504f632ff05,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,land use,species.yr,1.516481126240169E-10
+1b79ac70-c9d1-485a-8591-2f5fe847d1ca,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,photochemical oxidant formation: terrestrial ecosystems,species.yr,2.8760198264831183E-11
+2d592a17-5cac-4a9f-9936-d9c53f5b6df3,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,water use: aquatic ecosystems,species.yr,1.501803529874509E-16
+fa1c795e-2da3-49a1-94cc-cb11343af5a7,"ReCiPe 2016 v1.03, endpoint (H)",ecosystem quality,water use: terrestrial ecosystems,species.yr,3.3566800750506412E-12
+8fca6186-fb54-4710-aa85-e75f82bd524e,"ReCiPe 2016 v1.03, endpoint (H)",human health,climate change: human health,DALYs,2.4464144023557287E-07
+0017017c-c565-44bf-a69d-f6703bd7e1f2,"ReCiPe 2016 v1.03, endpoint (H)",human health,human toxicity: carcinogenic,DALYs,1.4315890397352706E-07
+3ecfe0b5-dc88-45e2-8e82-8c725fd9c666,"ReCiPe 2016 v1.03, endpoint (H)",human health,human toxicity: non-carcinogenic,DALYs,2.0115272318365078E-08
+20283488-28d7-4898-aeb1-3377c6db998a,"ReCiPe 2016 v1.03, endpoint (H)",human health,ionising radiation,DALYs,1.1746203728483917E-11
+3ec8c510-9e98-4eef-9952-d2a457d98148,"ReCiPe 2016 v1.03, endpoint (H)",human health,ozone depletion,DALYs,5.125783274616683E-10
+05432b6b-5c95-400e-823f-488ae7729397,"ReCiPe 2016 v1.03, endpoint (H)",human health,particulate matter formation,DALYs,1.0242677496317275E-07
+2d03d189-3094-4a02-a636-0e245393a6f6,"ReCiPe 2016 v1.03, endpoint (H)",human health,photochemical oxidant formation: human health,DALYs,1.9528415136631895E-10
+adce4964-b76c-41c5-937b-9b10646fd5bc,"ReCiPe 2016 v1.03, endpoint (H)",human health,water use: human health,DALYs,5.519873901194387E-10
+c2fdde6e-5570-49f1-9551-f33fd3d3702d,"ReCiPe 2016 v1.03, endpoint (H)",natural resources,"energy resources: non-renewable, fossil",USD 2013,0.0038439804661755794
+3e1cd565-c27d-4163-85b3-47724bf6dd67,"ReCiPe 2016 v1.03, endpoint (H)",natural resources,material resources: metals/minerals,USD 2013,0.0007792898618147647
+b8928f6b-9b00-4820-8a64-a66cdf2eb570,"ReCiPe 2016 v1.03, endpoint (H)",total: ecosystem quality,ecosystem quality,species.yr,1.1240903252249242E-09
+bde8de10-cab9-416f-ae59-7df6c9a9a48d,"ReCiPe 2016 v1.03, endpoint (H)",total: human health,human health,DALYs,5.116139875633131E-07
+c3cbc303-229c-4a4c-b609-0482bf4034a4,"ReCiPe 2016 v1.03, endpoint (H)",total: natural resources,natural resources,USD 2013,0.004623270327990346
+f0c2fe77-e598-4975-95d5-79ac469c64dd,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,acidification: terrestrial no LT,species.yr,1.6119482655915214E-10
+26f0828e-8aca-4f4f-a745-f872deb2e844,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,climate change: freshwater ecosystems no LT,species.yr,2.0135617893347198E-14
+e28e0245-c767-4cdd-a925-7a63174f5eca,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,climate change: terrestrial ecosystems no LT,species.yr,7.371971826978119E-10
+0322da33-1937-4fe9-80d1-40c83f2495b3,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,ecotoxicity: freshwater no LT,species.yr,1.1498082809263649E-13
+45aa0830-ef79-4831-bc59-295862bf836f,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,ecotoxicity: marine no LT,species.yr,2.8609837557464373E-13
+7c7c18dd-e758-499d-93a0-1a752da9e4b8,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,ecotoxicity: terrestrial no LT,species.yr,2.9050005987374926E-11
+b922acd7-3745-4d63-8524-9730b2c493b5,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,eutrophication: freshwater no LT,species.yr,1.2119697977083658E-12
+d05a230b-b78a-4793-8eb8-f1ef139465d2,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,eutrophication: marine no LT,species.yr,1.2464569511143052E-15
+2ec63517-4e3e-4a6b-9267-e4e06720681f,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,land use no LT,species.yr,1.516481126240169E-10
+915d5084-c0c8-42d2-b25b-5f282a3e8a18,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,photochemical oxidant formation: terrestrial ecosystems no LT,species.yr,2.875985623313469E-11
+c6b4d8a6-b8ba-47ce-a46b-10758ea3789f,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,water use: aquatic ecosystems no LT,species.yr,1.501803529874509E-16
+dd79b3a1-7657-4fbc-9c79-25c1655cd0a7,"ReCiPe 2016 v1.03, endpoint (H) no LT",ecosystem quality no LT,water use: terrestrial ecosystems no LT,species.yr,3.3566800750506412E-12
+93af8a81-771b-4184-adb7-c094f02cfd07,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,climate change: human health no LT,DALYs,2.4464143967019775E-07
+86636c49-779d-4759-896d-4ce6d92bde8a,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,human toxicity: carcinogenic no LT,DALYs,2.2916432057843172E-09
+9a64fd26-0aa5-4d20-a599-4e8f92342ae6,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,human toxicity: non-carcinogenic no LT,DALYs,4.7229304436511585E-09
+ea24b76e-1371-4493-b6c9-c5f3896b422b,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,ionising radiation no LT,DALYs,9.409625263207341E-13
+dbd94e03-f548-4a7b-b3e0-a1c4296735ae,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,ozone depletion no LT,DALYs,5.125783155418466E-10
+844d59e0-efa5-4aaf-9a6a-460e51089ffe,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,particulate matter formation no LT,DALYs,1.0239230663969227E-07
+5f77be89-383e-4017-bcc8-fd212cdc48ce,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,photochemical oxidant formation: human health no LT,DALYs,1.9528174102737173E-10
+5beedb76-1b65-42ed-aea3-6a04163b917f,"ReCiPe 2016 v1.03, endpoint (H) no LT",human health no LT,water use: human health no LT,DALYs,5.519873901194387E-10
+bc5d2dc8-a563-4c54-a74d-246435ce4ec8,"ReCiPe 2016 v1.03, endpoint (H) no LT",natural resources no LT,"energy resources: non-renewable, fossil no LT",USD 2013,0.0038439804661755794
+14d664fe-8a11-4cd5-89a2-31acf3432058,"ReCiPe 2016 v1.03, endpoint (H) no LT",natural resources no LT,material resources: metals/minerals no LT,USD 2013,0.0007792898618147647
+c6af65c0-2116-426c-b860-7fadd822b177,"ReCiPe 2016 v1.03, endpoint (H) no LT",total: ecosystem quality no LT,ecosystem quality no LT,species.yr,1.112841245433114E-09
+dff72555-1954-469e-9425-20158f3c344a,"ReCiPe 2016 v1.03, endpoint (H) no LT",total: human health no LT,human health no LT,DALYs,3.5530910836854093E-07
+e65c35fd-89e7-4652-87b7-924364e2b8c4,"ReCiPe 2016 v1.03, endpoint (H) no LT",total: natural resources no LT,natural resources no LT,USD 2013,0.004623270327990346
+7d659cee-d851-43f0-8942-97929e2f5f64,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,acidification: terrestrial,species.yr,1.6119503454162144E-10
+29e4ed0a-f6d9-4b91-be92-74a52378f692,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,climate change: freshwater ecosystems,species.yr,7.979643709432076E-15
+e84b668a-5831-4b11-9d0a-70631851a717,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,climate change: terrestrial ecosystems,species.yr,2.9238700987980764E-10
+f8f19474-b1b2-4363-9479-b1bc46fbb5fb,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,ecotoxicity: freshwater,species.yr,3.4682208645988606E-12
+ac22b0cd-28bb-47fa-9940-18248bda32c0,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,ecotoxicity: marine,species.yr,3.2588740339007095E-13
+d2aff09f-4cca-4943-ac06-bb3d60ac3ad8,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,ecotoxicity: terrestrial,species.yr,1.2169300186230236E-11
+051a16cd-756b-4cc3-8a00-7fd1d31d4386,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,eutrophication: freshwater,species.yr,8.07949732311033E-12
+b9e0a5b9-e060-416b-8ea9-e70c3f4a570c,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,eutrophication: marine,species.yr,2.0584611841261067E-15
+dce106a0-3690-4f1f-971b-a0b4278fbc8a,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,land use,species.yr,1.516481126240169E-10
+2b0eff6d-3a74-4912-9469-39fb574ecb92,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,photochemical oxidant formation: terrestrial ecosystems,species.yr,2.8812755311117048E-11
+02efa6d2-6110-48e0-97b3-22e5ace5833d,"ReCiPe 2016 v1.03, endpoint (I)",ecosystem quality,water use: aquatic ecosystems,species.yr,1.501803529874509E-16
+c673118f-8601-45ab-a3e3-aa22165ff390,"ReCiPe 2016 v1.03, endpoint (I)",human health,climate change: human health,DALYs,4.461548634200387E-08
+bc5201f6-68e7-4429-9f68-2910f14e5f21,"ReCiPe 2016 v1.03, endpoint (I)",human health,human toxicity: carcinogenic,DALYs,1.3476897837333456E-10
+2f05c56c-6e2e-4d0d-9a78-f6682947d523,"ReCiPe 2016 v1.03, endpoint (I)",human health,human toxicity: non-carcinogenic,DALYs,6.008468428881176E-10
+6d77d79b-d2f8-4597-8d02-68806854f7e6,"ReCiPe 2016 v1.03, endpoint (I)",human health,ionising radiation,DALYs,9.202561067387146E-12
+ad4cc8c3-2f7f-434b-adba-aec42d6305e9,"ReCiPe 2016 v1.03, endpoint (I)",human health,ozone depletion,DALYs,1.4725840188173518E-10
+aeaa8d12-fcc9-4361-b1ca-182d477cc5dd,"ReCiPe 2016 v1.03, endpoint (I)",human health,particulate matter formation,DALYs,1.848738600581422E-08
+af127a50-04ff-4678-8f82-cfdb4a826a8b,"ReCiPe 2016 v1.03, endpoint (I)",human health,photochemical oxidant formation: human health,DALYs,1.9551387351863758E-10
+67c5717d-97ad-4e0d-af43-04188083f8c8,"ReCiPe 2016 v1.03, endpoint (I)",human health,water use: human health,DALYs,7.707932024190361E-10
+b4ead980-3515-41cf-8ba7-5567f11d38ec,"ReCiPe 2016 v1.03, endpoint (I)",natural resources,"energy resources: non-renewable, fossil",USD 2013,0.0038439804661755794
+55f35d79-52b7-480c-a206-7f0047e89dc6,"ReCiPe 2016 v1.03, endpoint (I)",natural resources,material resources: metals/minerals,USD 2013,0.0007583892845724169
+eb08d4a9-6088-41a0-99e8-1efec66403b9,"ReCiPe 2016 v1.03, endpoint (I)",total: ecosystem quality,ecosystem quality,species.yr,6.580960064191389E-10
+ecc79e6b-603a-4544-adca-2a8d54393f88,"ReCiPe 2016 v1.03, endpoint (I)",total: human health,human health,DALYs,6.496125620796624E-08
+eed635b0-bc95-4c03-a050-39c11f38fc15,"ReCiPe 2016 v1.03, endpoint (I)",total: natural resources,natural resources,USD 2013,0.004602369750747995
+5277b072-8d89-424c-9b35-020b8a7e1db9,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,acidification: terrestrial no LT,species.yr,1.6119482849747038E-10
+24bf3b04-38a0-4e34-b7ce-dc2cecabf46a,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,climate change: freshwater ecosystems no LT,species.yr,7.979643701614796E-15
+e9489853-d887-4dbc-bdd8-15b309e5ecb1,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,climate change: terrestrial ecosystems no LT,species.yr,2.9238700959405846E-10
+72a29a0d-977d-40f4-ae4c-d9dc13177cac,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,ecotoxicity: freshwater no LT,species.yr,9.689903253259937E-14
+caa3b23c-7cc6-4524-a99d-aa98d6bbe64b,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,ecotoxicity: marine no LT,species.yr,1.760587183253599E-13
+62b96ab3-57d9-4a8f-b306-ab15d1c93f0a,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,ecotoxicity: terrestrial no LT,species.yr,1.2166176748970742E-11
+b32c215d-96f6-4a2c-a0e8-2600954a935f,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,eutrophication: freshwater no LT,species.yr,1.2119697977083658E-12
+cde2d93b-95d5-4c5a-8ca6-2cb51521c875,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,eutrophication: marine no LT,species.yr,1.2464569511143052E-15
+1058194c-adf3-4274-8856-60b5e02a99fe,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,land use no LT,species.yr,1.516481126240169E-10
+1d89a012-b77d-4bd4-ae6a-ec9a25810e67,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,photochemical oxidant formation: terrestrial ecosystems no LT,species.yr,2.8812413279420556E-11
+f8bcde58-4579-4047-bf81-e14ca16e9b40,"ReCiPe 2016 v1.03, endpoint (I) no LT",ecosystem quality no LT,water use: aquatic ecosystems no LT,species.yr,1.501803529874509E-16
+7f4f2046-c1f7-49f5-8d88-a59b9f8c512e,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,climate change: human health no LT,DALYs,4.4615486298325066E-08
+f4b365bf-88f1-4004-97bc-5dd43ae7a64c,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,human toxicity: carcinogenic no LT,DALYs,8.79362455529346E-11
+67dcfaad-fe6d-499f-9268-da0e1d349438,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,human toxicity: non-carcinogenic no LT,DALYs,3.6424435873740424E-10
+0e0261ab-7981-4872-b55c-ce636a430f06,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,ionising radiation no LT,DALYs,5.407986077669046E-13
+8b5772e4-fc78-4a3e-b6c9-7612a78ea6a0,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,ozone depletion no LT,DALYs,1.4725839849356666E-10
+e44cd61c-3451-4d65-9c12-761be724f988,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,particulate matter formation no LT,DALYs,1.845309826116221E-08
+57aa2ef3-8fe0-44de-9bb9-e4e92aa37825,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,photochemical oxidant formation: human health no LT,DALYs,1.9551146317969036E-10
+ed3e6f56-88b2-4c59-ad5f-8b496e644894,"ReCiPe 2016 v1.03, endpoint (I) no LT",human health no LT,water use: human health no LT,DALYs,7.707932024190361E-10
+3bd54b80-b322-469a-bbb6-b4f10766646d,"ReCiPe 2016 v1.03, endpoint (I) no LT",natural resources no LT,"energy resources: non-renewable, fossil no LT",USD 2013,0.0038439804661755794
+d92081e0-bb08-44d7-aef0-b64cdfe60420,"ReCiPe 2016 v1.03, endpoint (I) no LT",natural resources no LT,material resources: metals/minerals no LT,USD 2013,0.0007583892845724169
+ef3058bc-2649-4739-b875-e2a09b1d124b,"ReCiPe 2016 v1.03, endpoint (I) no LT",total: ecosystem quality no LT,ecosystem quality no LT,species.yr,6.47702844573509E-10
+f10dbd86-df7e-4fb8-971e-725b30e98def,"ReCiPe 2016 v1.03, endpoint (I) no LT",total: human health no LT,human health no LT,DALYs,6.46348690264776E-08
+f62fe008-28bb-443f-9436-c6db9bbfab75,"ReCiPe 2016 v1.03, endpoint (I) no LT",total: natural resources no LT,natural resources no LT,USD 2013,0.004602369750747995
+dc16d331-44ef-4137-b2be-1af39561a159,"ReCiPe 2016 v1.03, midpoint (E)",acidification: terrestrial,terrestrial acidification potential (TAP),kg SO2-Eq,0.0007597666615165146
+d1992d54-150a-4ba0-9aad-38373c69cd23,"ReCiPe 2016 v1.03, midpoint (E)",climate change,global warming potential (GWP1000),kg CO2-Eq,0.0747168190928305
+0aa66564-2c3e-497c-9a92-fb7fb7db5830,"ReCiPe 2016 v1.03, midpoint (E)",ecotoxicity: freshwater,freshwater ecotoxicity potential (FETP),"kg 1,4-DCB-Eq",0.005527275823521129
+93850a7e-9ca0-4fdf-9eb7-73299f402746,"ReCiPe 2016 v1.03, midpoint (E)",ecotoxicity: marine,marine ecotoxicity potential (METP),"kg 1,4-DCB-Eq",24.208423086319154
+0b011bca-6750-425c-a044-34dd10282ee5,"ReCiPe 2016 v1.03, midpoint (E)",ecotoxicity: terrestrial,terrestrial ecotoxicity potential (TETP),"kg 1,4-DCB-Eq",2.7445021520438244
+6e0d0415-b89e-47be-9d85-0712dbe0801a,"ReCiPe 2016 v1.03, midpoint (E)","energy resources: non-renewable, fossil",fossil fuel potential (FFP),kg oil-Eq,0.011077827536999886
+144d46d7-6cf3-43d2-8517-806e168a98f9,"ReCiPe 2016 v1.03, midpoint (E)",eutrophication: freshwater,freshwater eutrophication potential (FEP),kg P-Eq,1.2063048262645763E-05
+a3417c8d-8482-4342-b9a6-7074c35daa8d,"ReCiPe 2016 v1.03, midpoint (E)",eutrophication: marine,marine eutrophication potential (MEP),kg N-Eq,1.2110660342735954E-06
+b45a621a-6b92-4e0f-b639-865241d55021,"ReCiPe 2016 v1.03, midpoint (E)",human toxicity: carcinogenic,human toxicity potential (HTPc),"kg 1,4-DCB-Eq",3.1483659660455228
+5554f920-7a82-4547-81fb-7a55f9d613af,"ReCiPe 2016 v1.03, midpoint (E)",human toxicity: non-carcinogenic,human toxicity potential (HTPnc),"kg 1,4-DCB-Eq",17.264448615454526
+dc75ae27-8df7-46fe-8617-d62faabd435d,"ReCiPe 2016 v1.03, midpoint (E)",ionising radiation,ionising radiation potential (IRP),kBq Co-60-Eq,0.002056236908982769
+389b7ccf-a197-4325-9056-fb6ebd616ef9,"ReCiPe 2016 v1.03, midpoint (E)",land use,agricultural land occupation (LOP),m2*a crop-Eq,0.017100148011993367
+87858e3d-f98a-44bc-afd8-4357babdb53d,"ReCiPe 2016 v1.03, midpoint (E)",material resources: metals/minerals,surplus ore potential (SOP),kg Cu-Eq,0.003369109533435453
+f26130d5-93c3-4b2c-8afe-87ab3b32c14f,"ReCiPe 2016 v1.03, midpoint (E)",ozone depletion,ozone depletion potential (ODPinfinite),kg CFC-11-Eq,1.4883021284896707E-06
+5c4f9f96-50d9-4642-8b3a-dbb0eab63440,"ReCiPe 2016 v1.03, midpoint (E)",particulate matter formation,particulate matter formation potential (PMFP),kg PM2.5-Eq,0.00016292647008768772
+50c8ef3f-2f67-47e6-bb52-c265b746dcaa,"ReCiPe 2016 v1.03, midpoint (E)",photochemical oxidant formation: human health,photochemical oxidant formation potential: humans (HOFP),kg NOx-Eq,0.0002145820209869605
+5d7302ec-643d-4ef5-abf0-a07b80226ae6,"ReCiPe 2016 v1.03, midpoint (E)",photochemical oxidant formation: terrestrial ecosystems,photochemical oxidant formation potential: ecosystems (EOFP),kg NOx-Eq,0.00022295276577199177
+ea1e967b-a440-4172-8acc-8364f5e8c017,"ReCiPe 2016 v1.03, midpoint (E)",water use,water consumption potential (WCP),m3,0.00024864296852226974
+6ddfb73f-9aeb-4e48-9556-0b813be9712c,"ReCiPe 2016 v1.03, midpoint (E) no LT",acidification: terrestrial no LT,terrestrial acidification potential (TAP) no LT,kg SO2-Eq,0.0007597656889409012
+d535fd01-cffa-4b30-a810-9a7854b274c5,"ReCiPe 2016 v1.03, midpoint (E) no LT",climate change no LT,global warming potential (GWP1000) no LT,kg CO2-Eq,0.07471681893199454
+3a498cb5-c6d2-4c31-9222-90effc380340,"ReCiPe 2016 v1.03, midpoint (E) no LT",ecotoxicity: freshwater no LT,freshwater ecotoxicity potential (FETP) no LT,"kg 1,4-DCB-Eq",0.00024646206275023554
+2394a988-f180-4b9f-ad8c-be3f3d1f1c26,"ReCiPe 2016 v1.03, midpoint (E) no LT",ecotoxicity: marine no LT,marine ecotoxicity potential (METP) no LT,"kg 1,4-DCB-Eq",2.102037445110036
+8ddfc06f-747d-411f-8258-3d2f3e23c781,"ReCiPe 2016 v1.03, midpoint (E) no LT",ecotoxicity: terrestrial no LT,terrestrial ecotoxicity potential (TETP) no LT,"kg 1,4-DCB-Eq",2.743827686861712
+e36ea48f-bec8-4712-9e1d-c44846407ccc,"ReCiPe 2016 v1.03, midpoint (E) no LT","energy resources: non-renewable, fossil no LT",fossil fuel potential (FFP) no LT,kg oil-Eq,0.011077827536999886
+9f890e75-9a20-4cce-b20c-461c5964506c,"ReCiPe 2016 v1.03, midpoint (E) no LT",eutrophication: freshwater no LT,freshwater eutrophication potential (FEP) no LT,kg P-Eq,1.808369152317035E-06
+29997caa-b4f1-4b0e-87a2-8900cfc56d0a,"ReCiPe 2016 v1.03, midpoint (E) no LT",eutrophication: marine no LT,marine eutrophication potential (MEP) no LT,kg N-Eq,7.33213244331686E-07
+f5f0b4d6-94d8-492c-9cec-271f0dccb1c9,"ReCiPe 2016 v1.03, midpoint (E) no LT",human toxicity: carcinogenic no LT,human toxicity potential (HTPc) no LT,"kg 1,4-DCB-Eq",0.029689436835185087
+5699abce-56af-47a1-a03b-97a4e3b8a0cd,"ReCiPe 2016 v1.03, midpoint (E) no LT",human toxicity: non-carcinogenic no LT,human toxicity potential (HTPnc) no LT,"kg 1,4-DCB-Eq",1.57581343297132
+6758ef6c-b514-40f5-a549-de004c13eff0,"ReCiPe 2016 v1.03, midpoint (E) no LT",ionising radiation no LT,ionising radiation potential (IRP) no LT,kBq Co-60-Eq,0.0007824483119797926
+284ad00a-356c-4547-bff2-bd395c6dc414,"ReCiPe 2016 v1.03, midpoint (E) no LT",land use no LT,agricultural land occupation (LOP) no LT,m2*a crop-Eq,0.017100148011993367
+2173a7f7-f772-413d-b378-b9baf2749df8,"ReCiPe 2016 v1.03, midpoint (E) no LT",material resources: metals/minerals no LT,surplus ore potential (SOP) no LT,kg Cu-Eq,0.003369109533435453
+829c45d4-2c7c-4487-8ed0-f4c8b5cc065e,"ReCiPe 2016 v1.03, midpoint (E) no LT",ozone depletion no LT,ozone depletion potential (ODPinfinite) no LT,kg CFC-11-Eq,1.4883020937915594E-06
+678afc5b-4de0-4627-98fb-99404f8b7f65,"ReCiPe 2016 v1.03, midpoint (E) no LT",particulate matter formation no LT,particulate matter formation potential (PMFP) no LT,kg PM2.5-Eq,0.00016287167136752796
+0114cc0c-635e-47e3-afdf-ca668861b31f,"ReCiPe 2016 v1.03, midpoint (E) no LT",photochemical oxidant formation: human health no LT,photochemical oxidant formation potential: humans (HOFP) no LT,kg NOx-Eq,0.00021457937068881862
+b6c547d8-edac-48eb-a44b-06b92d6c643d,"ReCiPe 2016 v1.03, midpoint (E) no LT",photochemical oxidant formation: terrestrial ecosystems no LT,photochemical oxidant formation potential: ecosystems (EOFP) no LT,kg NOx-Eq,0.0002229501154738499
+24b706ce-29e9-4987-b07d-f6dff9d3cab9,"ReCiPe 2016 v1.03, midpoint (E) no LT",water use no LT,water consumption potential (WCP) no LT,m3,0.00024864296852226974
+6738261b-ecfe-4f92-b49e-85597efd3989,"ReCiPe 2016 v1.03, midpoint (H)",acidification: terrestrial,terrestrial acidification potential (TAP),kg SO2-Eq,0.0007597666615165146
+9d92c679-54c2-4055-a447-3f128dfbf02f,"ReCiPe 2016 v1.03, midpoint (H)",climate change,global warming potential (GWP100),kg CO2-Eq,0.2632879217483612
+2b6698e6-06a6-47a1-93f5-a5c76f76947e,"ReCiPe 2016 v1.03, midpoint (H)",ecotoxicity: freshwater,freshwater ecotoxicity potential (FETP),"kg 1,4-DCB-Eq",0.005446387750061742
+de4f5ebc-88c4-4cc1-a3c7-52b776925241,"ReCiPe 2016 v1.03, midpoint (H)",ecotoxicity: marine,marine ecotoxicity potential (METP),"kg 1,4-DCB-Eq",0.009533954707422071
+8724b1d0-021e-4fbd-a26c-32c39eb8ed04,"ReCiPe 2016 v1.03, midpoint (H)",ecotoxicity: terrestrial,terrestrial ecotoxicity potential (TETP),"kg 1,4-DCB-Eq",2.5483983402318917
+23be1c8b-066f-497b-a28f-46893bb7a266,"ReCiPe 2016 v1.03, midpoint (H)","energy resources: non-renewable, fossil",fossil fuel potential (FFP),kg oil-Eq,0.011077827536999886
+5b9ca24e-0a05-4f92-aa36-ab0418dfbfe2,"ReCiPe 2016 v1.03, midpoint (H)",eutrophication: freshwater,freshwater eutrophication potential (FEP),kg P-Eq,1.2063048262645763E-05
+7ee37f8e-9734-4070-8b34-f9dd231fcc08,"ReCiPe 2016 v1.03, midpoint (H)",eutrophication: marine,marine eutrophication potential (MEP),kg N-Eq,1.2110660342735954E-06
+3d88d4b5-7919-45c6-8343-308c4d8134c5,"ReCiPe 2016 v1.03, midpoint (H)",human toxicity: carcinogenic,human toxicity potential (HTPc),"kg 1,4-DCB-Eq",0.04312141377633566
+e4a81787-2293-4305-a3db-3c17fc0239b4,"ReCiPe 2016 v1.03, midpoint (H)",human toxicity: non-carcinogenic,human toxicity potential (HTPnc),"kg 1,4-DCB-Eq",0.08823117768391579
+b4c7b952-eea5-4ef5-9e32-2eaebb0b6b85,"ReCiPe 2016 v1.03, midpoint (H)",ionising radiation,ionising radiation potential (IRP),kBq Co-60-Eq,0.0013845359354499138
+9fa9bb3b-0bae-45ef-817e-3eb0aae3bf80,"ReCiPe 2016 v1.03, midpoint (H)",land use,agricultural land occupation (LOP),m2*a crop-Eq,0.017100148011993367
+ed6d9817-8f17-47fb-b202-0bd8e54c4505,"ReCiPe 2016 v1.03, midpoint (H)",material resources: metals/minerals,surplus ore potential (SOP),kg Cu-Eq,0.003369109533435453
+daa969f6-a854-4f7e-b5e6-d4ba2512e195,"ReCiPe 2016 v1.03, midpoint (H)",ozone depletion,ozone depletion potential (ODPinfinite),kg CFC-11-Eq,9.654655043930306E-07
+93dfab09-25be-4d10-8159-9f621a1a401e,"ReCiPe 2016 v1.03, midpoint (H)",particulate matter formation,particulate matter formation potential (PMFP),kg PM2.5-Eq,0.00016292647008768772
+9cf68493-d9d0-4c22-a522-4200f64fd283,"ReCiPe 2016 v1.03, midpoint (H)",photochemical oxidant formation: human health,photochemical oxidant formation potential: humans (HOFP),kg NOx-Eq,0.0002145820209869605
+9b6a8711-0289-40fa-ace8-7f28f5140833,"ReCiPe 2016 v1.03, midpoint (H)",photochemical oxidant formation: terrestrial ecosystems,photochemical oxidant formation potential: ecosystems (EOFP),kg NOx-Eq,0.00022295276577199177
+dab8aea6-14b3-4286-9cf1-d6afc2ffc374,"ReCiPe 2016 v1.03, midpoint (H)",water use,water consumption potential (WCP),m3,0.00024864296852226974
+0b7af117-ae68-4445-ad86-e306360c167b,"ReCiPe 2016 v1.03, midpoint (H) no LT",acidification: terrestrial no LT,terrestrial acidification potential (TAP) no LT,kg SO2-Eq,0.0007597656889409012
+31f73ade-9aca-4607-89f4-5f255a53454c,"ReCiPe 2016 v1.03, midpoint (H) no LT",climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.2632879211401237
+f6bc6462-f801-4e66-a3d2-0dd91843f514,"ReCiPe 2016 v1.03, midpoint (H) no LT",ecotoxicity: freshwater no LT,freshwater ecotoxicity potential (FETP) no LT,"kg 1,4-DCB-Eq",0.00016558153608712813
+e55e5292-a64a-4d62-a84c-1a5cc03b3ddd,"ReCiPe 2016 v1.03, midpoint (H) no LT",ecotoxicity: marine no LT,marine ecotoxicity potential (METP) no LT,"kg 1,4-DCB-Eq",0.0027230739138283367
+46cdec2f-7c51-4e60-8f7a-56f192efff67,"ReCiPe 2016 v1.03, midpoint (H) no LT",ecotoxicity: terrestrial no LT,terrestrial ecotoxicity potential (TETP) no LT,"kg 1,4-DCB-Eq",2.5477710523714614
+ecf19c0e-7a1b-4b18-93b9-a3d612f023e3,"ReCiPe 2016 v1.03, midpoint (H) no LT","energy resources: non-renewable, fossil no LT",fossil fuel potential (FFP) no LT,kg oil-Eq,0.011077827536999886
+878cfb80-2c0e-47d4-a8be-f7fdccb1510a,"ReCiPe 2016 v1.03, midpoint (H) no LT",eutrophication: freshwater no LT,freshwater eutrophication potential (FEP) no LT,kg P-Eq,1.808369152317035E-06
+489bdad7-192a-49a3-87e9-255bffa5b9cc,"ReCiPe 2016 v1.03, midpoint (H) no LT",eutrophication: marine no LT,marine eutrophication potential (MEP) no LT,kg N-Eq,7.33213244331686E-07
+6096773a-0b74-418e-ae43-85af10334f42,"ReCiPe 2016 v1.03, midpoint (H) no LT",human toxicity: carcinogenic no LT,human toxicity potential (HTPc) no LT,"kg 1,4-DCB-Eq",0.0006899320879507796
+5df61ca7-ba36-44b6-9229-8f6bdd411b0d,"ReCiPe 2016 v1.03, midpoint (H) no LT",human toxicity: non-carcinogenic no LT,human toxicity potential (HTPnc) no LT,"kg 1,4-DCB-Eq",0.02073148903781265
+ed2f4488-fb12-4bb8-90c6-d3f9225c6eb0,"ReCiPe 2016 v1.03, midpoint (H) no LT",ionising radiation no LT,ionising radiation potential (IRP) no LT,kBq Co-60-Eq,0.0001107473384469373
+fbdd9fa9-9f06-48a2-83ec-4e6131db68fd,"ReCiPe 2016 v1.03, midpoint (H) no LT",land use no LT,agricultural land occupation (LOP) no LT,m2*a crop-Eq,0.017100148011993367
+203dc2d4-b28b-4cbd-ae72-a5a88d4591c7,"ReCiPe 2016 v1.03, midpoint (H) no LT",material resources: metals/minerals no LT,surplus ore potential (SOP) no LT,kg Cu-Eq,0.003369109533435453
+c8c0c34c-a090-425b-8b6f-a5b7c1299ab0,"ReCiPe 2016 v1.03, midpoint (H) no LT",ozone depletion no LT,ozone depletion potential (ODPinfinite) no LT,kg CFC-11-Eq,9.654654819413115E-07
+aac4218f-e029-4bd1-96a0-d37edbc942f3,"ReCiPe 2016 v1.03, midpoint (H) no LT",particulate matter formation no LT,particulate matter formation potential (PMFP) no LT,kg PM2.5-Eq,0.00016287167136752796
+f2fafc6d-4aee-4d56-acc0-56cf0366012f,"ReCiPe 2016 v1.03, midpoint (H) no LT",photochemical oxidant formation: human health no LT,photochemical oxidant formation potential: humans (HOFP) no LT,kg NOx-Eq,0.00021457937068881862
+8840cd1e-152e-4dc3-8e59-8d4790ebe66d,"ReCiPe 2016 v1.03, midpoint (H) no LT",photochemical oxidant formation: terrestrial ecosystems no LT,photochemical oxidant formation potential: ecosystems (EOFP) no LT,kg NOx-Eq,0.0002229501154738499
+b3c0fc66-327e-4612-94e5-692179359793,"ReCiPe 2016 v1.03, midpoint (H) no LT",water use no LT,water consumption potential (WCP) no LT,m3,0.00024864296852226974
+843ca22f-de4d-4c6f-90f4-bc812e006389,"ReCiPe 2016 v1.03, midpoint (I)",acidification: terrestrial,terrestrial acidification potential (TAP),kg SO2-Eq,0.0007597666706462743
+66a9a4cb-02f9-4926-aed8-5b9d39c01aff,"ReCiPe 2016 v1.03, midpoint (I)",climate change,global warming potential (GWP20),kg CO2-Eq,0.5495503111823821
+6aa536e3-e625-4fa0-a8f0-9e4992cdeff3,"ReCiPe 2016 v1.03, midpoint (I)",ecotoxicity: freshwater,freshwater ecotoxicity potential (FETP),"kg 1,4-DCB-Eq",0.0049965098437668295
+f28ade44-09eb-4501-a47e-9f625cb2c0b1,"ReCiPe 2016 v1.03, midpoint (I)",ecotoxicity: marine,marine ecotoxicity potential (METP),"kg 1,4-DCB-Eq",0.0030996045204739774
+401685b2-2d0c-4b1e-a92c-89f1dcf0edf5,"ReCiPe 2016 v1.03, midpoint (I)",ecotoxicity: terrestrial,terrestrial ecotoxicity potential (TETP),"kg 1,4-DCB-Eq",1.0687145295350027
+d2319056-0e22-43ac-89dd-7633f7844f94,"ReCiPe 2016 v1.03, midpoint (I)","energy resources: non-renewable, fossil",fossil fuel potential (FFP),kg oil-Eq,0.011077827536999886
+9cf6707c-a9e5-48a7-803c-ed8faa7002d5,"ReCiPe 2016 v1.03, midpoint (I)",eutrophication: freshwater,freshwater eutrophication potential (FEP),kg P-Eq,1.2063048262645763E-05
+4e096de0-b94f-4733-baec-0eab86a77586,"ReCiPe 2016 v1.03, midpoint (I)",eutrophication: marine,marine eutrophication potential (MEP),kg N-Eq,1.2110660342735954E-06
+07ee1dd0-2bb2-4fec-b1f0-4f2b0c0b03fd,"ReCiPe 2016 v1.03, midpoint (I)",human toxicity: carcinogenic,human toxicity potential (HTPc),"kg 1,4-DCB-Eq",4.068275665128155E-05
+c543dc12-e4c1-444b-8b2c-ed611529317c,"ReCiPe 2016 v1.03, midpoint (I)",human toxicity: non-carcinogenic,human toxicity potential (HTPnc),"kg 1,4-DCB-Eq",0.002636890328505448
+c1621816-20fe-4e4a-8577-bfdbd68c5a93,"ReCiPe 2016 v1.03, midpoint (I)",ionising radiation,ionising radiation potential (IRP),kBq Co-60-Eq,0.0013532770535557952
+3f264de4-a88c-48f5-8ace-98632824f7d9,"ReCiPe 2016 v1.03, midpoint (I)",land use,agricultural land occupation (LOP),m2*a crop-Eq,0.017100148011993367
+64d2c910-d4b7-4ac4-9d26-3ea5c9a03596,"ReCiPe 2016 v1.03, midpoint (I)",material resources: metals/minerals,surplus ore potential (SOP),kg Cu-Eq,0.0047558885231428856
+2a6a737a-e124-42c4-a2e1-84e569d22112,"ReCiPe 2016 v1.03, midpoint (I)",ozone depletion,ozone depletion potential (ODPinfinite),kg CFC-11-Eq,6.209650024202741E-07
+bf5f84b0-2794-49fd-b4a8-65efbf54984e,"ReCiPe 2016 v1.03, midpoint (I)",particulate matter formation,particulate matter formation potential (PMFP),kg PM2.5-Eq,2.939171066107189E-05
+f8ae8dc2-6b5d-49bf-8b63-b26fa1708b43,"ReCiPe 2016 v1.03, midpoint (I)",photochemical oxidant formation: human health,photochemical oxidant formation potential: humans (HOFP),kg NOx-Eq,0.0002148343655574481
+80e175d9-66ab-4804-a173-52beee469cce,"ReCiPe 2016 v1.03, midpoint (I)",photochemical oxidant formation: terrestrial ecosystems,photochemical oxidant formation potential: ecosystems (EOFP),kg NOx-Eq,0.0002233599969106344
+19be7e21-ca6c-4c85-806b-67910694b4c0,"ReCiPe 2016 v1.03, midpoint (I)",water use,water consumption potential (WCP),m3,0.00024864296852226974
+1f98c946-7bd8-4c81-8b82-7001c8da5ba1,"ReCiPe 2016 v1.03, midpoint (I) no LT",acidification: terrestrial no LT,terrestrial acidification potential (TAP) no LT,kg SO2-Eq,0.000759765698070661
+9dfc2bd2-2b65-4f09-b91b-0b2e37e14c13,"ReCiPe 2016 v1.03, midpoint (I) no LT",climate change no LT,global warming potential (GWP20) no LT,kg CO2-Eq,0.5495503106435408
+21e39d39-097a-45de-843d-ff53ea733674,"ReCiPe 2016 v1.03, midpoint (I) no LT",ecotoxicity: freshwater no LT,freshwater ecotoxicity potential (FETP) no LT,"kg 1,4-DCB-Eq",0.00013954475779480438
+c4cc6e60-9fe9-4809-904d-34a44b8fcbeb,"ReCiPe 2016 v1.03, midpoint (I) no LT",ecotoxicity: marine no LT,marine ecotoxicity potential (METP) no LT,"kg 1,4-DCB-Eq",0.0016731494104968898
+5f2e8719-2cd1-40d1-8fb5-82e94e67175f,"ReCiPe 2016 v1.03, midpoint (I) no LT",ecotoxicity: terrestrial no LT,terrestrial ecotoxicity potential (TETP) no LT,"kg 1,4-DCB-Eq",1.0684405163657422
+724581ce-b716-47c3-aabb-1ee4ca8d7053,"ReCiPe 2016 v1.03, midpoint (I) no LT","energy resources: non-renewable, fossil no LT",fossil fuel potential (FFP) no LT,kg oil-Eq,0.011077827536999886
+dfa538d5-16e5-4de4-9d43-5e7114a4f130,"ReCiPe 2016 v1.03, midpoint (I) no LT",eutrophication: freshwater no LT,freshwater eutrophication potential (FEP) no LT,kg P-Eq,1.808369152317035E-06
+0bc43337-743a-4570-b633-d08d58fcab57,"ReCiPe 2016 v1.03, midpoint (I) no LT",eutrophication: marine no LT,marine eutrophication potential (MEP) no LT,kg N-Eq,7.33213244331686E-07
+6c18b82f-b4a6-4804-a43a-e26a339e6a6f,"ReCiPe 2016 v1.03, midpoint (I) no LT",human toxicity: carcinogenic no LT,human toxicity potential (HTPc) no LT,"kg 1,4-DCB-Eq",2.6547711951234934E-05
+ce5764d0-4903-4880-a075-d4439714101c,"ReCiPe 2016 v1.03, midpoint (I) no LT",human toxicity: non-carcinogenic no LT,human toxicity potential (HTPnc) no LT,"kg 1,4-DCB-Eq",0.0015993962129338074
+240669e6-2206-409f-946e-e1ee0c77eb3a,"ReCiPe 2016 v1.03, midpoint (I) no LT",ionising radiation no LT,ionising radiation potential (IRP) no LT,kBq Co-60-Eq,7.948845655281889E-05
+64f7704d-ec04-4034-b292-82411de5fd23,"ReCiPe 2016 v1.03, midpoint (I) no LT",land use no LT,agricultural land occupation (LOP) no LT,m2*a crop-Eq,0.017100148011993367
+3bd2753e-d8ff-4f92-a8f2-f4ff349be662,"ReCiPe 2016 v1.03, midpoint (I) no LT",material resources: metals/minerals no LT,surplus ore potential (SOP) no LT,kg Cu-Eq,0.0047558885231428856
+c00b7b3b-7fb3-40d8-8f41-b80d502d7688,"ReCiPe 2016 v1.03, midpoint (I) no LT",ozone depletion no LT,ozone depletion potential (ODPinfinite) no LT,kg CFC-11-Eq,6.209649881328166E-07
+f2519695-7313-4e65-800d-3f5087b7b859,"ReCiPe 2016 v1.03, midpoint (I) no LT",particulate matter formation no LT,particulate matter formation potential (PMFP) no LT,kg PM2.5-Eq,2.9337199143342147E-05
+b25aab23-d7eb-47a4-8b14-1d73079b52eb,"ReCiPe 2016 v1.03, midpoint (I) no LT",photochemical oxidant formation: human health no LT,photochemical oxidant formation potential: humans (HOFP) no LT,kg NOx-Eq,0.00021483171525930623
+30815751-63bc-438c-83b3-6c93489ded7b,"ReCiPe 2016 v1.03, midpoint (I) no LT",photochemical oxidant formation: terrestrial ecosystems no LT,photochemical oxidant formation potential: ecosystems (EOFP) no LT,kg NOx-Eq,0.00022335734661249254
+391d75d2-e73c-4942-8760-a25a5f62e91a,"ReCiPe 2016 v1.03, midpoint (I) no LT",water use no LT,water consumption potential (WCP) no LT,m3,0.00024864296852226974
+13f697ba-dbb5-4e03-a0c7-760e8d70c422,TRACI v2.1,acidification,acidification potential (AP),kg SO2-Eq,0.0008923233308330214
+d7964007-0507-441b-92d1-c24885c76bcb,TRACI v2.1,climate change,global warming potential (GWP100),kg CO2-Eq,0.21092748259743507
+591d8e56-70d1-4a3e-9e39-e81d0ecf98ed,TRACI v2.1,ecotoxicity: freshwater,ecotoxicity: freshwater,CTUe,2.376011526157998
+c24597fa-f50e-43ca-986d-a1885b40e9fe,TRACI v2.1,eutrophication,eutrophication potential,kg N-Eq,0.0001691531942074805
+3c136305-ecfd-4283-aee0-8408af6d0b5e,TRACI v2.1,human toxicity: carcinogenic,human toxicity: carcinogenic,CTUh,6.11645909810334E-08
+e65394f7-9b67-40ce-a3e5-32f2ee0e67f2,TRACI v2.1,human toxicity: non-carcinogenic,human toxicity: non-carcinogenic,CTUh,2.3238190770399207E-08
+3fd28461-7cbd-4329-a277-31262f770674,TRACI v2.1,ozone depletion,ozone depletion potential (ODP),kg CFC-11-Eq,5.066625233268221E-10
+38ea822b-8b93-47d5-b815-8e9ba7df60ac,TRACI v2.1,particulate matter formation,particulate matter formation potential (PMFP),kg PM2.5-Eq,6.625877881604832E-05
+bc0e47a4-8964-4916-8f58-b3ca62f5fd82,TRACI v2.1,photochemical oxidant formation,maximum incremental reactivity (MIR),kg O3-Eq,0.005376459703464548
+08144b82-66d9-49bc-b555-b9a7af35f388,TRACI v2.1 no LT,acidification no LT,acidification potential (AP) no LT,kg SO2-Eq,0.0008923210846687379
+13797a70-2419-44d1-a041-207f835a707b,TRACI v2.1 no LT,climate change no LT,global warming potential (GWP100) no LT,kg CO2-Eq,0.2109274819891976
+6a9815de-aef8-4df7-869f-465b9d3e7502,TRACI v2.1 no LT,ecotoxicity: freshwater no LT,ecotoxicity: freshwater no LT,CTUe,0.18750708179238648
+75dad921-c71c-4288-82ed-22bb43fb2f3f,TRACI v2.1 no LT,eutrophication no LT,eutrophication potential no LT,kg N-Eq,7.586845035728551E-05
+227778d6-d59b-42e0-b4b9-9b48c410bb68,TRACI v2.1 no LT,human toxicity: carcinogenic no LT,human toxicity: carcinogenic no LT,CTUh,4.827089130039701E-10
+c7d59647-4de2-49ad-99c2-b13a9bd2307e,TRACI v2.1 no LT,human toxicity: non-carcinogenic no LT,human toxicity: non-carcinogenic no LT,CTUh,8.983827664485681E-09
+5c02e7d0-818e-481a-bd02-22a799f63d6a,TRACI v2.1 no LT,ozone depletion no LT,ozone depletion potential (ODP) no LT,kg CFC-11-Eq,5.066625233268221E-10
+51235887-df22-46b0-ba3c-d239f4b436be,TRACI v2.1 no LT,particulate matter formation no LT,particulate matter formation potential (PMFP) no LT,kg PM2.5-Eq,6.618564248783353E-05
+7c0e9a30-b10b-4d41-8ecb-abbda39bfda8,TRACI v2.1 no LT,photochemical oxidant formation no LT,maximum incremental reactivity (MIR) no LT,kg O3-Eq,0.005376454248347805
+5cc263f3-bfa0-4d74-866a-ca4196bb8f05,"USEtox v2.13, endpoint",ecosystem quality,ecotoxicity: freshwater,PDF.m3.yr,291.7078478816931
+50a8b944-2590-451e-a221-c8e8f6bd9fb3,"USEtox v2.13, endpoint",human health,human toxicity: carcinogenic,DALYs,6.732819834219042E-07
+28488411-6ff2-4f85-afb4-b4f2bac9d035,"USEtox v2.13, endpoint",human health,human toxicity: non-carcinogenic,DALYs,4.674595916316085E-08
+fb77a1d8-31e2-4943-960d-6cea77aa0dd2,"USEtox v2.13, endpoint no LT",ecosystem quality no LT,ecotoxicity: freshwater no LT,PDF.m3.yr,4.312782828381326
+96ac6d1f-3047-471c-968b-bd406b781d9d,"USEtox v2.13, endpoint no LT",human health no LT,human toxicity: carcinogenic no LT,DALYs,2.0502003599781692E-08
+6a5f56b3-c316-45c8-94ac-e62d57696e73,"USEtox v2.13, endpoint no LT",human health no LT,human toxicity: non-carcinogenic no LT,DALYs,2.359340029373818E-08
+e46fca0b-c7fa-48f5-9ba7-8122744a9d0c,"USEtox v2.13, midpoint",ecotoxicity: freshwater,comparative toxic unit for ecosystems (CTUe),CTUe,583.4156957633865
+810bcbff-7208-4eef-b1cc-b2d9b128be8d,"USEtox v2.13, midpoint",human toxicity: carcinogenic,comparative toxic unit for human (CTUh),CTUh,5.8546259427991647E-08
+cd9cec28-d513-4e52-ab87-487cb0229926,"USEtox v2.13, midpoint",human toxicity: non-carcinogenic,comparative toxic unit for human (CTUh),CTUh,1.731331820857807E-08
+5c92cbcb-6dcb-4503-b766-e8f472b12125,"USEtox v2.13, midpoint no LT",ecotoxicity: freshwater no LT,comparative toxic unit for ecosystems (CTUe) no LT,CTUe,8.625565656762651
+602a51c5-2099-4a35-ac77-772a191d1ae1,"USEtox v2.13, midpoint no LT",human toxicity: carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,1.7827829217201466E-09
+6be6ea4d-8518-471b-9140-9e917b5ad593,"USEtox v2.13, midpoint no LT",human toxicity: non-carcinogenic no LT,comparative toxic unit for human (CTUh) no LT,CTUh,8.73829640508822E-09
