@@ -74,6 +74,9 @@ class InterfaceBase:
         self.password = settings.password
         if not self.password:
             raise ValueError("Missing password; see configurations docs")
+        self.client_id = settings.client_id
+        if not self.client_id:
+            raise ValueError("Missing client_id; see configurations docs")
 
         self.urls = URLS if urls is None else urls
         self.custom_headers = custom_headers or {}
@@ -84,6 +87,7 @@ class InterfaceBase:
     Instance ID: {id(self)}
     Version: {__version__}
     User: {self.username}
+    Client ID: {self.client_id}
     Output directory: {self.storage.dir}
     Custom headers: {bool(custom_headers)}
     Custom URLs: {bool(urls)}
@@ -94,31 +98,33 @@ class InterfaceBase:
         post_data = {
             "username": self.username,
             "password": self.password,
-            "client_id": "apollo-ui",
+            "client_id": self.client_id,
             "grant_type": "password",
         }
         self._get_credentials(post_data)
-        message = """Got initial credentials.
+        message = f"""Got initial credentials.
     Class: {self.__class__.__name__}
     Instance ID: {id(self)}
     Version: {__version__}
     User: {self.username}
+    Client ID: {self.client_id}
         """
         logger.debug(message)
 
     @logged_in
     def refresh_tokens(self) -> None:
         post_data = {
-            "client_id": "apollo-ui",
+            "client_id": self.client_id,
             "grant_type": "refresh_token",
             "refresh_token": self.refresh_token,
         }
         self._get_credentials(post_data)
-        message = """Renewed credentials.
+        message = f"""Renewed credentials.
     Class: {self.__class__.__name__}
     Instance ID: {id(self)}
     Version: {__version__}
     User: {self.username}
+    Client ID: {self.client_id}
         """
         logger.debug(message)
 
@@ -164,15 +170,19 @@ class InterfaceBase:
             "ecoinvent-api-client-library-version": __version__,
         }
         headers.update(self.custom_headers)
-        message = """Requesting URL.
+        message = f"""Requesting URL.
     URL: {reports_url}
     Class: {self.__class__.__name__}
     Instance ID: {id(self)}
     Version: {__version__}
     User: {self.username}
+    Client ID: {self.client_id}
         """
         logger.debug(message)
-        return requests.get(reports_url, headers=headers, timeout=20).json()
+        response = requests.get(reports_url, headers=headers, timeout=20)
+        if response.status_code == 401:
+            raise PermissionError("Your license doesn't permit report access")
+        return response.json()
 
     @fresh_login
     def _get_all_files(self) -> dict:
@@ -183,15 +193,19 @@ class InterfaceBase:
             "ecoinvent-api-client-library-version": __version__,
         }
         headers.update(self.custom_headers)
-        message = """Requesting URL.
+        message = f"""Requesting URL.
     URL: {files_url}
     Class: {self.__class__.__name__}
     Instance ID: {id(self)}
     Version: {__version__}
     User: {self.username}
+    Client ID: {self.client_id}
         """
         logger.debug(message)
-        return requests.get(files_url, headers=headers, timeout=20).json()
+        response = requests.get(files_url, headers=headers, timeout=20)
+        if response.status_code == 404:
+            raise PermissionError("Your license doesn't permit file access")
+        return response.json()
 
     def _get_files_for_version(self, version: str) -> dict:
         data = self._get_all_files()
@@ -220,9 +234,12 @@ class InterfaceBase:
         zipped: Optional[bool] = False,
     ) -> None:
         out_filepath = directory / (filename + ".gz" if zipped else filename)
-        with requests.get(
-            url, stream=True, headers=headers, params=params, timeout=60
-        ) as response, open(out_filepath, "wb") as out_file:
+        with (
+            requests.get(
+                url, stream=True, headers=headers, params=params, timeout=60
+            ) as response,
+            open(out_filepath, "wb") as out_file,
+        ):
             if response.status_code != 200:
                 raise requests.exceptions.HTTPError(
                     f"URL '{url}'' returns status code {response.status_code}."
@@ -248,9 +265,10 @@ class InterfaceBase:
         logger.debug(message)
 
         if zipped:
-            with open(out_filepath, "rb") as source, open(
-                directory / filename, "w", encoding="utf-8"
-            ) as target:
+            with (
+                open(out_filepath, "rb") as source,
+                open(directory / filename, "w", encoding="utf-8") as target,
+            ):
                 gzip_fd = gzip.GzipFile(fileobj=source)
                 target.write(gzip_fd.read().decode("utf-8-sig"))
             try:
@@ -301,12 +319,6 @@ class InterfaceBase:
     def list_versions(self) -> list:
         return [obj["version_name"] for obj in self._get_all_files()]
 
-    def list_versions2(self) -> list:
-        result = [obj["version_name"] for obj in self._get_all_files()]
-        print("Versioni trovate:", result)  # Aggiungi questa riga per stampare il risultato
-        return result
-
-
     def list_system_models(
         self, version: str, translate: Optional[bool] = True
     ) -> list:
@@ -316,23 +328,4 @@ class InterfaceBase:
         ]
         if translate:
             releases = [SYSTEM_MODELS.get(key, key) for key in releases]
-        return releases
-
-    def list_system_models2(
-        self, version: str, translate: Optional[bool] = True
-    ) -> list:
-        releases = [
-            obj["system_model_name"]
-            for obj in self._get_files_for_version(version)["releases"]
-        ]
-        
-        # Print the list of releases before translation
-        print(f"Releases before translation: {releases}")
-        
-        if translate:
-            releases = [SYSTEM_MODELS.get(key, key) for key in releases]
-            
-            # Print the list of releases after translation
-            print(f"Releases after translation: {releases}")
-        
         return releases

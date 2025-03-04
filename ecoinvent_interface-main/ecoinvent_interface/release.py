@@ -25,9 +25,13 @@ class ReleaseType(Enum):
     cumulative_lcia = "ecoinvent {version}_{system_model_abbr}_cumulative_lcia_xlsx.7z"
 
     def filename(self, version: str, system_model_abbr: str) -> str:
-        return self.value.format(
+        guess = self.value.format(
             **{"version": version, "system_model_abbr": system_model_abbr}
         )
+        CORRECTIONS = {
+            "ecoinvent 3.6_cutoff_ecoSpold02.7z": "ecoinvent 3.6_cut-off_ecoSpold02.7z"
+        }
+        return CORRECTIONS.get(guess, guess)
 
 
 class EcoinventRelease(InterfaceBase):
@@ -101,6 +105,10 @@ class EcoinventRelease(InterfaceBase):
         available_files = self._filename_dict(version=version)
 
         if filename not in available_files:
+            # Sometimes the filename prediction doesn't work, as not every filename
+            # follows our patterns. But these exceptions are unpredictable, it's
+            # just easier to find the closest match and log the correction
+            # than build a catalogue of exceptions.
             possible = sorted(
                 [
                     (damerau_levenshtein(filename, maybe), maybe)
@@ -119,9 +127,6 @@ class EcoinventRelease(InterfaceBase):
                     available_files
                 )
                 raise ValueError(ERROR)
-
-        # Stampa il contenuto del catalogo prima di controllare la cache
-        print(f"Catalogue: {self.storage.catalogue}")
 
         cached = filename in self.storage.catalogue
         result_path = self._download_and_cache(
@@ -157,9 +162,7 @@ class EcoinventRelease(InterfaceBase):
                         filepath=filepath, major_version=major, minor_version=minor
                     )
 
-        print(f"Result path: {result_path}")
         return result_path
-
 
     def _download_and_cache(
         self,
