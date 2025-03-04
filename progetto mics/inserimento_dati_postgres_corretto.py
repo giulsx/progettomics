@@ -129,17 +129,23 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
             count = cursor.fetchone()[0]
             
             if count == 0:
-                cursor.execute("""
+                cursor.execute(""" 
                     INSERT INTO IntermediateExchange (
                         intermediateExchangeId, intermediateName, amount, modifiedIntermediate, 
-                        activityId_productId, referenceProduct, unitId)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        activityId_productId, unitId)
+                    VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
-                      str(activity_product_id), True, str(unit_id)))  # ReferenceProduct = TRUE
+                      str(activity_product_id), str(unit_id)))  # ReferenceProduct non è più nella tabella IntermediateExchange
                 print(f"ReferenceProduct {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
-            else:
-                print(f"Elemento con name: {intermediate_name} e amount: {amount} già esistente.")
+
+                 # Aggiungi nella tabella di associazione (anche se esiste già)
+            cursor.execute("""
+                INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
+                VALUES (%s, %s, %s)
+                ON CONFLICT (activityId, intermediateExchangeId) DO NOTHING;
+            """, (str(activity_id), str(intermediate_exchange_id), True))  # ReferenceProduct = TRUE
+            print(f"ReferenceProduct associato all'attività {activity_id}.")
     
     # Aggiungi gli altri intermediateExchange
     for exchange in intermediate_exchanges:
@@ -161,15 +167,22 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
             count = cursor.fetchone()[0]
             
             if count == 0:
-                cursor.execute("""
+                cursor.execute(""" 
                     INSERT INTO IntermediateExchange (
                         intermediateExchangeId, intermediateName, amount, modifiedIntermediate, 
-                        activityId_productId, referenceProduct, unitId)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        activityId_productId, unitId)
+                    VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
-                      str(activity_product_id), False, str(unit_id)))  # ReferenceProduct = FALSE
+                      str(activity_product_id), str(unit_id)))  # ReferenceProduct non è più nella tabella IntermediateExchange
                 print(f"IntermediateExchangeId {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
+
+                # Aggiungi nella tabella di associazione
+                cursor.execute("""
+                    INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
+                    VALUES (%s, %s, %s);
+                """, (str(activity_id), str(intermediate_exchange_id), False))  # ReferenceProduct = FALSE
+                print(f"IntermediateExchange associato all'attività {activity_id}.")
             else:
                 print(f"Elemento con name: {intermediate_name} e amount: {amount} già esistente.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
@@ -215,9 +228,9 @@ def insert_intermediate_exchange_to_activity_association(cursor, activity_id, in
             
             if count == 0:
                 cursor.execute("""
-                    INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId)
-                    VALUES (%s, %s);
-                """, (str(activity_id), str(intermediate_exchange_id)))
+                    INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
+                    VALUES (%s, %s, %s);
+                """, (str(activity_id), str(intermediate_exchange_id), False))  # ReferenceProduct = FALSE
                 print(f"Associato intermediateExchangeId {intermediate_exchange_id} all'attività {activity_id}.")
             else:
                 print(f"L'associazione tra ActivityId {activity_id} e IntermediateExchangeId {intermediate_exchange_id} esiste già.")
@@ -362,10 +375,10 @@ try:
         insert_intermediate_exchange_to_activity_association(cursor, activity_id, intermediate_exchange_ids)
 
         # Popolare la tabella ImpactIndicator e ottenere gli ID degli indicatori di impatto
-    # impact_indicator_ids = populate_impact_indicator_table(cursor, json_data)
+        impact_indicator_ids = populate_impact_indicator_table(cursor, json_data)
         
         # Inserire nella tabella di associazione Activity_ImpactIndicator
-    #    insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids)
+        insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids)
 
         # Conferma delle modifiche
         conn.commit()
