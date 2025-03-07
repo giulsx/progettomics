@@ -29,13 +29,19 @@ with open(log_file_path, 'w', encoding='utf-8') as log_file:
 # Funzione per estrarre i dati dal file UPR
 def extract_from_upr(upr_data):
     data = upr_data
-    activity = data['ecoSpold']['childActivityDataset']['activityDescription']['activity']
+    # Controlla se esiste 'childActivityDataset' o 'activityDataset'
+    activity_dataset = data['ecoSpold'].get('childActivityDataset', data['ecoSpold'].get('activityDataset', None))
+    
+    if activity_dataset is None:
+        raise KeyError("Né 'childActivityDataset' né 'activityDataset' trovati nei dati forniti.")
+    
+    activity = activity_dataset['activityDescription']['activity']
     activity_id = activity['@id']
     activity_name = activity['activityName']['#text']
 
     included_activities_start = activity['includedActivitiesStart']['#text'] if activity.get('includedActivitiesStart') and activity['includedActivitiesStart'].get('#text') else "null"
     included_activities_end = activity['includedActivitiesEnd']['#text'] if activity.get('includedActivitiesEnd') and activity['includedActivitiesEnd'].get('#text') else "null"
-    geography = data['ecoSpold']['childActivityDataset']['activityDescription']['geography']['shortname']['#text']
+    geography = activity_dataset['activityDescription']['geography']['shortname']['#text']
 
     file_path = 'progetto mics/Database-Overview-for-ecoinvent-v3.10_29.04.24.xlsx'
     sheet_name = "Cut-Off AO" if system_model.lower() == "cutoff" else "APOS AO"
@@ -58,39 +64,39 @@ def extract_from_upr(upr_data):
     # Estrarre Intermediate Exchanges con @unitId e activityId_productId
     intermediate_exchanges = []
     reference_product = None
-    intermediate_exchange_data = data['ecoSpold']['childActivityDataset']['flowData']['intermediateExchange']
+    intermediate_exchange_data = activity_dataset['flowData']['intermediateExchange']
     if isinstance(intermediate_exchange_data, list) and intermediate_exchange_data:
         reference_product = {
             '@intermediateExchangeId': intermediate_exchange_data[0]['@intermediateExchangeId'],
             'name': intermediate_exchange_data[0]['name']['#text'],
             '@amount': intermediate_exchange_data[0]['@amount'],
             'unitName': intermediate_exchange_data[0]['unitName']['#text'],
-            '@unitId': intermediate_exchange_data[0].get('@unitId', 'null')  # Aggiunto @unitId
+            '@unitId': intermediate_exchange_data[0].get('@unitId', 'null')  
         }
         for exchange in intermediate_exchange_data[1:]:
-            activity_id_product_id = f"{exchange.get('@activityLinkId', 'null')}_{exchange['@intermediateExchangeId']}"  # Creazione activityId_productId
+            activity_id_product_id = f"{exchange.get('@activityLinkId', 'null')}_{exchange['@intermediateExchangeId']}"
             intermediate_exchanges.append({
                 '@intermediateExchangeId': exchange['@intermediateExchangeId'],
                 'name': exchange['name']['#text'],
                 '@amount': exchange['@amount'],
                 'unitName': exchange['unitName']['#text'],
-                '@unitId': exchange.get('@unitId', 'null'),  # Aggiunto @unitId
+                '@unitId': exchange.get('@unitId', 'null'),
                 'activityId_productId': activity_id_product_id
             })
     elif isinstance(intermediate_exchange_data, dict):
-        activity_id_product_id = f"{intermediate_exchange_data.get('@activityLinkId', 'null')}_{intermediate_exchange_data['@intermediateExchangeId']}"  # Creazione activityId_productId
+        activity_id_product_id = f"{intermediate_exchange_data.get('@activityLinkId', 'null')}_{intermediate_exchange_data['@intermediateExchangeId']}"
         reference_product = {
             '@intermediateExchangeId': intermediate_exchange_data['@intermediateExchangeId'],
             'name': intermediate_exchange_data['name']['#text'],
             '@amount': intermediate_exchange_data['@amount'],
             'unitName': intermediate_exchange_data['unitName']['#text'],
-            '@unitId': intermediate_exchange_data.get('@unitId', 'null'),  # Aggiunto @unitId
+            '@unitId': intermediate_exchange_data.get('@unitId', 'null'),
             'activityId_productId': activity_id_product_id
         }
 
     # Estrarre Elementary Exchanges 
     elementary_exchanges = []
-    elementary_exchange_data = upr_data['ecoSpold']['childActivityDataset']['flowData'].get('elementaryExchange', [])
+    elementary_exchange_data = activity_dataset['flowData'].get('elementaryExchange', [])
     if isinstance(elementary_exchange_data, dict):
         elementary_exchange_data = [elementary_exchange_data]
     for exchange in elementary_exchange_data:
@@ -101,7 +107,7 @@ def extract_from_upr(upr_data):
             'name': exchange_name,
             '@amount': exchange.get('@amount', 'null'),
             'unitName': unit_name,
-            '@unitId': exchange.get('@unitId', 'null'),  # Aggiunto @unitId
+            '@unitId': exchange.get('@unitId', 'null'),
             '@subcompartmentId': exchange.get('compartment', {}).get('@subcompartmentId', 'null') if 'compartment' in exchange else 'null',
             'compartment': exchange.get('compartment', {}).get('compartment', {}).get('#text', 'null') if 'compartment' in exchange and isinstance(exchange['compartment'], dict) else 'null',
             'subcompartment': exchange.get('compartment', {}).get('subcompartment', {}).get('#text', 'null') if 'compartment' in exchange and isinstance(exchange['compartment'], dict) else 'null',
@@ -128,17 +134,22 @@ def extract_from_upr(upr_data):
 def extract_from_lcia(lcia_data):
     data = lcia_data
     impact_indicators = []
-    for indicator in data['ecoSpold']['childActivityDataset']['flowData'].get('impactIndicator', []):
+
+    # Controlla prima 'childActivityDataset', se non esiste usa 'activityDataset'
+    dataset = data['ecoSpold'].get('childActivityDataset', data['ecoSpold'].get('activityDataset', {}))
+
+    for indicator in dataset.get('flowData', {}).get('impactIndicator', []):
         impact_indicators.append({
-            '@impactIndicatorId': indicator['@impactIndicatorId'],
-           # '@impactMethodId': indicator['@impactMethodId'],
-           # '@impactCategoryId': indicator['@impactCategoryId'],
-            '@amount': indicator['@amount'],
-            'impactMethodName': indicator['impactMethodName'],
-            'impactCategoryName': indicator['impactCategoryName'],
-            'name': indicator['name'],
-            'unitName': indicator['unitName'] if 'unitName' in indicator else 'null'
+            '@impactIndicatorId': indicator.get('@impactIndicatorId', 'null'),
+            # '@impactMethodId': indicator.get('@impactMethodId', 'null'),
+            # '@impactCategoryId': indicator.get('@impactCategoryId', 'null'),
+            '@amount': indicator.get('@amount', 'null'),
+            'impactMethodName': indicator.get('impactMethodName', 'null'),
+            'impactCategoryName': indicator.get('impactCategoryName', 'null'),
+            'name': indicator.get('name', 'null'),
+            'unitName': indicator.get('unitName', 'null')
         })
+
     return impact_indicators
 
 # Funzione per scrivere i risultati in un file JSON
