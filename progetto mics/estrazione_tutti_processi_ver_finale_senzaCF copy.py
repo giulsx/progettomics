@@ -52,14 +52,25 @@ def extract_from_upr(upr_data):
     isic_classification = filtered_row['ISIC Classification'].values[0] if len(filtered_row['ISIC Classification'].values) > 0 else "null"
     isic_section = filtered_row['ISIC Section'].values[0] if len(filtered_row['ISIC Section'].values) > 0 else "null"
 
-    # Estrarre Commenti Generali
+# Estrarre Commenti Generali
     general_comments = []
-    general_comment_texts = activity.get('generalComment', {}).get('text')
-    if isinstance(general_comment_texts, dict):
-        if '#text' in general_comment_texts:
-            general_comments.append(general_comment_texts['#text'])
-    elif isinstance(general_comment_texts, list):
-        general_comments = [comment['#text'] for comment in general_comment_texts if '#text' in comment]
+
+# Controlla se 'generalComment' esiste e se contiene effettivamente un oggetto valido
+    if 'generalComment' in activity and isinstance(activity['generalComment'], dict):
+        general_comment_texts = activity['generalComment'].get('text', None)
+    
+    # Se 'text' esiste e contiene dati validi
+        if general_comment_texts is not None:
+        # Se 'text' è un dizionario e contiene '#text'
+            if isinstance(general_comment_texts, dict) and '#text' in general_comment_texts:
+                general_comments.append(general_comment_texts['#text'])
+        # Se 'text' è una lista, estrai tutti i commenti
+            elif isinstance(general_comment_texts, list):
+                general_comments = [comment['#text'] for comment in general_comment_texts if isinstance(comment, dict) and '#text' in comment]
+    else:
+    # Se 'generalComment' non esiste o non contiene un oggetto valido, restituisci None o una lista vuota
+        general_comments = None
+
 
     # Estrarre Intermediate Exchanges con @unitId e activityId_productId
     intermediate_exchanges = []
