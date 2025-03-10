@@ -13,7 +13,7 @@ DB_CONFIG = {
 }
 
 # Percorso del file JSON
-JSON_FILE_PATH = "progetto mics/output/output_25365.json"
+JSON_FILE_PATH = "progetto mics/output/output_1047.json"
 
 # Funzione per generare un elementaryExchangeId univoco
 def generate_elementary_exchange_id(name, amount):
@@ -116,12 +116,12 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
         amount = reference_product.get("@amount", "")
         unit_id = reference_product.get("@unitId", "")
         unit_name = reference_product.get("unitName", "")
-        intermediate_exchange_id = reference_product.get("@intermediateExchangeId", "")  # Usare quello dal file JSON
-        activity_product_id = f"{activity_id}_{intermediate_exchange_id}"  # Creazione dell'activityId_productId
-
+        activity_product_id = f"{activity_id}_{uuid.uuid4()}"  # Genera un ID univoco per la combinazione attività-id prodotto
         check_and_insert_unit(cursor, unit_id, unit_name)
 
-        if intermediate_name and amount and unit_id and unit_name and intermediate_exchange_id:
+        if intermediate_name and amount and unit_id and unit_name:
+            intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
+
             cursor.execute(""" 
                 SELECT COUNT(*) FROM IntermediateExchange 
                 WHERE intermediateExchangeId = %s;
@@ -135,29 +135,30 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                         activityId_productId, unitId)
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
-                      str(activity_product_id), str(unit_id)))
+                      str(activity_product_id), str(unit_id)))  # ReferenceProduct non è più nella tabella IntermediateExchange
                 print(f"ReferenceProduct {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
 
-            # Associare alla tabella di collegamento con referenceProduct = TRUE
+                 # Aggiungi nella tabella di associazione (anche se esiste già)
             cursor.execute("""
                 INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
                 VALUES (%s, %s, %s)
                 ON CONFLICT (activityId, intermediateExchangeId) DO NOTHING;
-            """, (str(activity_id), str(intermediate_exchange_id), True))
+            """, (str(activity_id), str(intermediate_exchange_id), True))  # ReferenceProduct = TRUE
             print(f"ReferenceProduct associato all'attività {activity_id}.")
     
-    # Inserire gli altri intermediateExchange
+    # Aggiungi gli altri intermediateExchange
     for exchange in intermediate_exchanges:
         intermediate_name = exchange.get("name", "")
         amount = exchange.get("@amount", "")
         unit_id = exchange.get("@unitId", "")
         unit_name = exchange.get("unitName", "")
-        intermediate_exchange_id = exchange.get("@intermediateExchangeId", "")  # Prendere l'ID dal file JSON
         activity_product_id = exchange.get("activityId_productId", "")
-
-        if intermediate_name and amount and unit_id and unit_name and intermediate_exchange_id:
+        
+        if intermediate_name and amount and unit_id and unit_name and activity_product_id:
             check_and_insert_unit(cursor, unit_id, unit_name)
+            
+            intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
             
             cursor.execute(""" 
                 SELECT COUNT(*) FROM IntermediateExchange 
@@ -172,11 +173,11 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                         activityId_productId, unitId)
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
-                      str(activity_product_id), str(unit_id)))
+                      str(activity_product_id), str(unit_id)))  # ReferenceProduct non è più nella tabella IntermediateExchange
                 print(f"IntermediateExchangeId {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
 
-                # Aggiungere nella tabella di associazione
+                # Aggiungi nella tabella di associazione
                 cursor.execute("""
                     INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
                     VALUES (%s, %s, %s);
