@@ -116,8 +116,9 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
         amount = reference_product.get("@amount", "")
         unit_id = reference_product.get("@unitId", "")
         unit_name = reference_product.get("unitName", "")
-        intermediate_exchange_id = reference_product.get("@intermediateExchangeId", "")  # Usare quello dal file JSON
-        activity_product_id = f"{activity_id}_{intermediate_exchange_id}"  # Creazione dell'activityId_productId
+        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
+        intermediate_exchange = reference_product.get("@intermediateExchangeId", "")  # Usare quello dal file JSON
+        activity_product_id = f"{activity_id}_{intermediate_exchange}"  # Creazione dell'activityId_productId
 
         check_and_insert_unit(cursor, unit_id, unit_name)
 
@@ -153,7 +154,7 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
         amount = exchange.get("@amount", "")
         unit_id = exchange.get("@unitId", "")
         unit_name = exchange.get("unitName", "")
-        intermediate_exchange_id = exchange.get("@intermediateExchangeId", "")  # Prendere l'ID dal file JSON
+        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
         activity_product_id = exchange.get("activityId_productId", "")
 
         if intermediate_name and amount and unit_id and unit_name and intermediate_exchange_id:
