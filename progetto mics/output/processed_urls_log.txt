@@ -1,2 +1,0 @@
-Log di URL processati:
-https://ecoquery.ecoinvent.org/3.10/cutoff/dataset/25365/documentation

@@ -341,87 +341,67 @@ def populate_impact_indicator_table(cursor, json_data):
         else:
             print("Dati incompleti per l'inserimento in ImpactIndicator.")   
     return impact_indicator_ids
-import os
 
-# Connessione al database
 def load_data_to_database_from_directory(directory_path, log_file_path):
+    """
+    Carica i dati da file JSON nel database PostgreSQL.
+    """
     try:
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
         print("Connessione al database riuscita.")
-        
-        # Apri il file di log per la scrittura
+
+        # Apri il file di log in modalità append
         with open(log_file_path, 'a') as log_file:
-            # Iterare attraverso tutti i file nella cartella
-            for filename in os.listdir(directory_path):
+            # Itera sui file JSON nella cartella
+            for filename in sorted(os.listdir(directory_path)):  # Ordina i file alfabeticamente
                 if filename.endswith(".json"):  # Considera solo i file JSON
                     json_file_path = os.path.join(directory_path, filename)
                     
                     # Leggere i dati dal file JSON
-                    with open(json_file_path, 'r') as file:
+                    with open(json_file_path, 'r', encoding='utf-8') as file:
                         json_data = json.load(file)
 
-                    # Verifica che json_data sia un dizionario (per la singola attività)
+                    # Verifica che json_data sia un dizionario
                     if isinstance(json_data, dict):
-                        #print(f"Elaborazione del file: {filename}")
-                        
-                        # Popolare la tabella ISICSection con i dati del file JSON
+                        print(f"Elaborazione del file: {filename}")
+
+                        # Popolare le tabelle del database
                         populate_isic_section_table(cursor, json_data)
-                        
-                        # Popolare la tabella Activity e ottenere l'ID
                         activity_id = populate_activity_table(cursor, json_data)
-                        
-                        # Popolare la tabella ElementaryExchange e ottenere gli ID degli scambi
                         elementary_exchange_ids = populate_elementary_exchange_table(cursor, json_data)
-                        
-                        # Inserire nella tabella di associazione Activity_ElementaryExchange
                         insert_elementary_exchange_to_activity_association(cursor, activity_id, elementary_exchange_ids)
-
-                        # Popolare la tabella IntermediateExchange e ottenere gli ID degli scambi intermedi
                         intermediate_exchange_ids = populate_intermediate_exchange_table(cursor, json_data, activity_id)
-                        
-                        # Inserire nella tabella di associazione Activity_IntermediateExchange
                         insert_intermediate_exchange_to_activity_association(cursor, activity_id, intermediate_exchange_ids)
-
-                        # Popolare la tabella ImpactIndicator e ottenere gli ID degli indicatori di impatto
                         impact_indicator_ids = populate_impact_indicator_table(cursor, json_data)
-                        
-                        # Inserire nella tabella di associazione Activity_ImpactIndicator
                         insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids)
 
                         # Conferma delle modifiche
                         conn.commit()
-                        #print(f"Dati del file {filename} caricati con successo!")
-                        
-                        # Scrivere il nome del file nel file di log
+
+                        # Scrivi il file di log
                         log_file.write(f"{filename} caricato con successo.\n")
+
                     else:
-                        print(f"Errore: Il file {filename} non è un oggetto JSON come previsto. Verifica il formato del file.")
+                        print(f"Errore: Il file {filename} non è un oggetto JSON valido.")
 
     except (Exception, psycopg2.Error) as error:
         print("Errore durante il caricamento dei dati:", error)
 
     finally:
-        # Chiudere la connessione al database
         if cursor:
             cursor.close()
         if conn:
             conn.close()
         print("Connessione al database chiusa.")
 
-# Definisci il percorso della cartella che contiene i file JSON
-directory_path = "progetto mics/output"
-# Ottieni la lista dei file nella cartella e ordina alfabeticamente
-file_list = sorted(os.listdir(directory_path))
+# Percorsi
+directory_path = os.path.abspath("progetto mics/output")
+log_file_path = os.path.abspath("progetto mics/caricamento_log.txt")
 
-# Itera sui file ordinati
-for file_name in file_list:
-    file_path = os.path.join(directory_path, file_name)
-    if os.path.isfile(file_path):  # Verifica se è un file
-        print(f"Processing file: {file_name}")
-        
-# Definisci il percorso del file di log dove salvare i file correttamente inseriti
-log_file_path = "progetto mics/caricamento_log.txt"
-
-# Esegui la funzione per caricare i dati da tutti i file JSON nella cartella
-load_data_to_database_from_directory(directory_path, log_file_path)
+# Controlla se la directory esiste
+if not os.path.isdir(directory_path):
+    print(f"Errore: la directory '{directory_path}' non esiste.")
+else:
+    print(f"Avvio del caricamento dei file dalla directory: {directory_path}")
+    load_data_to_database_from_directory(directory_path, log_file_path)
