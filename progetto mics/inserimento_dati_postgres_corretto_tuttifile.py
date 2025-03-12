@@ -2,6 +2,7 @@ import psycopg2
 import json
 import hashlib
 import uuid
+import os
 
 # Configurazione della connessione al database PostgreSQL
 DB_CONFIG = {
@@ -11,9 +12,6 @@ DB_CONFIG = {
     "host": "localhost",
     "port": "5432"
 }
-
-# Percorso del file JSON
-JSON_FILE_PATH = "progetto mics/output/output_25363.json"
 
 # Funzione per generare un elementaryExchangeId univoco
 def generate_elementary_exchange_id(name, amount):
@@ -44,7 +42,7 @@ def check_and_insert_unit(cursor, unit_id, unit_name):
         cursor.execute("""
             INSERT INTO Unit (unitId, unitName) VALUES (%s, %s)
         """, (str(unit_id), unit_name))
-        print(f"UnitId {unit_id} e UnitName {unit_name} inseriti nella tabella Unit.")
+        #print(f"UnitId {unit_id} e UnitName {unit_name} inseriti nella tabella Unit.")
     else:
         print(f"UnitId {unit_id} già esistente nella tabella Unit.")
 
@@ -60,7 +58,7 @@ def check_and_insert_subcompartment(cursor, subcompartment_id, subcompartment, c
             INSERT INTO Subcompartment (subcompartmentId, subcompartment, compartment) 
             VALUES (%s, %s, %s)
         """, (str(subcompartment_id), subcompartment, compartment))
-        print(f"SubcompartmentId {subcompartment_id} inserito nella tabella Subcompartment.")
+        #print(f"SubcompartmentId {subcompartment_id} inserito nella tabella Subcompartment.")
     else:
         print(f"SubcompartmentId {subcompartment_id} già esistente nella tabella Subcompartment.")
 
@@ -95,10 +93,10 @@ def populate_elementary_exchange_table(cursor, activity_data):
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(elementary_exchange_id), elementary_name, amount, False, 
                       str(subcompartment_id), str(unit_id)))
-                print(f"ElementaryExchangeId {elementary_exchange_id} inserito con successo.")
+                #print(f"ElementaryExchangeId {elementary_exchange_id} inserito con successo.")
                 elementary_exchange_ids.append(str(elementary_exchange_id))
             else:
-                print(f"Elemento con name: {elementary_name} e amount: {amount} già esistente.")
+                #print(f"Elemento con name: {elementary_name} e amount: {amount} già esistente.")
                 elementary_exchange_ids.append(str(elementary_exchange_id))
         else:
             print("Dati incompleti per l'inserimento in ElementaryExchange.")
@@ -137,7 +135,7 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
                       str(activity_product_id), str(unit_id)))
-                print(f"ReferenceProduct {intermediate_exchange_id} inserito con successo.")
+                #print(f"ReferenceProduct {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
 
             # Associare alla tabella di collegamento con referenceProduct = TRUE
@@ -146,7 +144,7 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                 VALUES (%s, %s, %s)
                 ON CONFLICT (activityId, intermediateExchangeId) DO NOTHING;
             """, (str(activity_id), str(intermediate_exchange_id), True))
-            print(f"ReferenceProduct associato all'attività {activity_id}.")
+            #print(f"ReferenceProduct associato all'attività {activity_id}.")
     
     # Inserire gli altri intermediateExchange
     for exchange in intermediate_exchanges:
@@ -174,7 +172,7 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                     VALUES (%s, %s, %s, %s, %s, %s)
                 """, (str(intermediate_exchange_id), intermediate_name, amount, False, 
                       str(activity_product_id), str(unit_id)))
-                print(f"IntermediateExchangeId {intermediate_exchange_id} inserito con successo.")
+                #print(f"IntermediateExchangeId {intermediate_exchange_id} inserito con successo.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
 
                 # Aggiungere nella tabella di associazione
@@ -182,9 +180,9 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
                     INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
                     VALUES (%s, %s, %s);
                 """, (str(activity_id), str(intermediate_exchange_id), False))  # ReferenceProduct = FALSE
-                print(f"IntermediateExchange associato all'attività {activity_id}.")
+                #print(f"IntermediateExchange associato all'attività {activity_id}.")
             else:
-                print(f"Elemento con name: {intermediate_name} e amount: {amount} già esistente.")
+                #print(f"Elemento con name: {intermediate_name} e amount: {amount} già esistente.")
                 intermediate_exchange_ids.append(str(intermediate_exchange_id))
         else:
             print("Dati incompleti per l'inserimento in IntermediateExchange.")
@@ -209,7 +207,7 @@ def insert_elementary_exchange_to_activity_association(cursor, activity_id, elem
                     INSERT INTO Activity_ElementaryExchange (activityId, elementaryExchangeId)
                     VALUES (%s, %s);
                 """, (str(activity_id), str(elementary_exchange_id)))
-                print(f"Associato elementaryExchangeId {elementary_exchange_id} all'attività {activity_id}.")
+                #print(f"Associato elementaryExchangeId {elementary_exchange_id} all'attività {activity_id}.")
             else:
                 print(f"L'associazione tra ActivityId {activity_id} e ElementaryExchangeId {elementary_exchange_id} esiste già.")
 
@@ -231,7 +229,7 @@ def insert_intermediate_exchange_to_activity_association(cursor, activity_id, in
                     INSERT INTO Activity_IntermediateExchange (activityId, intermediateExchangeId, referenceProduct)
                     VALUES (%s, %s, %s);
                 """, (str(activity_id), str(intermediate_exchange_id), False))  # ReferenceProduct = FALSE
-                print(f"Associato intermediateExchangeId {intermediate_exchange_id} all'attività {activity_id}.")
+                #print(f"Associato intermediateExchangeId {intermediate_exchange_id} all'attività {activity_id}.")
             else:
                 print(f"L'associazione tra ActivityId {activity_id} e IntermediateExchangeId {intermediate_exchange_id} esiste già.")
 
@@ -277,7 +275,7 @@ def populate_activity_table(cursor, activity_data):
         ON CONFLICT (id) DO NOTHING;
     """, (id_, activity_name, included_start, included_end, geography, special_activity_type, general_comment, modified_activity, isic_section, system_model))
 
-    print(f"Attività con ID {id_} inserita con successo.")
+    #print(f"Attività con ID {id_} inserita con successo.")
     return id_
 
 
@@ -335,7 +333,7 @@ def populate_impact_indicator_table(cursor, json_data):
                     str(impact_indicator_id), impact_name, amount,
                     impact_method_name, impact_category_name, unit_name
                 ))
-                print(f"ImpactIndicatorId {impact_indicator_id} inserito con successo.")
+                #print(f"ImpactIndicatorId {impact_indicator_id} inserito con successo.")
             else:
                 print(f"ImpactIndicatorId {impact_indicator_id} già esistente nella tabella ImpactIndicator.")
             
@@ -343,57 +341,78 @@ def populate_impact_indicator_table(cursor, json_data):
         else:
             print("Dati incompleti per l'inserimento in ImpactIndicator.")   
     return impact_indicator_ids
+import os
 
 # Connessione al database
-try:
-    conn = psycopg2.connect(**DB_CONFIG)
-    cursor = conn.cursor()
-    print("Connessione al database riuscita.")
-
-    # Leggere i dati dal file JSON
-    with open(JSON_FILE_PATH, 'r') as file:
-        json_data = json.load(file)
-
-    # Verifica che json_data sia un dizionario (per la singola attività)
-    if isinstance(json_data, dict):
-        # Popolare la tabella ISICSection con i dati del file JSON
-        populate_isic_section_table(cursor, json_data)
+def load_data_to_database_from_directory(directory_path, log_file_path):
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        print("Connessione al database riuscita.")
         
-        # Popolare la tabella Activity e ottenere l'ID
-        activity_id = populate_activity_table(cursor, json_data)
-        
-        # Popolare la tabella ElementaryExchange e ottenere gli ID degli scambi
-        elementary_exchange_ids = populate_elementary_exchange_table(cursor, json_data)
-        
-        # Inserire nella tabella di associazione Activity_ElementaryExchange
-        insert_elementary_exchange_to_activity_association(cursor, activity_id, elementary_exchange_ids)
+        # Apri il file di log per la scrittura
+        with open(log_file_path, 'a') as log_file:
+            # Iterare attraverso tutti i file nella cartella
+            for filename in os.listdir(directory_path):
+                if filename.endswith(".json"):  # Considera solo i file JSON
+                    json_file_path = os.path.join(directory_path, filename)
+                    
+                    # Leggere i dati dal file JSON
+                    with open(json_file_path, 'r') as file:
+                        json_data = json.load(file)
 
-        # Popolare la tabella IntermediateExchange e ottenere gli ID degli scambi intermedi
-        intermediate_exchange_ids = populate_intermediate_exchange_table(cursor, json_data, activity_id)
-        
-        # Inserire nella tabella di associazione Activity_IntermediateExchange
-        insert_intermediate_exchange_to_activity_association(cursor, activity_id, intermediate_exchange_ids)
+                    # Verifica che json_data sia un dizionario (per la singola attività)
+                    if isinstance(json_data, dict):
+                        #print(f"Elaborazione del file: {filename}")
+                        
+                        # Popolare la tabella ISICSection con i dati del file JSON
+                        populate_isic_section_table(cursor, json_data)
+                        
+                        # Popolare la tabella Activity e ottenere l'ID
+                        activity_id = populate_activity_table(cursor, json_data)
+                        
+                        # Popolare la tabella ElementaryExchange e ottenere gli ID degli scambi
+                        elementary_exchange_ids = populate_elementary_exchange_table(cursor, json_data)
+                        
+                        # Inserire nella tabella di associazione Activity_ElementaryExchange
+                        insert_elementary_exchange_to_activity_association(cursor, activity_id, elementary_exchange_ids)
 
-        # Popolare la tabella ImpactIndicator e ottenere gli ID degli indicatori di impatto
-        impact_indicator_ids = populate_impact_indicator_table(cursor, json_data)
-        
-        # Inserire nella tabella di associazione Activity_ImpactIndicator
-        insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids)
+                        # Popolare la tabella IntermediateExchange e ottenere gli ID degli scambi intermedi
+                        intermediate_exchange_ids = populate_intermediate_exchange_table(cursor, json_data, activity_id)
+                        
+                        # Inserire nella tabella di associazione Activity_IntermediateExchange
+                        insert_intermediate_exchange_to_activity_association(cursor, activity_id, intermediate_exchange_ids)
 
-        # Conferma delle modifiche
-        conn.commit()
-        print("Dati caricati con successo!")
+                        # Popolare la tabella ImpactIndicator e ottenere gli ID degli indicatori di impatto
+                        impact_indicator_ids = populate_impact_indicator_table(cursor, json_data)
+                        
+                        # Inserire nella tabella di associazione Activity_ImpactIndicator
+                        insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids)
 
-    else:
-        print("Errore: Il file JSON non è un oggetto JSON come previsto. Verifica il formato del file.")
+                        # Conferma delle modifiche
+                        conn.commit()
+                        #print(f"Dati del file {filename} caricati con successo!")
+                        
+                        # Scrivere il nome del file nel file di log
+                        log_file.write(f"{filename} caricato con successo.\n")
+                    else:
+                        print(f"Errore: Il file {filename} non è un oggetto JSON come previsto. Verifica il formato del file.")
 
-except (Exception, psycopg2.Error) as error:
-    print("Errore durante il caricamento dei dati:", error)
+    except (Exception, psycopg2.Error) as error:
+        print("Errore durante il caricamento dei dati:", error)
 
-finally:
-    # Chiudere la connessione al database
-    if cursor:
-        cursor.close()
-    if conn:
-        conn.close()
-    print("Connessione al database chiusa.")
+    finally:
+        # Chiudere la connessione al database
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+        print("Connessione al database chiusa.")
+
+# Definisci il percorso della cartella che contiene i file JSON
+directory_path = "progetto mics/output"
+# Definisci il percorso del file di log dove salvare i file correttamente inseriti
+log_file_path = "progetto mics/caricamento_log.txt"
+
+# Esegui la funzione per caricare i dati da tutti i file JSON nella cartella
+load_data_to_database_from_directory(directory_path, log_file_path)
