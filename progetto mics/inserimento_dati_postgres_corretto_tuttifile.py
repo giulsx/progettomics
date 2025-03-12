@@ -411,6 +411,15 @@ def load_data_to_database_from_directory(directory_path, log_file_path):
 
 # Definisci il percorso della cartella che contiene i file JSON
 directory_path = "progetto mics/output"
+# Ottieni la lista dei file nella cartella e ordina alfabeticamente
+file_list = sorted(os.listdir(directory_path))
+
+# Itera sui file ordinati
+for file_name in file_list:
+    file_path = os.path.join(directory_path, file_name)
+    if os.path.isfile(file_path):  # Verifica se è un file
+        print(f"Processing file: {file_name}")
+        
 # Definisci il percorso del file di log dove salvare i file correttamente inseriti
 log_file_path = "progetto mics/caricamento_log.txt"
 
