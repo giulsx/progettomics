@@ -253,7 +253,7 @@ def populate_activity_table(cursor, activity_data):
     included_end = activity_data.get("includedActivitiesEnd", "")
     geography = activity_data.get("geography", "")
     special_activity_type = activity_data.get("specialActivityType", "")
-    general_comment = " ".join(activity_data.get("generalComment", []))
+    general_comment = " ".join(activity_data.get("generalComment", []) or [])
     modified_activity = False
     isic_section = activity_data.get("ISICSection", "")
     system_model = activity_data.get("systemModel", "")
@@ -396,7 +396,7 @@ def load_data_to_database_from_directory(directory_path, log_file_path):
         print("Connessione al database chiusa.")
 
 # Percorsi
-directory_path = os.path.abspath("progetto mics/output")
+directory_path = os.path.abspath("progetto mics/output copy")
 log_file_path = os.path.abspath("progetto mics/caricamento_log.txt")
 
 # Controlla se la directory esiste
