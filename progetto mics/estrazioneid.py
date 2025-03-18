@@ -2,8 +2,8 @@ import os
 import json
 
 # Percorso della cartella contenente i file JSON
-cartella = "output"  # Cambia con il percorso corretto
-output_file = "id_list.txt"
+cartella = "progetto mics/output copy"  # Cambia con il percorso corretto
+output_file = "progetto mics/id_list.txt"
 
 id_list = []
 
