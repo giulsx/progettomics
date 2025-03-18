@@ -252,12 +252,21 @@ def populate_isic_section_table(cursor, activity_data):
         ON CONFLICT (ISICSection) DO NOTHING;
     """, (isic_section, isic_classification, sector))
 
-# Funzione per popolare la tabella Activity
-def populate_activity_table(cursor, activity_data):
-    
+# Funzione per scrivere gli activityId nel file
+def write_activity_id_to_file(activity_id, file_path="activity_ids.txt"):
+    with open(file_path, "a") as file:
+        file.write(f"{activity_id}\n")
+    print(f"ActivityId {activity_id} scritto nel file {file_path}.")
+
+# Modifica la funzione per popolare la tabella Activity
+def populate_activity_table(cursor, activity_data, file_path="activity_ids.txt"):
     reference_product_name = activity_data.get("referenceProduct", {}).get("name", "")
     activity_name = activity_data.get("activityName", "")
-    id_ = str(generate_activity_id(activity_name, reference_product_name))
+    activity_id = str(generate_activity_id(activity_name, reference_product_name))  # ID generato
+    
+    # Scrivi l'ID nel file
+    write_activity_id_to_file(activity_id, file_path)
+    
     included_start = activity_data.get("includedActivitiesStart", "")
     included_end = activity_data.get("includedActivitiesEnd", "")
     geography = activity_data.get("geography", "")
@@ -282,11 +291,10 @@ def populate_activity_table(cursor, activity_data):
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (id) DO NOTHING;
-    """, (id_, activity_name, included_start, included_end, geography, special_activity_type, general_comment, modified_activity, isic_section, system_model))
+    """, (activity_id, activity_name, included_start, included_end, geography, special_activity_type, general_comment, modified_activity, isic_section, system_model))
 
-    #print(f"Attività con ID {id_} inserita con successo.")
-    return id_
-
+    print(f"Attività con ID {activity_id} inserita con successo.")
+    return activity_id
 
 # Funzione per inserire gli impactIndicatorId nella tabella di associazione Activity_ImpactIndicator
 def insert_impact_indicator_to_activity_association(cursor, activity_id, impact_indicator_ids):
