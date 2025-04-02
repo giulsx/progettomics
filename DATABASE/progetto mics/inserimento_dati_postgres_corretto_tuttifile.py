@@ -20,8 +20,14 @@ def generate_elementary_exchange_id(name, amount):
     return uuid.UUID(hash_digest[:32])
 
 # Funzione per generare un intermediateExchangeId univoco
-def generate_intermediate_exchange_id(name, amount):
-    hash_input = f"{name}-{amount}".encode('utf-8')
+def generate_intermediate_exchange_id(name, amount, activityid_productid):
+    hash_input = f"{name}-{amount}--{activityid_productid}".encode('utf-8')
+    hash_digest = hashlib.sha256(hash_input).hexdigest()
+    return uuid.UUID(hash_digest[:32])
+
+# Funzione per generare un activityId univoco
+def generate_activity_id(name, referenceproduct):
+    hash_input = f"{name}-{referenceproduct}".encode('utf-8')
     hash_digest = hashlib.sha256(hash_input).hexdigest()
     return uuid.UUID(hash_digest[:32])
 
@@ -114,10 +120,9 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
         amount = reference_product.get("@amount", "")
         unit_id = reference_product.get("@unitId", "")
         unit_name = reference_product.get("unitName", "")
-        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
         intermediate_exchange = reference_product.get("@intermediateExchangeId", "")  # Usare quello dal file JSON
         activity_product_id = f"{activity_id}_{intermediate_exchange}"  # Creazione dell'activityId_productId
-
+        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount, activity_product_id)
         check_and_insert_unit(cursor, unit_id, unit_name)
 
         if intermediate_name and amount and unit_id and unit_name and intermediate_exchange_id:
@@ -152,8 +157,8 @@ def populate_intermediate_exchange_table(cursor, activity_data, activity_id):
         amount = exchange.get("@amount", "")
         unit_id = exchange.get("@unitId", "")
         unit_name = exchange.get("unitName", "")
-        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount)
         activity_product_id = exchange.get("activityId_productId", "")
+        intermediate_exchange_id = generate_intermediate_exchange_id(intermediate_name, amount, activity_product_id)
 
         if intermediate_name and amount and unit_id and unit_name and intermediate_exchange_id:
             check_and_insert_unit(cursor, unit_id, unit_name)
@@ -396,7 +401,7 @@ def load_data_to_database_from_directory(directory_path, log_file_path):
         print("Connessione al database chiusa.")
 
 # Percorsi
-directory_path = os.path.abspath("progetto mics/output copy")
+directory_path = os.path.abspath("progetto mics/output")
 log_file_path = os.path.abspath("progetto mics/caricamento_log.txt")
 
 # Controlla se la directory esiste

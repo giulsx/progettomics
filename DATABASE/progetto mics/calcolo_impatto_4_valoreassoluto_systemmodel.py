@@ -10,7 +10,7 @@ DB_CONFIG = {
 }
 
 # Parametri di input
-activity_id = "9d05ca75-e018-5a21-8812-e02bd8a74da2"
+activity_id = "00027245-d6be-527e-82d0-fcee42d50a9f"
 impact_name = "global warming potential (GWP100)"
 impact_category_name = "climate change"
 impact_method_name = "EF v3.0"

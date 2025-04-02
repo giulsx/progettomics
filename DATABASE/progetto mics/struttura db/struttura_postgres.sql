@@ -35,7 +35,6 @@ CREATE TABLE IntermediateExchange (
     amount DECIMAL,
     modifiedIntermediate BOOLEAN NOT NULL,
     activityId_productId TEXT NOT NULL,
-    referenceProduct BOOLEAN NOT NULL,
     unitId UUID NOT NULL,
     FOREIGN KEY (unitId) REFERENCES Unit(unitId),
     UNIQUE (activityId_productId) 
@@ -85,6 +84,7 @@ CREATE TABLE CFs (
     impactCategoryName TEXT NOT NULL,
     impactName TEXT NOT NULL,
     CF DECIMAL,
+    unitName TEXT NOT NULL,
     PRIMARY KEY (elementaryName, impactMethodName, impactCategoryName, impactName)
     FOREIGN KEY (elementaryName) REFERENCES ElementaryExchange(elementaryName)
 );
@@ -96,6 +96,7 @@ CREATE TABLE UnitaryImpact (
     impactCategoryName TEXT NOT NULL,
     impactName TEXT NOT NULL,
     value DECIMAL,
+    unitName TEXT NOT NULL,
     PRIMARY KEY (activityId_productId, impactMethodName, impactCategoryName, impactName)
     FOREIGN KEY (activityId_productId) REFERENCES IntermediateExchange(activityId_productId)
 );
@@ -113,6 +114,7 @@ CREATE TABLE Activity_ElementaryExchange (
 CREATE TABLE Activity_IntermediateExchange (
     activityId UUID,
     intermediateExchangeId UUID,
+    referenceProduct BOOLEAN NOT NULL,
     PRIMARY KEY (activityId, intermediateExchangeId),
     FOREIGN KEY (activityId) REFERENCES Activity(id) ON DELETE CASCADE,
     FOREIGN KEY (intermediateExchangeId) REFERENCES IntermediateExchange(intermediateExchangeId) ON DELETE CASCADE

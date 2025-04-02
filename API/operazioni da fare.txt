@@ -1,0 +1,11 @@
+Creazione dell'ambiente virtuale:
+python3 -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate      # Windows
+
+Installazione delle librerie necessarie:
+pip install flask flask_sqlalchemy psycopg2 flask_marshmallow marshmallow-sqlalchemy
+
+Avvio del server Flask:
+python app.py
+

@@ -11,8 +11,8 @@ my_settings = Settings(username="precon13329", password="Dtm_2024")
 
 # Set VERSIONE
 ep = EcoinventProcess(my_settings)
-ep.set_release(version="3.10", system_model="apos")
-system_model = "apos"
+ep.set_release(version="3.10", system_model="cutoff")
+system_model = "cutoff"
 
 # Leggi la lista di URL dal file JSON
 with open('progetto mics/ecoquery_urls.json', 'r', encoding='utf-8') as file:
