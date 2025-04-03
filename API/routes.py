@@ -34,7 +34,7 @@ def get_product(product_id):
 @app_routes.route("/products", methods=["POST"])
 def create_product():
     data = request.json
-    new_product = Product(productId=data["productId"], productName=data["productName"])
+    new_product = Product(productId=data["productid"], productname=data["productname"])
     db.session.add(new_product)
     db.session.commit()
     return jsonify(product_schema.dump(new_product)), 201
@@ -45,7 +45,7 @@ def update_product(product_id):
     if product is None:
         return jsonify({"error": "Product not found"}), 404
     data = request.json
-    product.productName = data.get("productName", product.productName)
+    product.productname = data.get("productname", product.productname)
     db.session.commit()
     return jsonify(product_schema.dump(product))
 
@@ -79,15 +79,15 @@ def create_activity():
     data = request.json
     new_activity = Activity(
         id=data["id"],
-        activityName=data["activityName"],
-        includedActivitiesStart=data.get("includedActivitiesStart"),
-        includedActivitiesEnd=data.get("includedActivitiesEnd"),
+        activityname=data["activityname"],
+        includedactivitiesstart=data.get("includedactivitiesstart"),
+        includedactivitiesend=data.get("includedactivitiesend"),
         geography=data.get("geography"),
-        specialActivityType=data.get("specialActivityType"),
-        generalComment=data.get("generalComment"),
-        modifiedActivity=data["modifiedActivity"],
-        ISICSection=data.get("ISICSection"),
-        systemModel=data.get("systemModel")
+        specialactivitytype=data.get("specialactivitytype"),
+        generalcomment=data.get("generalcomment"),
+        modifiedactivity=data["modifiedactivity"],
+        isicsection=data.get("isicsection"),
+        systemmodel=data.get("systemmodel")
     )
     db.session.add(new_activity)
     db.session.commit()
@@ -99,7 +99,7 @@ def update_activity(activity_id):
     if activity is None:
         return jsonify({"error": "Activity not found"}), 404
     data = request.json
-    activity.activityName = data.get("activityName", activity.activityName)
+    activity.activityname = data.get("activityname", activity.activityname)
     activity.geography = data.get("geography", activity.geography)
     db.session.commit()
     return jsonify(activity_schema.dump(activity))
@@ -133,12 +133,12 @@ def get_impact_indicator(impact_indicator_id):
 def create_impact_indicator():
     data = request.json
     new_impact_indicator = ImpactIndicator(
-        impactIndicatorId=data["impactIndicatorId"],
-        impactName=data["impactName"],
+        impactindicatorid=data["impactindicatorid"],
+        impactname=data["impactname"],
         amount=data["amount"],
-        impactMethodName=data["impactMethodName"],
-        impactCategoryName=data["impactCategoryName"],
-        unitName=data["unitName"]
+        impactmethodname=data["impactmethodname"],
+        impactcategoryname=data["impactcategoryname"],
+        unitname=data["unitname"]
     )
     db.session.add(new_impact_indicator)
     db.session.commit()

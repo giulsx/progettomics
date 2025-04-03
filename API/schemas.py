@@ -1,103 +1,106 @@
+from flask_marshmallow import Marshmallow
 from marshmallow import Schema, fields
 from models import *
 
+ma = Marshmallow() 
+
 # Schema: Product
 class ProductSchema(Schema):
-    productId = fields.UUID()
-    productName = fields.Str()
+    productid = fields.UUID()
+    productname = fields.Str()
 
 # Schema: ISICSection
 class ISICSectionSchema(Schema):
-    ISICSection = fields.Str()
-    ISICClassification = fields.Str()
-    Sector = fields.Str()
+    isicsection = fields.Str()
+    isicclassification = fields.Str()
+    sector = fields.Str()
 
 # Schema: Unit
 class UnitSchema(Schema):
-    unitId = fields.UUID()
-    unitName = fields.Str()
+    unitid = fields.UUID()
+    unitname = fields.Str()
 
 # Schema: Subcompartment
 class SubcompartmentSchema(Schema):
-    subcompartmentId = fields.UUID()
+    subcompartmentid = fields.UUID()
     subcompartment = fields.Str()
     compartment = fields.Str()
 
 # Schema: IntermediateExchange
 class IntermediateExchangeSchema(Schema):
-    intermediateExchangeId = fields.UUID()
-    intermediateName = fields.Str()
+    intermediateexchangeid = fields.UUID()
+    intermediatename = fields.Str()
     amount = fields.Decimal()
-    modifiedIntermediate = fields.Bool()
-    activityId_productId = fields.Str()
-    unitId = fields.UUID()
+    modifiedintermediate = fields.Bool()
+    activityid_productid = fields.Str()
+    unitid = fields.UUID()
 
 # Schema: ElementaryExchange
 class ElementaryExchangeSchema(Schema):
-    elementaryExchangeId = fields.UUID()
-    elementaryName = fields.Str()
+    elementaryexchangeid = fields.UUID()
+    elementaryname = fields.Str()
     amount = fields.Decimal()
-    modifiedElementary = fields.Bool()
-    subcompartmentId = fields.UUID()
-    unitId = fields.UUID()
+    modifiedelementary = fields.Bool()
+    subcompartmentid = fields.UUID()
+    unitid = fields.UUID()
 
 # Schema: ImpactIndicator
 class ImpactIndicatorSchema(Schema):
-    impactIndicatorId = fields.UUID()
-    impactName = fields.Str()
+    impactindicatorid = fields.UUID()
+    impactname = fields.Str()
     amount = fields.Decimal()
-    impactMethodName = fields.Str()
-    impactCategoryName = fields.Str()
-    unitName = fields.Str()
+    impactmethodname = fields.Str()
+    impactcategoryname = fields.Str()
+    unitname = fields.Str()
 
 # Schema: Activity
 class ActivitySchema(Schema):
     id = fields.UUID()
-    activityName = fields.Str()
-    includedActivitiesStart = fields.Str()
-    includedActivitiesEnd = fields.Str()
+    activityname = fields.Str()
+    includedactivitiesstart = fields.Str()
+    includedactivitiesend = fields.Str()
     geography = fields.Str()
-    specialActivityType = fields.Str()
-    generalComment = fields.Str()
-    modifiedActivity = fields.Bool()
-    ISICSection = fields.Str()
-    systemModel = fields.Str()
+    specialactivitytype = fields.Str()
+    generalcomment = fields.Str()
+    modifiedactivity = fields.Bool()
+    isicsection = fields.Str()
+    systemmodel = fields.Str()
 
 # Schema: CFs (Characterization Factors)
 class CFsSchema(Schema):
-    elementaryName = fields.Str()
-    impactMethodName = fields.Str()
-    impactCategoryName = fields.Str()
-    impactName = fields.Str()
-    CF = fields.Decimal()
-    unitName = fields.Str()
+    elementaryname = fields.Str()
+    impactmethodname = fields.Str()
+    impactcategoryname = fields.Str()
+    impactname = fields.Str()
+    cf = fields.Decimal()
+    unit = fields.Str()
 
 # Schema: UnitaryImpact
 class UnitaryImpactSchema(Schema):
-    activityId_productId = fields.Str()
-    impactMethodName = fields.Str()
-    impactCategoryName = fields.Str()
-    impactName = fields.Str()
+    activityid_productid = fields.Str()
+    impactmethodname = fields.Str()
+    impactcategoryname = fields.Str()
+    impactname = fields.Str()
     value = fields.Decimal()
-    unitName = fields.Str()
+    unit = fields.Str()
 
 # Schema: Activity_ElementaryExchange
 class ActivityElementaryExchangeSchema(Schema):
-    activityId = fields.UUID()
-    elementaryExchangeId = fields.UUID()
+    activityid = fields.UUID()
+    elementaryexchangeid = fields.UUID()
 
 # Schema: Activity_IntermediateExchange
 class ActivityIntermediateExchangeSchema(Schema):
-    activityId = fields.UUID()
-    intermediateExchangeId = fields.UUID()
-    referenceProduct = fields.Bool()
+    activityid = fields.UUID()
+    intermediateexchangeid = fields.UUID()
+    referenceproduct = fields.Bool()
 
 # Schema: Activity_ImpactIndicator
 class ActivityImpactIndicatorSchema(Schema):
-    activityId = fields.UUID()
-    impactIndicatorId = fields.UUID()
+    activityid = fields.UUID()
+    impactindicatorid = fields.UUID()
 
 # Schema: Product_Activity
 class ProductActivitySchema(Schema):
-    productId = fields.UUID()
-    activityId = fields.UUID()
+    productid = fields.UUID()
+    activityid = fields.UUID()
