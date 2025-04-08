@@ -15,6 +15,13 @@ CREATE TABLE ISICSection (
     Sector TEXT
 );
 
+-- Tabella: Utente
+CREATE TABLE Utente (
+    userId UUID PRIMARY KEY,
+    userName TEXT UNIQUE,
+    role TEXT
+);
+
 -- Tabella: Unit 
 CREATE TABLE Unit (
     unitId UUID PRIMARY KEY,
@@ -133,7 +140,26 @@ CREATE TABLE Activity_ImpactIndicator (
 CREATE TABLE Product_Activity (
     productId UUID NOT NULL,
     activityId UUID NOT NULL,
+    amount DECIMAL,
     PRIMARY KEY (productId, activityId),
     FOREIGN KEY (productId) REFERENCES Product(productId) ON DELETE CASCADE,
     FOREIGN KEY (activityId) REFERENCES Activity(id) ON DELETE CASCADE
+);
+
+-- Tabella di associazione tra User e Activity
+CREATE TABLE User_Activity (
+    userid UUID NOT NULL,
+    activityid UUID NOT NULL,
+    PRIMARY KEY (userid, activityid),
+    FOREIGN KEY (userid) REFERENCES utente(userid) ON DELETE CASCADE,
+    FOREIGN KEY (activityid) REFERENCES Activity(id) ON DELETE CASCADE
+);
+
+-- Tabella di associazione tra User e Product
+CREATE TABLE User_Product (
+    userid UUID NOT NULL,
+    productid UUID NOT NULL,
+    PRIMARY KEY (userid, productid),
+    FOREIGN KEY (userid) REFERENCES utente(userid) ON DELETE CASCADE,
+    FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
 );

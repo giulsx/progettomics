@@ -2,15 +2,15 @@ import psycopg2
 
 # Configurazione del database
 DB_CONFIG = {
-    "dbname": "ecoinvent",
+    "dbname": "progettomicsDB",
     "user": "postgres",
-    "password": "postgres",
+    "password": "Mircs.2025!",
     "host": "localhost",
     "port": "5432"
 }
 
 # Parametri di input
-activity_id = "00027245-d6be-527e-82d0-fcee42d50a9f"
+activity_id = "f27fe9aa-5929-1dcf-b577-588900417c45"
 impact_name = "global warming potential (GWP100)"
 impact_category_name = "climate change"
 impact_method_name = "EF v3.0"
@@ -85,7 +85,7 @@ def calculate_impact():
         cursor.execute("""
             SELECT intermediateExchangeId
             FROM Activity_IntermediateExchange
-            WHERE activityId = %s
+            WHERE activityId = %s AND referenceproduct = false
         """, (activity_id,))
         intermediate_exchange_ids = [str(row[0]) for row in cursor.fetchall()]
 
