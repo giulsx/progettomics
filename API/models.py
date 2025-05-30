@@ -6,6 +6,16 @@ class Product(db.Model):
     __tablename__ = "product"
     productid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     productname = db.Column(db.Text, nullable=False)
+    systemmodel = db.Column(db.Text)
+    intervallo = db.Column(db.Text)
+    totale_produzione = db.Column(db.Numeric)
+
+# Tabella: Utente
+class Utente(db.Model):
+    __tablename__ = "utente"
+    userid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    username = db.Column(db.Text)
+    role = db.Column(db.Text)
 
 # Tabella: ISICSection
 class ISICSection(db.Model):
@@ -117,3 +127,22 @@ class Product_Activity(db.Model):
     __tablename__ = "product_activity"
     productid = db.Column(db.UUID, db.ForeignKey("product.productid"), primary_key=True)
     activityid = db.Column(db.UUID, db.ForeignKey("activity.id"), primary_key=True)
+    amount = db.Column(db.Numeric)
+    fase_generale = db.Column(db.Text, primary_key=True)
+    fase_produttiva = db.Column(db.Text)
+    distanza_fornitore = db.Column(db.Numeric)
+    id_mezzo_activity = db.Column(db.UUID)
+
+
+# Tabella di associazione Utente - Prodotto
+class User_Product(db.Model):
+    __tablename__ = "user_product"
+    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
+    productid = db.Column(db.UUID, db.ForeignKey("product.productid"), primary_key=True)
+
+# Tabella di associazione Utente - Activity
+class User_Activity(db.Model):
+    __tablename__ = "user_activity"
+    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
+    activityid = db.Column(db.UUID, db.ForeignKey("activity.id"), primary_key=True)
+

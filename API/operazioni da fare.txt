@@ -8,4 +8,3 @@ pip install flask flask_sqlalchemy psycopg2 flask_marshmallow marshmallow-sqlalc
 
 Avvio del server Flask:
 python app.py
-

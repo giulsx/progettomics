@@ -2,7 +2,8 @@ from flask import Flask
 from config import DATABASE_URL
 from database import db
 from schemas import ma
-from routes import app_routes
+#from routes import app_routes
+from routes.product_routes import product_bp
 
 app = Flask(__name__)
 
@@ -15,7 +16,9 @@ db.init_app(app)
 ma.init_app(app)
 
 # Registrazione delle route
-app.register_blueprint(app_routes)
+#app.register_blueprint(app_routes)
+app.register_blueprint(product_bp)
+
 
 # Creazione delle tabelle al primo avvio
 with app.app_context():

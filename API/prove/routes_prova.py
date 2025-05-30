@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
-from models import db, Product, Activity, ImpactIndicator, Product, ISICSection, Unit, Subcompartment, IntermediateExchange, ElementaryExchange, ImpactIndicator, Activity, CFs, UnitaryImpact, Activity_ElementaryExchange, Activity_IntermediateExchange, Activity_ImpactIndicator, Product_Activity  
-from schemas import ProductSchema, ActivitySchema, ImpactIndicatorSchema, ProductSchema, ISICSectionSchema, UnitSchema, SubcompartmentSchema, IntermediateExchangeSchema, ElementaryExchangeSchema, ImpactIndicatorSchema, ActivitySchema, CFsSchema, UnitaryImpactSchema, ActivityElementaryExchangeSchema, ActivityIntermediateExchangeSchema, ActivityImpactIndicatorSchema, ProductActivitySchema
+import uuid
+import hashlib
+from models import db, Product, Activity, Utente, User_Activity, User_Product, ImpactIndicator, Product, ISICSection, Unit, Subcompartment, IntermediateExchange, ElementaryExchange, ImpactIndicator, Activity, CFs, UnitaryImpact, Activity_ElementaryExchange, Activity_IntermediateExchange, Activity_ImpactIndicator, Product_Activity  
+from schemas import UtenteSchema, UserActivitySchema, UserProductSchema, ProductSchema, ActivitySchema, ImpactIndicatorSchema, ProductSchema, ISICSectionSchema, UnitSchema, SubcompartmentSchema, IntermediateExchangeSchema, ElementaryExchangeSchema, ImpactIndicatorSchema, ActivitySchema, CFsSchema, UnitaryImpactSchema, ActivityElementaryExchangeSchema, ActivityIntermediateExchangeSchema, ActivityImpactIndicatorSchema, ProductActivitySchema
 
 
 app_routes = Blueprint("app_routes", __name__)

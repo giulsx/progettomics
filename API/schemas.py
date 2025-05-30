@@ -8,6 +8,15 @@ ma = Marshmallow()
 class ProductSchema(Schema):
     productid = fields.UUID()
     productname = fields.Str()
+    systemmodel = fields.Str()
+    intervallo = fields.Str()
+    totale_produzione = fields.Decimal()
+
+# Schema : Utente
+class UtenteSchema(Schema):
+    userid = fields.UUID()
+    username = fields.Str()
+    role = fields.Str()
 
 # Schema: ISICSection
 class ISICSectionSchema(Schema):
@@ -104,3 +113,21 @@ class ActivityImpactIndicatorSchema(Schema):
 class ProductActivitySchema(Schema):
     productid = fields.UUID()
     activityid = fields.UUID()
+    amount = fields.Decimal()
+    fase_generale = fields.Str()
+    fase_produttiva = fields.Str()
+    distanza_fornitore = fields.Decimal()
+    id_mezzo_activity = fields.UUID()
+
+# Schema: User_Product
+class UserProductSchema(Schema):
+    userid = fields.UUID()
+    productid = fields.UUID()
+    amount = fields.Decimal()
+    fase = fields.Str()
+
+# Schema: User_Activy
+class UserActivitySchema(Schema):
+    userid = fields.UUID()
+    activityid = fields.UUID()
+    

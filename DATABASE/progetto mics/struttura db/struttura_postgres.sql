@@ -151,7 +151,7 @@ CREATE TABLE User_Activity (
     userid UUID NOT NULL,
     activityid UUID NOT NULL,
     PRIMARY KEY (userid, activityid),
-    FOREIGN KEY (userid) REFERENCES utente(userid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES user(userid) ON DELETE CASCADE,
     FOREIGN KEY (activityid) REFERENCES Activity(id) ON DELETE CASCADE
 );
 
@@ -160,6 +160,6 @@ CREATE TABLE User_Product (
     userid UUID NOT NULL,
     productid UUID NOT NULL,
     PRIMARY KEY (userid, productid),
-    FOREIGN KEY (userid) REFERENCES utente(userid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES user(userid) ON DELETE CASCADE,
     FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
 );
