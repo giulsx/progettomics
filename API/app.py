@@ -2,10 +2,12 @@ from flask import Flask
 from config import DATABASE_URL
 from database import db
 from schemas import ma
-#from routes import app_routes
+from flask_cors import CORS 
+# from routes import app_routes
 from routes.product_routes import product_bp
 
 app = Flask(__name__)
+CORS(app)  
 
 # Configurazione del database
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
@@ -16,8 +18,12 @@ db.init_app(app)
 ma.init_app(app)
 
 # Registrazione delle route
-#app.register_blueprint(app_routes)
+# app.register_blueprint(app_routes)
 app.register_blueprint(product_bp)
+
+@app.route("/ping", methods=["GET"])
+def ping():
+    return {"message": "pong"}, 200
 
 
 # Creazione delle tabelle al primo avvio
