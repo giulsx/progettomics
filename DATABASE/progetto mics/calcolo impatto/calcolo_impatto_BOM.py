@@ -16,6 +16,35 @@ impact_name = "global warming potential (GWP100)"
 impact_category_name = "climate change"
 impact_method_name = "EF v3.0"
 
+impact_name = "global warming potential (GWP100)"
+impact_category_name = "climate change"
+impact_method_name = "CML v4.8 2016"
+
+impact_name = "acidification"
+impact_category_name = "acidification (incl. fate, average Europe total, A&B)"
+impact_method_name = "CML v4.8 2016"
+
+impact_name = "eutrophication (fate not incl.)"
+impact_category_name = "eutrophication"
+impact_method_name = "CML v4.8 2016"
+
+impact_name = "tropospheric ozone concentration increase no LT"
+impact_category_name = "photochemical oxidant formation: human health no LT"
+impact_method_name = "EF v3.0"
+
+impact_name = "abiotic depletion potential (ADP): elements (ultimate reserves)"
+impact_category_name = "material resources: metals/minerals"
+impact_method_name = "CML v4.8 2016"
+
+impact_name = "energy resources: non-renewable"
+impact_category_name = "abiotic depletion potential (ADP): fossil fuels"
+impact_method_name = "CML v4.8 2016"
+
+impact_name = "user deprivation potential (deprivation-weighted water consumption)"
+impact_category_name = "water use"
+impact_method_name = "EF v3.0"
+
+
 # Carica file Excel
 df = pd.read_excel("C:\\Users\\giuli\\OneDrive - Università Politecnica delle Marche\\provaBOM.xlsx")
 
