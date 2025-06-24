@@ -170,13 +170,13 @@ def get_activity_unit(activity_id):
     return jsonify({"unitname": unit.unitname}), 200
 
 #INSERIMENTO ASSOCIAZIONE TRA PRODOTTO E ATTIVITà
-#bisogna definire la quantità, fase_generale e fase_produttiva (es. materia prima, processo, ecc)
+#bisogna definire la quantità, fase_generale e nome_fase (es. materia prima, processo, ecc)
 @product_bp.route("/product-activity", methods=["POST"])
 def add_product_activity():
     data = request.json
 
     # Controllo dei campi obbligatori
-    required_fields = ["productid", "activityid", "amount", "fase_generale", "fase_produttiva"]
+    required_fields = ["productid", "activityid", "amount", "fase_generale", "nome_fase"]
     for field in required_fields:
         if field not in data:
             return jsonify({"error": f"Campo obbligatorio mancante: {field}"}), 400
@@ -197,6 +197,7 @@ def add_product_activity():
         activityid=data["activityid"],
         amount=data["amount"],
         fase_generale=data["fase_generale"],
+        nome_fase=data["nome_fase"],
         fase_produttiva=data["fase_produttiva"],
         distanza_fornitore=data.get("distanza_fornitore"),         # Opzionale
         id_mezzo_activity=data.get("id_mezzo_activity")            # Opzionale
@@ -253,4 +254,3 @@ def get_activities_for_product_by_fase(productid):
 
     return jsonify(result), 200
 
-########API PER LA SEZIONE MODIFICA#######

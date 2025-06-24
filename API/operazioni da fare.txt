@@ -5,6 +5,7 @@ venv\Scripts\activate      # Windows
 
 Installazione delle librerie necessarie:
 pip install flask flask_sqlalchemy psycopg2 flask_marshmallow marshmallow-sqlalchemy
+pip install flask-cors 
 
 Avvio del server Flask:
 python app.py

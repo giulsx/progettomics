@@ -130,6 +130,7 @@ class Product_Activity(db.Model):
     amount = db.Column(db.Numeric)
     fase_generale = db.Column(db.Text, primary_key=True)
     fase_produttiva = db.Column(db.Text)
+    nome_fase = db.Column(db.Text)
     distanza_fornitore = db.Column(db.Numeric)
     id_mezzo_activity = db.Column(db.UUID)
 

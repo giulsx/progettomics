@@ -116,6 +116,7 @@ class ProductActivitySchema(Schema):
     amount = fields.Decimal()
     fase_generale = fields.Str()
     fase_produttiva = fields.Str()
+    nome_fase = fields.Str()
     distanza_fornitore = fields.Decimal()
     id_mezzo_activity = fields.UUID()
 
