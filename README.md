@@ -1,3 +1,57 @@
+# Utente API - `routes/user_routes.py`
+
+## 🔧 Endpoints
+
+### 1. **Registra un nuovo utente**
+- **POST** `/register`
+- **Input JSON:**
+```json
+{
+  "username": "mario_rossi",
+  "password": "password123",
+  "confirm_password": "password123",
+  "role": "user",
+  "companyname": "EcoCompany",
+  "geography": "IT",
+  "tipologia_attore": "produttore"
+}
+```
+- **Output:**
+```json
+{
+  "message": "Utente registrato con successo",
+  "userid": "hash-username"
+}
+```
+
+---
+
+### 2. **Login utente**
+- **POST** `/login`
+- **Input JSON:**
+```json
+{
+  "username": "mario_rossi",
+  "password": "password123"
+}
+```
+- **Output (successo):**
+```json
+{
+  "message": "Login effettuato",
+  "userid": "hash-username"
+}
+```
+
+- **Output (errore):**
+```json
+{
+  "message": "Credenziali non valide"
+}
+```
+
+---
+
 # Product & Activity API - `routes/product_routes.py`
 
 ## 🔧 Endpoints
