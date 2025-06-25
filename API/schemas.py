@@ -17,6 +17,11 @@ class UtenteSchema(Schema):
     userid = fields.UUID()
     username = fields.Str()
     role = fields.Str()
+    password = fields.Str()
+    companyname = fields.Str()
+    geography = fields.Str()
+    tipologia_attore = fields.Str()
+
 
 # Schema: ISICSection
 class ISICSectionSchema(Schema):

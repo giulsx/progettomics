@@ -16,6 +16,10 @@ class Utente(db.Model):
     userid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     username = db.Column(db.Text)
     role = db.Column(db.Text)
+    password = db.Column(db.Text)
+    companyname = db.Column(db.Text)
+    geography = db.Column(db.Text)
+    tipologia_attore = db.Column(db.Text)
 
 # Tabella: ISICSection
 class ISICSection(db.Model):
