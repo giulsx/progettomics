@@ -47,7 +47,11 @@ def register():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({'message': 'Registrazione avvenuta con successo'}), 201
+    return jsonify({
+    'message': 'Registrazione avvenuta con successo',
+    'userid': str(new_user.userid),
+    'role' : str(new_user.role)
+}), 201
 
 # POST: login e restituzione userid
 @auth_bp.route('/login', methods=['POST'])
