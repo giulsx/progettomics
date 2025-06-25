@@ -14,13 +14,13 @@ class ProductSchema(Schema):
 
 # Schema : Utente
 class UtenteSchema(Schema):
-    userid = fields.UUID()
+    userid = fields.Str() 
     username = fields.Str()
     role = fields.Str()
     password = fields.Str()
-    companyname = fields.Str()
-    geography = fields.Str()
-    tipologia_attore = fields.Str()
+    tipologia_attore = fields.Str(allow_none=True)
+    companyname = fields.Str(allow_none=True)  
+    geography = fields.Str(allow_none=True)  
 
 
 # Schema: ISICSection
@@ -71,11 +71,11 @@ class ImpactIndicatorSchema(Schema):
 class ActivitySchema(Schema):
     id = fields.UUID()
     activityname = fields.Str()
-    includedactivitiesstart = fields.Str()
-    includedactivitiesend = fields.Str()
+    includedactivitiesstart = fields.Str(allow_none=True)
+    includedactivitiesend = fields.Str(allow_none=True)
     geography = fields.Str()
-    specialactivitytype = fields.Str()
-    generalcomment = fields.Str()
+    specialactivitytype = fields.Str(allow_none=True)
+    generalcomment = fields.Str(allow_none=True)
     modifiedactivity = fields.Bool()
     isicsection = fields.Str()
     systemmodel = fields.Str()

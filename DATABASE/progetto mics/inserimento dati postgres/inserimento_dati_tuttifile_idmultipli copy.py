@@ -20,8 +20,8 @@ def generate_elementary_exchange_id(name, amount):
     return uuid.UUID(hash_digest[:32])
 
 # Funzione per generare un intermediateExchangeId univoco
-def generate_intermediate_exchange_id(name, amount):
-    hash_input = f"{name}-{amount}".encode('utf-8')
+def generate_userid(username):
+    hash_input = username.encode('utf-8')
     hash_digest = hashlib.sha256(hash_input).hexdigest()
     return uuid.UUID(hash_digest[:32])
 

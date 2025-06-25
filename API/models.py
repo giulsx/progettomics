@@ -1,10 +1,11 @@
 import uuid
+from sqlalchemy.dialects.postgresql import UUID
 from database import db
 
 # Tabella: Product
 class Product(db.Model):
     __tablename__ = "product"
-    productid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    productid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     productname = db.Column(db.Text, nullable=False)
     systemmodel = db.Column(db.Text)
     intervallo = db.Column(db.Text)
@@ -13,13 +14,13 @@ class Product(db.Model):
 # Tabella: Utente
 class Utente(db.Model):
     __tablename__ = "utente"
-    userid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    userid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     username = db.Column(db.Text)
     role = db.Column(db.Text)
     password = db.Column(db.Text)
-    companyname = db.Column(db.Text)
-    geography = db.Column(db.Text)
-    tipologia_attore = db.Column(db.Text)
+    tipologia_attore = db.Column(db.Text, nullable=True)
+    companyname = db.Column(db.Text, nullable=True)  
+    geography = db.Column(db.Text, nullable=True)  
 
 # Tabella: ISICSection
 class ISICSection(db.Model):
@@ -31,20 +32,20 @@ class ISICSection(db.Model):
 # Tabella: Unit
 class Unit(db.Model):
     __tablename__ = "unit"
-    unitid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    unitid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     unitname = db.Column(db.Text, unique=True)
 
 # Tabella: Subcompartment
 class Subcompartment(db.Model):
     __tablename__ = "subcompartment"
-    subcompartmentid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    subcompartmentid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     subcompartment = db.Column(db.Text)
     compartment = db.Column(db.Text)
 
 # Tabella: IntermediateExchange
 class IntermediateExchange(db.Model):
     __tablename__ = "intermediateexchange"
-    intermediateexchangeId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    intermediateexchangeId = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     intermediatename = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     modifiedIntermediate = db.Column(db.Boolean, nullable=False)
@@ -54,7 +55,7 @@ class IntermediateExchange(db.Model):
 # Tabella: ElementaryExchange
 class ElementaryExchange(db.Model):
     __tablename__ = "elementaryexchange"
-    elementaryexchangeid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    elementaryexchangeid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     elementaryname = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     modifiedelementary = db.Column(db.Boolean, nullable=False)
@@ -64,7 +65,7 @@ class ElementaryExchange(db.Model):
 # Tabella: ImpactIndicator
 class ImpactIndicator(db.Model):
     __tablename__ = "impactindicator"
-    impactindicatorId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    impactindicatorId = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     impactname = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     impactmethodName = db.Column(db.Text, nullable=False)
@@ -74,13 +75,13 @@ class ImpactIndicator(db.Model):
 # Tabella: Activity
 class Activity(db.Model):
     __tablename__ = "activity"
-    id = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     activityname = db.Column(db.Text, nullable=False)
-    includedactivitiesstart = db.Column(db.Text)
-    includedactivitiesend = db.Column(db.Text)
+    includedactivitiesstart = db.Column(db.Text, nullable=False)
+    includedactivitiesend = db.Column(db.Text, nullable=False)
     geography = db.Column(db.Text)
-    specialactivitytype = db.Column(db.Text)
-    generalcomment = db.Column(db.Text)
+    specialactivitytype = db.Column(db.Text, nullable=False)
+    generalcomment = db.Column(db.Text, nullable=False)
     modifiedactivity = db.Column(db.Boolean, nullable=False)
     isicsection = db.Column(db.Text, db.ForeignKey("isicsection.isicsection"))
     systemmodel = db.Column(db.Text)

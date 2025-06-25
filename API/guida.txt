@@ -9,3 +9,7 @@ pip install flask-cors
 
 Avvio del server Flask:
 python app.py
+
+per la generazione di nuovi uuid inserire:
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+ALTER TABLE utente ALTER COLUMN userid SET DEFAULT uuid_generate_v4();

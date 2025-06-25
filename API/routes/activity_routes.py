@@ -1,6 +1,6 @@
 ###### per la modifica di attività
 from flask import Blueprint, request, jsonify
-from models import db, Activity, IntermediateExchange, ElementaryExchange, Activity_IntermediateExchange, Activity_ElementaryExchange
+from models import db, Activity, IntermediateExchange, ElementaryExchange, Activity_IntermediateExchange, Activity_ElementaryExchange, User_Activity
 from utils.id_generatos import generate_activity_id, generate_intermediate_exchange_id, generate_elementary_exchange_id
 
 activity_bp = Blueprint("activity", __name__)
@@ -15,6 +15,7 @@ def modify_activity():
     original_activity_id = data.get("original_activity_id")
     geography = data.get("geography")
     isicsection = data.get("isicsection")
+    userid = data.get("userid")  # <-- Aggiunto
 
     intermediate_exchanges = data.get("intermediate_exchanges", [])  # [{name, amount, action}]
     elementary_exchanges = data.get("elementary_exchanges", [])      # [{name, amount, action}]
@@ -42,7 +43,7 @@ def modify_activity():
     )
     db.session.add(new_activity)
 
-    # Reference product (intermediate exchange con amount=1)
+    # Reference product
     ref_intermediate_id = generate_intermediate_exchange_id(
         reference_product_name, 1, f"{new_name}_{reference_product_name}"
     )
@@ -59,7 +60,6 @@ def modify_activity():
         )
         db.session.add(ref_intermediate)
 
-    # Associazione reference product
     assoc_ref = Activity_IntermediateExchange(
         activityid=new_activityid,
         intermediateexchangeid=ref_intermediate_id,
@@ -67,7 +67,6 @@ def modify_activity():
     )
     db.session.add(assoc_ref)
 
-    # Funzione per gestire exchanges
     def process_exchanges(exchange_list, is_intermediate=True):
         for exch in exchange_list:
             name = exch.get("name")
@@ -100,7 +99,6 @@ def modify_activity():
             elif action in ("add", "modify"):
                 existing_exch = ExchangeModel.query.get(id_exchange)
                 if not existing_exch:
-                    # Cerca un exchange con stesso nome per ricavare unitid
                     base_exch = ExchangeModel.query.filter_by(**{name_field: name}).first()
                     unitid = base_exch.unitid if base_exch else None
 
@@ -130,6 +128,11 @@ def modify_activity():
     # Processa exchanges
     process_exchanges(intermediate_exchanges, is_intermediate=True)
     process_exchanges(elementary_exchanges, is_intermediate=False)
+
+    # 🔗 Aggiungi riga in user_activity
+    if userid:
+        user_assoc = User_Activity(userid=userid, activityid=new_activityid)
+        db.session.add(user_assoc)
 
     db.session.commit()
 
