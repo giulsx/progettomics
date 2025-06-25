@@ -1,7 +1,7 @@
 ###### per la modifica di attività
 from flask import Blueprint, request, jsonify
 from models import db, Activity, IntermediateExchange, ElementaryExchange, Activity_IntermediateExchange, Activity_ElementaryExchange
-from utils import generate_activity_id, generate_intermediate_exchange_id, generate_elementary_exchange_id
+from utils.id_generatos import generate_activity_id, generate_intermediate_exchange_id, generate_elementary_exchange_id
 
 activity_bp = Blueprint("activity", __name__)
 
