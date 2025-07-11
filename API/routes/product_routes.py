@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from models import db, Product, User_Product, Activity, Product_Activity, ISICSection, User_Activity, Utente, Activity_IntermediateExchange, IntermediateExchange, Unit
-from schemas import ActivitySchema, ISICSectionSchema, ProductSchema
+from schemas import ActivitySchema, ISICSectionSchema, ProductSchema, UtenteSchema
 import uuid
 import hashlib
 
@@ -23,6 +23,7 @@ def create_product():
     userid = data["userid"]
     tipologiaprodotto = data["tipologiaprodotto"]
     anni_uso=data["anni_uso"]
+    pesoprodotto=data["pesoprodotto"]
     
     # Genera UUID basato su hash (deterministico)
     hash_input = f"{productname}{systemmodel}{userid}".encode("utf-8")
@@ -37,7 +38,8 @@ def create_product():
         intervallo=intervallo,
         totale_produzione=totale_produzione,
         tipologiaprodotto=tipologiaprodotto,
-        anni_uso=anni_uso
+        anni_uso=anni_uso,
+       pesoprodotto =pesoprodotto
     )
     db.session.add(new_product)
 
@@ -77,6 +79,7 @@ def suggest_products():
             "intervallo": product.intervallo,
             "totale_produzione": product.totale_produzione,
             "tipologiaprodotto": product.tipologiaprodotto,
+            "pesoprodotto": product.pesoprodotto,
             "anni_uso": product.anni_uso
         })
 
@@ -90,6 +93,16 @@ def get_isic_sections():
     isic_sections = ISICSection.query.all()
     schema = ISICSectionSchema(many=True)
     return jsonify(schema.dump(isic_sections))
+
+#RECUPERO DI TUTTI I FORNITORI
+
+@product_bp.route("/fornitori", methods=["GET"])
+def get_all_fornitori():
+    fornitori = Utente.query.filter_by(role="fornitore").all()
+    schema = UtenteSchema(many=True)
+    result = schema.dump(fornitori)
+    return jsonify(result), 200
+
 
 #RECUPERO DELLE ATTIVITà FILTRATE PER ISIC SECTION SELEZIONATO E PER SYSTEMMODEL DEL PRODOTTO
 # !!! non ci sono i prodotti dei fornitori
@@ -108,7 +121,7 @@ def get_activities_by_isic_and_systemmodel():
     schema = ActivitySchema(many=True)
     return jsonify(schema.dump(activities))
 
-#RECUPERO DI TUTTE LE ATTIVITà DEL DB e PRODOTTI DEL FORNITORE (FILTRATI PER SYSTEMMODEL)
+#RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
 @product_bp.route("/activitiesandproducts", methods=["GET"])
 def get_activities_and_fornitori_products_by_systemmodel():
     systemmodel = request.args.get("systemmodel")
@@ -296,9 +309,7 @@ def add_product_activity():
 
     return jsonify({"message": "Associazione creata con successo"}), 201
 
-#ASSOCIAZIONE DI UN PRODOTTO DI UN FORNITORE A UN PRODOTTO - associazione delle attività del prodotto del fornitore
-#devo passare l'id del prodotto che sto creando e l'id del prodotto del fornitore da cui voglio copiare le attività
-
+#INSERIMENTO DI UN PRODOTTO DEL FORNITORE ALL'INTERNO DI UN NUOVO PRODOTTO
 @product_bp.route("/product/from-fornitore", methods=["POST"])
 def create_product_with_fornitore_activities():
     data = request.json
@@ -306,7 +317,7 @@ def create_product_with_fornitore_activities():
     required_fields = [
         "new_product_id", 
         "fornitore_product_id",
-        "quantita_utilizzata",         # <-- quantità inserita dall’utente per il nuovo prodotto
+        "amount",
         "fase_generale",
         "nome_risorsa"
     ]
@@ -327,22 +338,18 @@ def create_product_with_fornitore_activities():
     # Recupera tutte le attività associate al prodotto del fornitore
     attività_fornitore = Product_Activity.query.filter_by(productid=fornitore_product.id).all()
 
-    # Coefficiente da moltiplicare
-    coeff = float(data["quantita_utilizzata"])
-
-    # Duplica le associazioni per il nuovo prodotto
     for associazione in attività_fornitore:
-        nuovo_amount = coeff * associazione.amount  # Moltiplica quantità
 
         nuova_associazione = Product_Activity(
             productid=new_product.id,
             activityid=associazione.activityid,
-            amount=nuovo_amount,
+            amount=data["amount"],
             fase_generale=data["fase_generale"],
             nome_risorsa=data["nome_risorsa"],
-            fase_produttiva=data.get("fase_produttiva"), # Opzionale
-            distanza_fornitore=data.get("distanza_fornitore"), # Opzionale
-            id_mezzo_activity=data.get("id_mezzo_activity") # Opzionale
+            fase_produttiva=data.get("fase_produttiva"),
+            distanza_fornitore=data.get("distanza_fornitore"),
+            id_mezzo_activity=data.get("id_mezzo_activity"),
+            prodottofornitore_id=fornitore_product.id  
         )
         db.session.add(nuova_associazione)
 
@@ -350,7 +357,7 @@ def create_product_with_fornitore_activities():
     return jsonify({"message": "Attività del fornitore duplicate con valori personalizzati"}), 201
 
 
-#RIMOZIONE DI UN'ATTIVITà ASSOCIATA A UN PRODOTTO 
+#RIMOZIONE DI UN'ATTIVITà (normale) ASSOCIATA A UN PRODOTTO 
 @product_bp.route("/products/<uuid:productid>/activities/<uuid:activityid>", methods=["DELETE"])
 def remove_activity_from_product(productid, activityid):
     fase = request.args.get("fase")
@@ -372,7 +379,26 @@ def remove_activity_from_product(productid, activityid):
 
     return jsonify({"message": "Attività rimossa dal prodotto"}), 200
 
-#VISUALIZZAZIONE DI TUTTE LE ATTIVITà DI UNA FASE ASSOCIATE A UN PRODOTTO 
+#RIMOZIONE DI UN PRODOTTO FORNITORE ASSOCIATO A UN PRODOTTO
+@product_bp.route("/products/<uuid:productid>/activities/from-fornitore/<uuid:prodottofornitore_id>", methods=["DELETE"])
+def remove_activities_from_fornitore(productid, prodottofornitore_id):
+    # Recupera tutte le associazioni da eliminare
+    associazioni = Product_Activity.query.filter_by(
+        productid=productid,
+        prodottofornitore_id=prodottofornitore_id
+    ).all()
+
+    if not associazioni:
+        return jsonify({"message": "Nessuna attività trovata per questo prodottofornitore_id"}), 404
+
+    for assoc in associazioni:
+        db.session.delete(assoc)
+
+    db.session.commit()
+    return jsonify({"message": f"{len(associazioni)} attività rimosse dal prodotto"}), 200
+
+
+#RECUPERO DI TUTTE LE ATTIVITà DI UNA FASE ASSOCIATE A UN PRODOTTO 
 @product_bp.route("/products/<uuid:productid>/activities", methods=["GET"])
 def get_activities_for_product_by_fase(productid):
     fase = request.args.get("fase")
@@ -395,3 +421,46 @@ def get_activities_for_product_by_fase(productid):
 
     return jsonify(result), 200
 
+#RECUPERO DI TUTTE LE ATTIVITà E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+@product_bp.route("/products/<uuid:productid>/activities/full", methods=["GET"])
+def get_full_activities_for_product(productid):
+    fase = request.args.get("fase")
+
+    query = Product_Activity.query.filter_by(productid=productid)
+    if fase:
+        query = query.filter_by(fase=fase)
+
+    associations = query.all()
+    result = []
+
+    for assoc in associations:
+        if assoc.prodottofornitore_id:
+            # È una riga derivata da un prodotto fornitore
+            prodotto_fornitore = Product.query.get(assoc.prodottofornitore_id)
+            result.append({
+                "tipo": "da_fornitore",
+                "prodottofornitore_id": str(assoc.prodottofornitore_id),
+                "nome_prodotto_fornitore": prodotto_fornitore.name if prodotto_fornitore else None,
+                "amount": str(assoc.amount),
+                "fase_generale": assoc.fase,
+                "nome_risorsa": assoc.nome_risorsa,
+                "fase_produttiva": assoc.fase_produttiva,
+                "distanza_fornitore": assoc.distanza_fornitore,
+                "id_mezzo_activity": str(assoc.id_mezzo_activity) if assoc.id_mezzo_activity else None
+            })
+        else:
+            # Attività normale
+            activity = Activity.query.get(assoc.activityid)
+            activity_data = ActivitySchema().dump(activity)
+            activity_data.update({
+                "tipo": "attività",
+                "amount": str(assoc.amount),
+                "fase_generale": assoc.fase,
+                "nome_risorsa": assoc.nome_risorsa,
+                "fase_produttiva": assoc.fase_produttiva,
+                "distanza_fornitore": assoc.distanza_fornitore,
+                "id_mezzo_activity": str(assoc.id_mezzo_activity) if assoc.id_mezzo_activity else None
+            })
+            result.append(activity_data)
+
+    return jsonify(result), 200

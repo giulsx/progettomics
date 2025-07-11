@@ -10,6 +10,9 @@ class ProductSchema(Schema):
     productname = fields.Str()
     systemmodel = fields.Str()
     intervallo = fields.Str()
+    anni_uso = fields.Integer()
+    pesoprodotto = fields.Decimal(allow_none=True)
+    tipologiaprodotto = fields.Str(allow_none=True)
     totale_produzione = fields.Decimal()
 
 # Schema : Utente
@@ -139,4 +142,5 @@ class UserProductSchema(Schema):
 class UserActivitySchema(Schema):
     
     activityid = fields.UUID()
+    userid = fields.UUID()
     

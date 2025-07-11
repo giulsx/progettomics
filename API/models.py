@@ -9,7 +9,10 @@ class Product(db.Model):
     productname = db.Column(db.Text, nullable=False)
     systemmodel = db.Column(db.Text)
     intervallo = db.Column(db.Text)
+    anni_uso = db.Column(db.Numeric)
     totale_produzione = db.Column(db.Numeric)
+    pesoprodotto = db.Column(db.Numeric, nullable=True)
+    tipologiaprodotto = db.Column(db.Text, nullable=True)
 
 # Tabella: Utente
 class Utente(db.Model):
@@ -146,8 +149,6 @@ class Product_Activity(db.Model):
 class User_Product(db.Model):
     __tablename__ = "user_product"
 
-
-    
     productid = db.Column(db.UUID, db.ForeignKey("product.productid"), primary_key=True)
     userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
 
