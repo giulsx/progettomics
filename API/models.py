@@ -5,7 +5,7 @@ from database import db
 # Tabella: Product
 class Product(db.Model):
     __tablename__ = "product"
-    productid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    productid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     productname = db.Column(db.Text, nullable=False)
     systemmodel = db.Column(db.Text)
     intervallo = db.Column(db.Text)
@@ -20,7 +20,9 @@ class Utente(db.Model):
     password = db.Column(db.Text)
     tipologia_attore = db.Column(db.Text, nullable=True)
     companyname = db.Column(db.Text, nullable=True)  
-    geography = db.Column(db.Text, nullable=True)  
+    nation = db.Column(db.Text, nullable=True)
+    city = db.Column(db.Text, nullable=True)
+    municipality = db.Column(db.Text, nullable=True)
 
 # Tabella: ISICSection
 class ISICSection(db.Model):
@@ -32,20 +34,20 @@ class ISICSection(db.Model):
 # Tabella: Unit
 class Unit(db.Model):
     __tablename__ = "unit"
-    unitid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    unitid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     unitname = db.Column(db.Text, unique=True)
 
 # Tabella: Subcompartment
 class Subcompartment(db.Model):
     __tablename__ = "subcompartment"
-    subcompartmentid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    subcompartmentid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     subcompartment = db.Column(db.Text)
     compartment = db.Column(db.Text)
 
 # Tabella: IntermediateExchange
 class IntermediateExchange(db.Model):
     __tablename__ = "intermediateexchange"
-    intermediateexchangeId = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    intermediateexchangeId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     intermediatename = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     modifiedIntermediate = db.Column(db.Boolean, nullable=False)
@@ -55,7 +57,7 @@ class IntermediateExchange(db.Model):
 # Tabella: ElementaryExchange
 class ElementaryExchange(db.Model):
     __tablename__ = "elementaryexchange"
-    elementaryexchangeid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    elementaryexchangeid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     elementaryname = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     modifiedelementary = db.Column(db.Boolean, nullable=False)
@@ -65,7 +67,7 @@ class ElementaryExchange(db.Model):
 # Tabella: ImpactIndicator
 class ImpactIndicator(db.Model):
     __tablename__ = "impactindicator"
-    impactindicatorId = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    impactindicatorId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     impactname = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
     impactmethodName = db.Column(db.Text, nullable=False)
@@ -75,13 +77,13 @@ class ImpactIndicator(db.Model):
 # Tabella: Activity
 class Activity(db.Model):
     __tablename__ = "activity"
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     activityname = db.Column(db.Text, nullable=False)
-    includedactivitiesstart = db.Column(db.Text, nullable=False)
-    includedactivitiesend = db.Column(db.Text, nullable=False)
+    includedactivitiesstart = db.Column(db.Text)
+    includedactivitiesend = db.Column(db.Text)
     geography = db.Column(db.Text)
-    specialactivitytype = db.Column(db.Text, nullable=False)
-    generalcomment = db.Column(db.Text, nullable=False)
+    specialactivitytype = db.Column(db.Text)
+    generalcomment = db.Column(db.Text)
     modifiedactivity = db.Column(db.Boolean, nullable=False)
     isicsection = db.Column(db.Text, db.ForeignKey("isicsection.isicsection"))
     systemmodel = db.Column(db.Text)
@@ -143,12 +145,16 @@ class Product_Activity(db.Model):
 # Tabella di associazione Utente - Prodotto
 class User_Product(db.Model):
     __tablename__ = "user_product"
-    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
+
+
+    
     productid = db.Column(db.UUID, db.ForeignKey("product.productid"), primary_key=True)
+    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
 
 # Tabella di associazione Utente - Activity
 class User_Activity(db.Model):
     __tablename__ = "user_activity"
-    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
+    
     activityid = db.Column(db.UUID, db.ForeignKey("activity.id"), primary_key=True)
+    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
 

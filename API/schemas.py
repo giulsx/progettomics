@@ -20,7 +20,9 @@ class UtenteSchema(Schema):
     password = fields.Str()
     tipologia_attore = fields.Str(allow_none=True)
     companyname = fields.Str(allow_none=True)  
-    geography = fields.Str(allow_none=True)  
+    nation = fields.Str(allow_none=True)
+    city = fields.Str(allow_none=True)
+    municipality = fields.Str(allow_none=True)   
 
 
 # Schema: ISICSection
@@ -71,11 +73,11 @@ class ImpactIndicatorSchema(Schema):
 class ActivitySchema(Schema):
     id = fields.UUID()
     activityname = fields.Str()
-    includedactivitiesstart = fields.Str(allow_none=True)
-    includedactivitiesend = fields.Str(allow_none=True)
+    includedactivitiesstart = fields.Str()
+    includedactivitiesend = fields.Str()
     geography = fields.Str()
-    specialactivitytype = fields.Str(allow_none=True)
-    generalcomment = fields.Str(allow_none=True)
+    specialactivitytype = fields.Str()
+    generalcomment = fields.Str()
     modifiedactivity = fields.Bool()
     isicsection = fields.Str()
     systemmodel = fields.Str()
@@ -127,13 +129,14 @@ class ProductActivitySchema(Schema):
 
 # Schema: User_Product
 class UserProductSchema(Schema):
-    userid = fields.UUID()
+
     productid = fields.UUID()
+    userid = fields.UUId()
     amount = fields.Decimal()
     fase = fields.Str()
 
 # Schema: User_Activy
 class UserActivitySchema(Schema):
-    userid = fields.UUID()
+    
     activityid = fields.UUID()
     

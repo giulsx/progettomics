@@ -8,6 +8,7 @@ from routes.product_routes import product_bp
 from routes.activity_routes import activity_bp
 from routes.user_routes import auth_bp
 
+ 
 app = Flask(__name__)
 CORS(app)  
 
@@ -25,6 +26,7 @@ app.register_blueprint(product_bp)
 app.register_blueprint(activity_bp)
 app.register_blueprint(auth_bp)
 
+
 @app.route("/ping", methods=["GET"])
 def ping():
     return {"message": "pong"}, 200
@@ -35,4 +37,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
