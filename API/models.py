@@ -142,7 +142,7 @@ class Product_Activity(db.Model):
     fase_produttiva = db.Column(db.Text)
     nome_fase = db.Column(db.Text)
     distanza_fornitore = db.Column(db.Numeric)
-    id_mezzo_activity = db.Column(db.UUID)
+    coll_trasporto = db.Column(db.UUID)
 
 
 # Tabella di associazione Utente - Prodotto

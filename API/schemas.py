@@ -128,7 +128,7 @@ class ProductActivitySchema(Schema):
     fase_produttiva = fields.Str()
     nome_fase = fields.Str()
     distanza_fornitore = fields.Decimal()
-    id_mezzo_activity = fields.UUID()
+    coll_trasporto = fields.UUID()
 
 # Schema: User_Product
 class UserProductSchema(Schema):

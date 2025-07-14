@@ -401,8 +401,8 @@ def load_data_to_database_from_directory(directory_path, log_file_path):
         print("Connessione al database chiusa.")
 
 # Percorsi
-directory_path = os.path.abspath("progetto mics/output")
-log_file_path = os.path.abspath("progetto mics/caricamento_log.txt")
+directory_path = os.path.abspath("C:/Users/giuli/OneDrive - Università Politecnica delle Marche/magistrale/TIROCINIO/ecoinvent_interface-main/progettomics/DATABASE/progetto mics/output")
+log_file_path = os.path.abspath("C:/Users/giuli/OneDrive - Università Politecnica delle Marche/magistrale/TIROCINIO/ecoinvent_interface-main/progettomics/DATABASE/progetto mics/caricamento_log.txt")
 
 # Controlla se la directory esiste
 if not os.path.isdir(directory_path):

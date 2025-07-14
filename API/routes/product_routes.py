@@ -103,6 +103,19 @@ def get_all_fornitori():
     result = schema.dump(fornitori)
     return jsonify(result), 200
 
+#RECUPERO DEI 4 TRASPORTI
+
+@product_bp.route("/mezzi-trasporto", methods=["GET"])
+def get_mezzi_trasporto():
+    mezzi = {
+        "Nave": "986ee593-2dc9-526f-99e0-dbaafe0e91ab",
+        "Aereo": "cfa30dd4-e6cf-584f-a083-4225169a8f49",
+        "Treno": "3a6c3dff-4a80-55f1-8042-43ea1982b685",
+        "Camion": "404e4cd3-7e0e-548a-b5da-caa303df3a0a"
+    }
+    return jsonify(mezzi)
+
+#RECUPERO ATTIVITà PER L'EoL
 
 #RECUPERO DELLE ATTIVITà FILTRATE PER ISIC SECTION SELEZIONATO E PER SYSTEMMODEL DEL PRODOTTO
 # !!! non ci sono i prodotti dei fornitori
@@ -138,8 +151,8 @@ def get_activities_and_fornitori_products_by_systemmodel():
     # Recupero prodotti associati a utenti 'fornitore' con lo stesso systemmodel
     fornitori_products_query = (
         db.session.query(Product)
-        .join(User_Product, Product.id == User_Product.c.product_id)
-        .join(Utente, User_Product.c.user_id == Utente.id)
+        .join(User_Product, Product.productid == User_Product.productid)
+        .join(Utente, User_Product.userid == Utente.userid)
         .filter(Utente.tipologia_attore == "fornitore")
     )
     if systemmodel:
@@ -243,133 +256,131 @@ def get_activity_unit(activity_id):
 
     return jsonify({"unitname": unit.unitname}), 200
 
-#INSERIMENTO ASSOCIAZIONE TRA PRODOTTO E ATTIVITà
-#bisogna definire la quantità, fase_generale e nome_risorsa (es. materia prima, processo, ecc)
+
+# INSERIMENTO ASSOCIAZIONE PORDOTTOFORNTITORE/ATTIVIà a UN NUOVO PRODOTTO
 @product_bp.route("/product-activity", methods=["POST"])
-def add_product_activity():
+def add_product_or_fornitore_activity():
     data = request.json
 
-    # Controllo dei campi obbligatori
-    required_fields = ["productid", "activityid", "amount", "fase_generale", "nome_risorsa"]
-    for field in required_fields:
-        if field not in data:
-            return jsonify({"error": f"Campo obbligatorio mancante: {field}"}), 400
+    # Controllo campo base
+    if "productid" not in data:
+        return jsonify({"error": "Campo obbligatorio mancante: productid"}), 400
 
-    # Verifica esistenza prodotto
+    # Verifica esistenza prodotto base
     product = Product.query.get(data["productid"])
     if not product:
         return jsonify({"error": "Prodotto non trovato"}), 404
 
-    # Verifica esistenza attività
-    activity = Activity.query.get(data["activityid"])
-    if not activity:
-        return jsonify({"error": "Attività non trovata"}), 404
+    # Caso A: attività normale
+    if "activityid" in data:
+        required_fields = ["activityid", "amount", "fase_generale", "nome_risorsa"]
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Campo obbligatorio mancante: {field}"}), 400
 
-    # Crea nuova associazione
-    new_association = Product_Activity(
-        productid=data["productid"], #obbligatorio
-        activityid=data["activityid"], #obbligatorio
-        amount=data["amount"], #obbligatorio
-        fase_generale=data["fase_generale"], # obbligatorio
-        nome_risorsa=data["nome_risorsa"], # obbligatorio
-        fase_produttiva=data.get("fase_produttiva"), # Opzionale
-        distanza_fornitore=data.get("distanza_fornitore"),         # Opzionale
-        id_mezzo_activity=data.get("id_mezzo_activity")            # Opzionale
-    )
+        # Verifica attività
+        activity = Activity.query.get(data["activityid"])
+        if not activity:
+            return jsonify({"error": "Attività non trovata"}), 404
 
-    # Salvataggio nel database
-    db.session.add(new_association)
-    db.session.commit()
-
-    return jsonify({"message": "Associazione creata con successo"}), 201
-
-#INSERIMENTO DI UN PRODOTTO DEL FORNITORE ALL'INTERNO DI UN NUOVO PRODOTTO
-@product_bp.route("/product/from-fornitore", methods=["POST"])
-def create_product_with_fornitore_activities():
-    data = request.json
-
-    required_fields = [
-        "new_product_id", 
-        "fornitore_product_id",
-        "amount",
-        "fase_generale",
-        "nome_risorsa"
-    ]
-
-    for field in required_fields:
-        if field not in data:
-            return jsonify({"error": f"Campo obbligatorio mancante: {field}"}), 400
-
-    # Recupero prodotti
-    new_product = Product.query.get(data["new_product_id"])
-    if not new_product:
-        return jsonify({"error": "Nuovo prodotto non trovato"}), 404
-
-    fornitore_product = Product.query.get(data["fornitore_product_id"])
-    if not fornitore_product:
-        return jsonify({"error": "Prodotto del fornitore non trovato"}), 404
-
-    # Recupera tutte le attività associate al prodotto del fornitore
-    attività_fornitore = Product_Activity.query.filter_by(productid=fornitore_product.id).all()
-
-    for associazione in attività_fornitore:
-
-        nuova_associazione = Product_Activity(
-            productid=new_product.id,
-            activityid=associazione.activityid,
+        new_association = Product_Activity(
+            productid=data["productid"],
+            activityid=data["activityid"],
             amount=data["amount"],
             fase_generale=data["fase_generale"],
             nome_risorsa=data["nome_risorsa"],
             fase_produttiva=data.get("fase_produttiva"),
             distanza_fornitore=data.get("distanza_fornitore"),
-            id_mezzo_activity=data.get("id_mezzo_activity"),
-            prodottofornitore_id=fornitore_product.id  
+            coll_trasporto=data.get("coll_trasporto")
         )
-        db.session.add(nuova_associazione)
 
-    db.session.commit()
-    return jsonify({"message": "Attività del fornitore duplicate con valori personalizzati"}), 201
+        db.session.add(new_association)
+        db.session.commit()
+        return jsonify({"message": "Attività associata al prodotto con successo"}), 201
+
+    # Caso B: prodotto fornitore (con attività da copiare)
+    elif "prodottofornitore_id" in data:
+        required_fields = ["prodottofornitore_id", "amount", "fase_generale", "nome_risorsa"]
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Campo obbligatorio mancante: {field}"}), 400
+
+        fornitore_product = Product.query.get(data["prodottofornitore_id"])
+        if not fornitore_product:
+            return jsonify({"error": "Prodotto fornitore non trovato"}), 404
+
+        attività_fornitore = Product_Activity.query.filter_by(productid=fornitore_product.id).all()
+
+        for associazione in attività_fornitore:
+            nuova_associazione = Product_Activity(
+                productid=data["productid"],
+                activityid=associazione.activityid,
+                amount=data["amount"],
+                fase_generale=data["fase_generale"],
+                nome_risorsa=data["nome_risorsa"],
+                fase_produttiva=data.get("fase_produttiva"),
+                distanza_fornitore=data.get("distanza_fornitore"),
+                coll_trasporto=data.get("coll_trasporto"),
+                prodottofornitore_id=fornitore_product.id
+            )
+            db.session.add(nuova_associazione)
+
+        db.session.commit()
+        return jsonify({"message": "Attività del prodotto fornitore duplicate con successo"}), 201
+
+    else:
+        return jsonify({"error": "Specificare almeno 'activityid' o 'prodottofornitore_id'"}), 400
 
 
-#RIMOZIONE DI UN'ATTIVITà (normale) ASSOCIATA A UN PRODOTTO 
-@product_bp.route("/products/<uuid:productid>/activities/<uuid:activityid>", methods=["DELETE"])
-def remove_activity_from_product(productid, activityid):
-    fase = request.args.get("fase")
+# ELIMINAZIONE DI UN'ATTIVITà(normale)/PRODOTTO FORTNITORE ASSOCIATA A UN PRODOTTO
+@product_bp.route("/product-activity", methods=["DELETE"])
+def delete_product_activity():
+    data = request.get_json()
 
-    if not fase:
-        return jsonify({"error": "Parametro 'fase' mancante"}), 400
+    if not data or "productid" not in data:
+        return jsonify({"error": "Campo 'productid' obbligatorio"}), 400
 
-    association = Product_Activity.query.filter_by(
-        productid=productid,
-        activityid=activityid,
-        fase=fase
-    ).first()
+    productid = data["productid"]
+    fase = data.get("fase")  # solo per attività normali
+    activityid = data.get("activityid")
+    prodottofornitore_id = data.get("prodottofornitore_id")
 
-    if not association:
-        return jsonify({"error": "Associazione non trovata"}), 404
+    if activityid:
+        # Caso: eliminazione attività normale
+        if not fase:
+            return jsonify({"error": "Parametro 'fase' obbligatorio per attività normale"}), 400
 
-    db.session.delete(association)
-    db.session.commit()
+        association = Product_Activity.query.filter_by(
+            productid=productid,
+            activityid=activityid,
+            fase=fase
+        ).first()
 
-    return jsonify({"message": "Attività rimossa dal prodotto"}), 200
+        if not association:
+            return jsonify({"error": "Associazione attività non trovata"}), 404
 
-#RIMOZIONE DI UN PRODOTTO FORNITORE ASSOCIATO A UN PRODOTTO
-@product_bp.route("/products/<uuid:productid>/activities/from-fornitore/<uuid:prodottofornitore_id>", methods=["DELETE"])
-def remove_activities_from_fornitore(productid, prodottofornitore_id):
-    # Recupera tutte le associazioni da eliminare
-    associazioni = Product_Activity.query.filter_by(
-        productid=productid,
-        prodottofornitore_id=prodottofornitore_id
-    ).all()
+        db.session.delete(association)
+        db.session.commit()
+        return jsonify({"message": "Attività rimossa dal prodotto"}), 200
 
-    if not associazioni:
-        return jsonify({"message": "Nessuna attività trovata per questo prodottofornitore_id"}), 404
+    elif prodottofornitore_id:
+        # Caso: eliminazione di tutte le attività da un prodotto fornitore
+        associazioni = Product_Activity.query.filter_by(
+            productid=productid,
+            prodottofornitore_id=prodottofornitore_id
+        ).all()
 
-    for assoc in associazioni:
-        db.session.delete(assoc)
+        if not associazioni:
+            return jsonify({"message": "Nessuna attività trovata per questo prodottofornitore_id"}), 404
 
-    db.session.commit()
-    return jsonify({"message": f"{len(associazioni)} attività rimosse dal prodotto"}), 200
+        for assoc in associazioni:
+            db.session.delete(assoc)
+
+        db.session.commit()
+        return jsonify({"message": f"{len(associazioni)} attività rimosse dal prodotto"}), 200
+
+    else:
+        return jsonify({"error": "Specificare 'activityid' oppure 'prodottofornitore_id'"}), 400
 
 # RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
 @product_bp.route("/products/<uuid:productid>/activities/full", methods=["GET"])
@@ -395,7 +406,7 @@ def get_full_activities_for_product(productid):
                 "nome_risorsa": assoc.nome_risorsa,
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
-                "id_mezzo_activity": str(assoc.id_mezzo_activity) if assoc.id_mezzo_activity else None
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None
             })
         else:
             # Attività normale
@@ -408,8 +419,9 @@ def get_full_activities_for_product(productid):
                 "nome_risorsa": assoc.nome_risorsa,
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
-                "id_mezzo_activity": str(assoc.id_mezzo_activity) if assoc.id_mezzo_activity else None
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None
             })
             result.append(activity_data)
 
     return jsonify(result), 200
+

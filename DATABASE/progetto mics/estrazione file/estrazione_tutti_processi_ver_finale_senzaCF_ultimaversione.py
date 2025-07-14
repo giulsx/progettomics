@@ -14,11 +14,11 @@ ep.set_release(version="3.10", system_model="cutoff")
 system_model="cutoff"
 
 # Leggi la lista di URL dal file JSON
-with open('progetto mics/ecoquery_urls.json', 'r', encoding='utf-8') as file:
+with open('C:/Users/giuli/OneDrive - Università Politecnica delle Marche/magistrale/TIROCINIO/ecoinvent_interface-main/progettomics/DATABASE/progetto mics/URL file/ecoquery_urls.json', 'r', encoding='utf-8') as file:
     urls = json.load(file)
 
 # Crea la cartella di output
-output_dir = Path('progetto mics/output')
+output_dir = Path('C:/Users/giuli/OneDrive - Università Politecnica delle Marche/magistrale/TIROCINIO/ecoinvent_interface-main/progettomics/DATABASE/progetto mics/output')
 output_dir.mkdir(parents=True, exist_ok=True)
 
 # Crea il file di log per tracciare le URL utilizzate
@@ -43,7 +43,7 @@ def extract_from_upr(upr_data):
     included_activities_end = activity['includedActivitiesEnd']['#text'] if activity.get('includedActivitiesEnd') and activity['includedActivitiesEnd'].get('#text') else "null"
     geography = activity_dataset['activityDescription']['geography']['shortname']['#text']
 
-    file_path = 'progetto mics/Database-Overview-for-ecoinvent-v3.10_29.04.24.xlsx'
+    file_path = 'C:/Users/giuli/OneDrive - Università Politecnica delle Marche/magistrale/TIROCINIO/ecoinvent_interface-main/progettomics/DATABASE/progetto mics/Database-Overview-for-ecoinvent-v3.10_29.04.24.xlsx'
     sheet_name = "Cut-Off AO" if system_model.lower() == "cutoff" else "APOS AO"
     df = pd.read_excel(file_path, sheet_name=sheet_name)
     filtered_row = df[df['Activity UUID'] == activity_id]
