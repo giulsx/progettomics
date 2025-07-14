@@ -168,14 +168,13 @@ product_schema = ProductSchema(many=True)
 @bp.route('/user/data', methods=['GET'])
 def get_user_data():
     username = request.args.get('username')
-    companyname = request.args.get('companyname')
 
-    if not username and not companyname:
-        return jsonify({'error': 'Specificare almeno username o companyname'}), 400
+    if not username:
+        return jsonify({'error': 'Specificare almeno username'}), 400
 
     # Trova l'utente
     user = Utente.query.filter(
-        (Utente.username == username) | (Utente.companyname == companyname)
+        (Utente.username == username)
     ).first()
 
     if not user:
@@ -197,31 +196,6 @@ def get_user_data():
         'activities': activity_schema.dump(activities),
         'products': product_schema.dump(products)
     })
-
-
-#OTTENIMENTO  GEOGRAPHY DELL'ATTIVITà SELEZIONATA 
-@product_bp.route("/activities/<uuid:activity_id>", methods=["GET"])
-def get_activity_details(activity_id):
-    activity = Activity.query.get(activity_id)
-    if not activity:
-        return jsonify({"error": "Attività non trovata"}), 404
-    schema = ActivitySchema()
-    return jsonify(schema.dump(activity))
-
-#OTTENIMENTO MEZZI DI TRASPORTO 
-# probabilmmente non serve, sarà direttamente una lista di attività preselezionate
-
-@product_bp.route("/transport-activities", methods=["GET"])
-def get_transport_activities():
-    transport_activities = Activity.query.filter_by(isicsection="H - Transportation and storage").all()
-    result = []
-    for activity in transport_activities:
-        result.append({
-            "id": activity.id,
-            "name": activity.name,
-            "location": activity.location
-        })
-    return jsonify(result), 200
 
 # OTTENIMENTO FORNITORE DI UN'ATTIVITÀ CREATA DA UN FORNITORE
 @product_bp.route("/activities/<uuid:activity_id>/fornitore", methods=["GET"])
@@ -397,31 +371,7 @@ def remove_activities_from_fornitore(productid, prodottofornitore_id):
     db.session.commit()
     return jsonify({"message": f"{len(associazioni)} attività rimosse dal prodotto"}), 200
 
-
-#RECUPERO DI TUTTE LE ATTIVITà DI UNA FASE ASSOCIATE A UN PRODOTTO 
-@product_bp.route("/products/<uuid:productid>/activities", methods=["GET"])
-def get_activities_for_product_by_fase(productid):
-    fase = request.args.get("fase")
-
-    query = Product_Activity.query.filter_by(productid=productid)
-    if fase:
-        query = query.filter_by(fase=fase)
-
-    associations = query.all()
-    result = []
-
-    for assoc in associations:
-        activity = Activity.query.get(assoc.activityid)
-        activity_data = ActivitySchema().dump(activity)
-        activity_data.update({
-            "amount": str(assoc.amount),
-            "fase_generale": assoc.fase
-        })
-        result.append(activity_data)
-
-    return jsonify(result), 200
-
-#RECUPERO DI TUTTE LE ATTIVITà E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+# RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
 @product_bp.route("/products/<uuid:productid>/activities/full", methods=["GET"])
 def get_full_activities_for_product(productid):
     fase = request.args.get("fase")
@@ -438,7 +388,6 @@ def get_full_activities_for_product(productid):
             # È una riga derivata da un prodotto fornitore
             prodotto_fornitore = Product.query.get(assoc.prodottofornitore_id)
             result.append({
-                "tipo": "da_fornitore",
                 "prodottofornitore_id": str(assoc.prodottofornitore_id),
                 "nome_prodotto_fornitore": prodotto_fornitore.name if prodotto_fornitore else None,
                 "amount": str(assoc.amount),
@@ -453,7 +402,7 @@ def get_full_activities_for_product(productid):
             activity = Activity.query.get(assoc.activityid)
             activity_data = ActivitySchema().dump(activity)
             activity_data.update({
-                "tipo": "attività",
+                "prodottofornitore_id": None,
                 "amount": str(assoc.amount),
                 "fase_generale": assoc.fase,
                 "nome_risorsa": assoc.nome_risorsa,
