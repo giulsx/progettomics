@@ -320,7 +320,7 @@ def add_product_or_fornitore_activity():
         if not fornitore_product:
             return jsonify({"error": "Prodotto fornitore non trovato"}), 404
 
-        attività_fornitore = Product_Activity.query.filter_by(productid=fornitore_product.id).all()
+        attività_fornitore = Product_Activity.query.filter_by(productid=fornitore_product.productid).all()
 
         for associazione in attività_fornitore:
             nuova_associazione = Product_Activity(
