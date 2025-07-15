@@ -116,6 +116,17 @@ def get_mezzi_trasporto():
     return jsonify(mezzi)
 
 #RECUPERO ATTIVITà PER L'EoL
+@product_bp.route("/EoL", methods=["GET"])
+def get_eol():
+    eol = {
+        "Discarica": "e9502c59-061a-55b7-b841-2fca78477a55",
+        "Incenerimento": "28dfb649-5d63-5f8f-bf68-695772c18b82",
+        "Riciclo tessuto sintetico": "515c2227-b8e9-5b19-bc72-4f3141754d3c",
+        "Riciclo tessuto naturale": "13deb0b8-6d7c-52f9-a95d-147273527761",
+        "Riciclo materiali plastici": "23bc1bea-e6d4-52d0-9194-58ef8fb8e6e2"
+    }
+    return jsonify(eol)
+
 
 #RECUPERO DELLE ATTIVITà FILTRATE PER ISIC SECTION SELEZIONATO E PER SYSTEMMODEL DEL PRODOTTO
 # !!! non ci sono i prodotti dei fornitori
@@ -424,4 +435,3 @@ def get_full_activities_for_product(productid):
             result.append(activity_data)
 
     return jsonify(result), 200
-
