@@ -56,9 +56,6 @@ def get_activities_for_product_by_fase(productid):
 
     return jsonify(result), 200
 
-
-
-
 #INSERIMENTO ASSOCIAZIONE TRA PRODOTTO E ATTIVITà
 #bisogna definire la quantità, fase_generale e nome_risorsa (es. materia prima, processo, ecc)
 @product_bp.route("/product-activity", methods=["POST"])
@@ -228,3 +225,20 @@ def get_user_data():
         'activities': activity_schema.dump(activities),
         'products': product_schema.dump(products)
     })
+
+#RECUPERO DELLE ATTIVITà FILTRATE PER ISIC SECTION SELEZIONATO E PER SYSTEMMODEL DEL PRODOTTO
+# !!! non ci sono i prodotti dei fornitori
+@product_bp.route("/activities/filter", methods=["GET"])
+def get_activities_by_isic_and_systemmodel():
+    systemmodel = request.args.get("systemmodel")
+    isicsection = request.args.get("isicsection")
+    
+    query = Activity.query
+    if systemmodel:
+        query = query.filter_by(systemmodel=systemmodel)
+    if isicsection:
+        query = query.filter_by(isicsection=isicsection)
+    
+    activities = query.all()
+    schema = ActivitySchema(many=True)
+    return jsonify(schema.dump(activities))

@@ -85,6 +85,41 @@ def suggest_products():
 
     return jsonify(results), 200
 
+#AGGIORNAMENTO DI UN PRODOTTO
+# MODIFICA DI UN PRODOTTO ESISTENTE NEL DB
+@product_bp.route("/products/<uuid:productid>", methods=["PUT"])
+def update_product(productid):
+    data = request.get_json()
+
+    # Cerca il prodotto per ID
+    product = Product.query.get(productid)
+
+    if not product:
+        return jsonify({"error": "Prodotto non trovato"}), 404
+
+    # Aggiorna solo i campi forniti nel JSON
+    if "productname" in data:
+        product.productname = data["productname"]
+    if "systemmodel" in data:
+        product.systemmodel = data["systemmodel"]
+    if "intervallo" in data:
+        product.intervallo = data["intervallo"]
+    if "totale_produzione" in data:
+        product.totale_produzione = data["totale_produzione"]
+    if "tipologiaprodotto" in data:
+        product.tipologiaprodotto = data["tipologiaprodotto"]
+    if "anni_uso" in data:
+        product.anni_uso = data["anni_uso"]
+    if "pesoprodotto" in data:
+        product.pesoprodotto = data["pesoprodotto"]
+
+    try:
+        db.session.commit()
+        return jsonify({"message": f"Prodotto {productid} aggiornato con successo"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Errore durante l'aggiornamento del prodotto: {str(e)}"}), 500
+
 ######## API PER LA SEZIONE ESPLORA DATI#######
 
 #RECUPERO DI TUTTE LE ISIC SECTION (per menù a tendina della tipologia)
@@ -95,7 +130,6 @@ def get_isic_sections():
     return jsonify(schema.dump(isic_sections))
 
 #RECUPERO DI TUTTI I FORNITORI
-
 @product_bp.route("/fornitori", methods=["GET"])
 def get_all_fornitori():
     fornitori = Utente.query.filter_by(role="fornitore").all()
@@ -104,7 +138,6 @@ def get_all_fornitori():
     return jsonify(result), 200
 
 #RECUPERO DEI 4 TRASPORTI
-
 @product_bp.route("/mezzi-trasporto", methods=["GET"])
 def get_mezzi_trasporto():
     mezzi = {
@@ -128,24 +161,8 @@ def get_eol():
     return jsonify(eol)
 
 
-#RECUPERO DELLE ATTIVITà FILTRATE PER ISIC SECTION SELEZIONATO E PER SYSTEMMODEL DEL PRODOTTO
-# !!! non ci sono i prodotti dei fornitori
-@product_bp.route("/activities/filter", methods=["GET"])
-def get_activities_by_isic_and_systemmodel():
-    systemmodel = request.args.get("systemmodel")
-    isicsection = request.args.get("isicsection")
-    
-    query = Activity.query
-    if systemmodel:
-        query = query.filter_by(systemmodel=systemmodel)
-    if isicsection:
-        query = query.filter_by(isicsection=isicsection)
-    
-    activities = query.all()
-    schema = ActivitySchema(many=True)
-    return jsonify(schema.dump(activities))
-
 #RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
+# SENZA FILTRI
 @product_bp.route("/activitiesandproducts", methods=["GET"])
 def get_activities_and_fornitori_products_by_systemmodel():
     systemmodel = request.args.get("systemmodel")
@@ -178,6 +195,146 @@ def get_activities_and_fornitori_products_by_systemmodel():
         "fornitori_products": fornitori_data
     })
 
+#RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
+# CON FILTRI
+
+# RECUPERO DI TUTTE LE ATTIVITà DAL DB E TUTTI I PRODOTTI DEI FORNITORI
+# FILTRATI PER SYSTEMMODEL, TIPOLOGIA (ISICSection) E FORNITORE
+@product_bp.route("/activitiesandproducts", methods=["GET"])
+def get_activities_and_fornitori_products_by_filters():
+    systemmodel = request.args.get("systemmodel")
+    tipologia = request.args.get("tipologia")  # ID della ISICSection
+    fornitore_id = request.args.get("fornitoreid")  # ID dell'Utente fornitore
+
+    # --- Filtri per le Attività ---
+    activity_query = Activity.query
+
+    if systemmodel:
+        activity_query = activity_query.filter_by(systemmodel=systemmodel)
+    
+    if tipologia:
+        # Assumendo che la tabella Activity abbia un campo isicsection_id o simile
+        # Altrimenti, devi fare un join con ISICSection se la relazione è indiretta
+        activity_query = activity_query.filter_by(isicsection=tipologia) 
+    
+    if fornitore_id:
+        # Se le attività sono associate a fornitori tramite User_Activity (o simile)
+        # Dovrai fare un join con User_Activity e Utente
+        # Questa parte è un'ipotesi, adatta al tuo modello dati reale per Activity-Utente
+        activity_query = (
+            activity_query
+            .join(User_Activity, Activity.id == User_Activity.activityid)
+            .filter(User_Activity.userid == fornitore_id)
+        )
+
+    activities = activity_query.all()
+    activity_schema = ActivitySchema(many=True)
+    activity_data = activity_schema.dump(activities)
+
+    # --- Filtri per i Prodotti dei Fornitori ---
+    fornitori_products_query = (
+        db.session.query(Product)
+        .join(User_Product, Product.productid == User_Product.productid)
+        .join(Utente, User_Product.userid == Utente.userid)
+        .filter(Utente.role == "fornitore")
+    )
+    
+    if systemmodel:
+        fornitori_products_query = fornitori_products_query.filter(Product.systemmodel == systemmodel)
+
+    if tipologia:
+        # Assumendo che la tabella Product abbia un campo isicsection_id o simile
+        # Altrimenti, devi fare un join con ISICSection se la relazione è indiretta
+        fornitori_products_query = fornitori_products_query.filter(Product.tipologiaprodotto == tipologia) # Usiamo tipologiaprodotto se è l'ISIC ID
+    
+    if fornitore_id:
+        fornitori_products_query = fornitori_products_query.filter(Utente.userid == fornitore_id)
+
+    fornitori_products = fornitori_products_query.all()
+    product_schema = ProductSchema(many=True)
+    fornitori_data = product_schema.dump(fornitori_products)
+
+    return jsonify({
+        "activities": activity_data,
+        "fornitori_products": fornitori_data
+    })
+
+# RECUPERO DI TUTTE LE ATTIVITà DAL DB E TUTTI I PRODOTTI DEI FORNITORI
+# FILTRATI PER SYSTEMMODEL, TIPOLOGIA (ISICSection) E FORNITORE,
+# CON DETTAGLI DEL PRODOTTO DI RIFERIMENTO PER LE ATTIVITÀ
+@product_bp.route("/activitiesandproducts", methods=["GET"])
+def get_activities_and_fornitori_products_by_filters():
+    systemmodel = request.args.get("systemmodel")
+    tipologia_id = request.args.get("tipologiaid")  # ID della ISICSection
+    fornitore_id = request.args.get("fornitoreid")  # ID dell'Utente fornitore
+
+    # --- Filtri e dati aggiuntivi per le Attività ---
+    # Iniziamo la query selezionando l'Activity e aggiungendo i campi che vogliamo
+    activity_query = (
+        db.session.query(
+            Activity,
+            IntermediateExchange.intermediatename.label("reference_product_name"),
+            Unit.unitname.label("reference_product_unit")
+        )
+        .outerjoin(Activity_IntermediateExchange,
+                   (Activity.activityid == Activity_IntermediateExchange.activityid) &
+                   (Activity_IntermediateExchange.referenceproduct == True))
+        .outerjoin(IntermediateExchange,
+                   Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
+        .outerjoin(Unit,
+                   IntermediateExchange.unitid == Unit.unitid)
+    )
+
+    if systemmodel:
+        activity_query = activity_query.filter(Activity.systemmodel == systemmodel)
+    
+    if tipologia_id:
+        # Assumendo che la tabella Activity abbia un campo isicsection_id o simile
+        activity_query = activity_query.filter(Activity.isicsection_id == tipologia_id) 
+    
+    if fornitore_id:
+        # Se le attività sono associate a fornitori tramite User_Activity (o simile)
+        activity_query = (
+            activity_query
+            .join(User_Activity, Activity.activityid == User_Activity.activityid)
+            .filter(User_Activity.userid == fornitore_id)
+        )
+
+    activities_with_details = activity_query.all()
+    
+    activity_data = []
+    for activity, ref_prod_name, ref_prod_unit in activities_with_details:
+        activity_dict = ActivitySchema().dump(activity) # Serializza l'oggetto Activity
+        activity_dict["reference_product_name"] = ref_prod_name
+        activity_dict["reference_product_unit"] = ref_prod_unit
+        activity_data.append(activity_dict)
+
+
+    # --- Filtri per i Prodotti dei Fornitori (logica invariata) ---
+    fornitori_products_query = (
+        db.session.query(Product)
+        .join(User_Product, Product.productid == User_Product.productid)
+        .join(Utente, User_Product.userid == Utente.userid)
+        .filter(Utente.role == "fornitore")
+    )
+    
+    if systemmodel:
+        fornitori_products_query = fornitori_products_query.filter(Product.systemmodel == systemmodel)
+
+    if tipologia_id:
+        fornitori_products_query = fornitori_products_query.filter(Product.tipologiaprodotto == tipologia_id) 
+    
+    if fornitore_id:
+        fornitori_products_query = fornitori_products_query.filter(Utente.userid == fornitore_id)
+
+    fornitori_products = fornitori_products_query.all()
+    product_schema = ProductSchema(many=True)
+    fornitori_data = product_schema.dump(fornitori_products)
+
+    return jsonify({
+        "activities": activity_data,
+        "fornitori_products": fornitori_data
+    })
 
 # OTTENIMENTO FORNITORE DI UN'ATTIVITÀ CREATA DA UN FORNITORE
 @product_bp.route("/activities/<uuid:activity_id>/fornitore", methods=["GET"])
@@ -352,10 +509,13 @@ def delete_product_activity():
         return jsonify({"error": "Specificare 'activityid' oppure 'prodottofornitore_id'"}), 400
 
 # RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+# RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+# CON DETTAGLI DEL PRODOTTO DI RIFERIMENTO PER LE ATTIVITÀ
 @product_bp.route("/products/<uuid:productid>/activities/full", methods=["GET"])
 def get_full_activities_for_product(productid):
     fase = request.args.get("fase")
 
+    # Recupera le associazioni Product_Activity
     query = Product_Activity.query.filter_by(productid=productid)
     if fase:
         query = query.filter_by(fase=fase)
@@ -365,11 +525,11 @@ def get_full_activities_for_product(productid):
 
     for assoc in associations:
         if assoc.prodottofornitore_id:
-            # È una riga derivata da un prodotto fornitore
+            # È una riga derivata da un prodotto fornitore (logica invariata)
             prodotto_fornitore = Product.query.get(assoc.prodottofornitore_id)
             result.append({
                 "prodottofornitore_id": str(assoc.prodottofornitore_id),
-                "nome_prodotto_fornitore": prodotto_fornitore.name if prodotto_fornitore else None,
+                "nome_prodotto_fornitore": prodotto_fornitore.productname if prodotto_fornitore else None, # Ho corretto in .productname
                 "amount": str(assoc.amount),
                 "fase_generale": assoc.fase,
                 "nome_risorsa": assoc.nome_risorsa,
@@ -378,9 +538,37 @@ def get_full_activities_for_product(productid):
                 "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None
             })
         else:
-            # Attività normale
-            activity = Activity.query.get(assoc.activityid)
-            activity_data = ActivitySchema().dump(activity)
+            # Attività normale - Recupera i dettagli del prodotto di riferimento
+            activity_id = assoc.activityid
+
+            # Iniziamo la query per l'attività con i dettagli del prodotto di riferimento
+            activity_details_query = (
+                db.session.query(
+                    Activity,
+                    IntermediateExchange.intermediatename.label("reference_product_name"),
+                    Unit.unitname.label("reference_product_unit")
+                )
+                .filter(Activity.activityid == activity_id) # Filtra per l'activityid corrente
+                .outerjoin(Activity_IntermediateExchange,
+                           (Activity.activityid == Activity_IntermediateExchange.activityid) &
+                           (Activity_IntermediateExchange.referenceproduct == True))
+                .outerjoin(IntermediateExchange,
+                           Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
+                .outerjoin(Unit,
+                           IntermediateExchange.unitid == Unit.unitid)
+            )
+            
+            activity, ref_prod_name, ref_prod_unit = activity_details_query.first() # Prende il primo (e unico) risultato
+
+            if activity:
+                activity_data = ActivitySchema().dump(activity)
+                # Aggiungi i dettagli del prodotto di riferimento
+                activity_data["reference_product_name"] = ref_prod_name
+                activity_data["reference_product_unit"] = ref_prod_unit
+            else:
+                # Se l'attività non viene trovata, gestisci il caso (potrebbe essere un errore o dati inconsistenti)
+                activity_data = {} # O un messaggio di errore adeguato
+            
             activity_data.update({
                 "prodottofornitore_id": None,
                 "amount": str(assoc.amount),

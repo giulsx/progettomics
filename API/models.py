@@ -50,10 +50,10 @@ class Subcompartment(db.Model):
 # Tabella: IntermediateExchange
 class IntermediateExchange(db.Model):
     __tablename__ = "intermediateexchange"
-    intermediateexchangeId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    intermediateexchangeid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     intermediatename = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
-    modifiedIntermediate = db.Column(db.Boolean, nullable=False)
+    modifiedintermediate = db.Column(db.Boolean, nullable=False)
     activityid_productid = db.Column(db.Text, nullable=False, unique=True)
     unitid = db.Column(db.UUID, db.ForeignKey("unit.unitid"), nullable=False)
 
