@@ -134,7 +134,7 @@ class ProductActivitySchema(Schema):
 class UserProductSchema(Schema):
 
     productid = fields.UUID()
-    userid = fields.UUId()
+    userid = fields.UUID()
     amount = fields.Decimal()
     fase = fields.Str()
 

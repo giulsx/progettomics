@@ -164,7 +164,7 @@ def get_activities_and_fornitori_products_by_systemmodel():
         db.session.query(Product)
         .join(User_Product, Product.productid == User_Product.productid)
         .join(Utente, User_Product.userid == Utente.userid)
-        .filter(Utente.tipologia_attore == "fornitore")
+        .filter(Utente.role == "fornitore")
     )
     if systemmodel:
         fornitori_products_query = fornitori_products_query.filter(Product.systemmodel == systemmodel)
@@ -178,48 +178,6 @@ def get_activities_and_fornitori_products_by_systemmodel():
         "fornitori_products": fornitori_data
     })
 
-
-#RECUPERO DI TUTTE LE ATTIVITà E PRODOTTI ASSOCIATI A UN FORNITORE
-from flask import Blueprint, request, jsonify
-from models import Utente, User_Activity, User_Product, Activity, Product
-from schemas import ActivitySchema, ProductSchema
-from database import db
-
-bp = Blueprint('user_data', __name__)
-activity_schema = ActivitySchema(many=True)
-product_schema = ProductSchema(many=True)
-
-@bp.route('/user/data', methods=['GET'])
-def get_user_data():
-    username = request.args.get('username')
-
-    if not username:
-        return jsonify({'error': 'Specificare almeno username'}), 400
-
-    # Trova l'utente
-    user = Utente.query.filter(
-        (Utente.username == username)
-    ).first()
-
-    if not user:
-        return jsonify({'error': 'Utente non trovato'}), 404
-
-    # Recupera le attività associate
-    activity_ids = db.session.query(User_Activity.activityid).filter_by(userid=user.userid).all()
-    activity_ids = [a[0] for a in activity_ids]
-
-    activities = Activity.query.filter(Activity.id.in_(activity_ids)).all()
-
-    # Recupera i prodotti associati
-    product_ids = db.session.query(User_Product.productid).filter_by(userid=user.userid).all()
-    product_ids = [p[0] for p in product_ids]
-
-    products = Product.query.filter(Product.productid.in_(product_ids)).all()
-
-    return jsonify({
-        'activities': activity_schema.dump(activities),
-        'products': product_schema.dump(products)
-    })
 
 # OTTENIMENTO FORNITORE DI UN'ATTIVITÀ CREATA DA UN FORNITORE
 @product_bp.route("/activities/<uuid:activity_id>/fornitore", methods=["GET"])

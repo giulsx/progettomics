@@ -1,15 +1,12 @@
+
 from flask import Blueprint, request, jsonify
 from models import Utente, db
 from schemas import UtenteSchema
-import hashlib
 import uuid
 from sqlalchemy import text
+
 auth_bp = Blueprint('auth', __name__)
 utente_schema = UtenteSchema()
-
-# Funzione per generare userid come hash dello username
-
-import uuid
 
 # REGISTRAZIONE
 @auth_bp.route('/register', methods=['POST'])
@@ -20,8 +17,10 @@ def register():
     confirm_password = data.get('confirm_password')
     role = data.get('role')
     tipologia_attore = data.get('tipologia_attore')
-    companyname = data.get('companyname')  # nuovo campo opzionale
-    geography = data.get('geography')      # nuovo campo opzionale
+    companyname = data.get('companyname')
+    nation = data.get('nation')
+    city = data.get('city')
+    municipality = data.get('municipality')
 
     if not username or not password or not confirm_password or not role:
         return jsonify({'error': 'Compila tutti i campi obbligatori'}), 400
@@ -29,31 +28,29 @@ def register():
     if password != confirm_password:
         return jsonify({'error': 'Le password non coincidono'}), 400
 
-    # stampa la query SQL per debug
-    print(str(Utente.query.filter_by(username=username).statement.compile(compile_kwargs={"literal_binds": True})))
-
     if Utente.query.filter_by(username=username).first():
         return jsonify({'error': 'Username già esistente'}), 400
 
     new_user = Utente(
         username=username,
-        password=password,  # Password salvata in chiaro (NON consigliato per produzione)
+        password=password,
         role=role,
         tipologia_attore=tipologia_attore,
         companyname=companyname,
-        geography=geography
+        nation=nation,
+        city=city,
+        municipality=municipality
     )
 
     db.session.add(new_user)
     db.session.commit()
 
     return jsonify({
-    'message': 'Registrazione avvenuta con successo',
-    'userid': str(new_user.userid),
-    'role' : str(new_user.role)
-}), 201
+        'message': 'Registrazione avvenuta con successo',
+        'userid': str(new_user.userid)
+    }), 201
 
-# POST: login e restituzione userid
+
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -63,9 +60,6 @@ def login():
 
     if not username or not password:
         return jsonify({"message": "Username e password obbligatori"}), 400
-
-    # DEBUG: stampa la query SQL completa con valore username
-    print(str(Utente.query.filter(Utente.username == username).statement.compile(compile_kwargs={"literal_binds": True})))
 
     utente = Utente.query.filter(Utente.username == username).first()
 
@@ -83,28 +77,42 @@ def login():
         "tipologia_attore": utente.tipologia_attore
     }), 200
 
+
 @auth_bp.route('/user/profile', methods=['POST'])
 def update_user_profile():
     data = request.get_json()
 
-    userid = data.get("userid")
-    if not userid:
+    userid_str = data.get("userid")
+    if not userid_str:
         return jsonify({"error": "userid obbligatorio"}), 400
+
+    try:
+        userid = uuid.UUID(userid_str)
+    except ValueError:
+        return jsonify({"error": "userid non valido"}), 400
 
     utente = Utente.query.get(userid)
     if not utente:
         return jsonify({"error": "Utente non trovato"}), 404
 
-    # Aggiorna solo i campi presenti nella richiesta
     if "companyname" in data:
         utente.companyname = data["companyname"]
-    if "geography" in data:
-        utente.geography = data["geography"]
+
+    if "nation" in data:
+        utente.nation = data["nation"]
+
+    if "city" in data:
+        utente.city = data["city"]
+
+    if "municipality" in data:
+        utente.municipality = data["municipality"]
+
     if "tipologia_attore" in data:
         utente.tipologia_attore = data["tipologia_attore"]
 
     db.session.commit()
     return jsonify({"message": "Profilo aggiornato con successo"}), 200
+
 
 @auth_bp.route('/user/profile/<uuid:userid>', methods=['GET'])
 def get_user_profile(userid):
@@ -117,6 +125,8 @@ def get_user_profile(userid):
         "username": utente.username,
         "role": utente.role,
         "companyname": utente.companyname,
-        "geography": utente.geography,
+        "nation": utente.nation,
+        "city": utente.city,
+        "municipality": utente.municipality,
         "tipologia_attore": utente.tipologia_attore
     }), 200
