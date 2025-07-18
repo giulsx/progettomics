@@ -162,7 +162,7 @@ def get_eol():
 
 
 #RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
-# SENZA FILTRI
+# SENZA FILTRI (API che stiamo usando attualmente)
 @product_bp.route("/activitiesandproductsnofiltri", methods=["GET"])
 def get_activities_and_fornitori_products_by_systemmodel():
     systemmodel = request.args.get("systemmodel")
@@ -175,6 +175,59 @@ def get_activities_and_fornitori_products_by_systemmodel():
     activities = query.all()
     activity_schema = ActivitySchema(many=True)
     activity_data = activity_schema.dump(activities)
+
+    # Recupero prodotti associati a utenti 'fornitore' con lo stesso systemmodel
+    fornitori_products_query = (
+        db.session.query(Product)
+        .join(User_Product, Product.productid == User_Product.productid)
+        .join(Utente, User_Product.userid == Utente.userid)
+        .filter(Utente.role == "fornitore")
+    )
+    if systemmodel:
+        fornitori_products_query = fornitori_products_query.filter(Product.systemmodel == systemmodel)
+
+    fornitori_products = fornitori_products_query.all()
+    product_schema = ProductSchema(many=True)
+    fornitori_data = product_schema.dump(fornitori_products)
+
+    return jsonify({
+        "activities": activity_data,
+        "fornitori_products": fornitori_data
+    })
+
+# RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
+# SENZA FILTRI ma con dettagli come unità di misura e nome del prodotto di riferimento
+@product_bp.route("/activitiesandproductsnofiltri", methods=["GET"])
+def get_activities_and_fornitori_products_by_systemmodel():
+    systemmodel = request.args.get("systemmodel")
+
+    # Recupero attività con dettagli aggiuntivi (reference_product_name, reference_product_unit)
+    activity_query = (
+        db.session.query(
+            Activity,
+            IntermediateExchange.intermediatename.label("reference_product_name"),
+            Unit.unitname.label("reference_product_unit")
+        )
+        .outerjoin(Activity_IntermediateExchange,
+                   (Activity.activityid == Activity_IntermediateExchange.activityid) &
+                   (Activity_IntermediateExchange.referenceproduct == True))
+        .outerjoin(IntermediateExchange,
+                   Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
+        .outerjoin(Unit,
+                   IntermediateExchange.unitid == Unit.unitid)
+    )
+
+    if systemmodel:
+        activity_query = activity_query.filter(Activity.systemmodel == systemmodel)
+
+    activities_with_details = activity_query.all()
+    
+    activity_data = []
+    for activity, ref_prod_name, ref_prod_unit in activities_with_details:
+        activity_dict = ActivitySchema().dump(activity) # Serializza l'oggetto Activity
+        activity_dict["reference_product_name"] = ref_prod_name
+        activity_dict["reference_product_unit"] = ref_prod_unit
+        activity_data.append(activity_dict)
 
     # Recupero prodotti associati a utenti 'fornitore' con lo stesso systemmodel
     fornitori_products_query = (
