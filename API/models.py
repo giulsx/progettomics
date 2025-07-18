@@ -143,6 +143,8 @@ class Product_Activity(db.Model):
     nome_fase = db.Column(db.Text)
     distanza_fornitore = db.Column(db.Numeric)
     coll_trasporto = db.Column(db.UUID)
+    coll_trattamento = db.Column(db.UUID)
+
 
 
 # Tabella di associazione Utente - Prodotto

@@ -87,7 +87,8 @@ def add_product_activity():
         nome_risorsa=data["nome_risorsa"], # obbligatorio
         fase_produttiva=data.get("fase_produttiva"), # Opzionale
         distanza_fornitore=data.get("distanza_fornitore"),         # Opzionale
-        coll_trasporto=data.get("coll_trasporto")            # Opzionale
+        coll_trasporto=data.get("coll_trasporto"),            # Opzionale
+        coll_trattamento=data.get("coll_trattamento")  # Opzionale
     )
 
     # Salvataggio nel database
@@ -136,6 +137,7 @@ def create_product_with_fornitore_activities():
             fase_produttiva=data.get("fase_produttiva"),
             distanza_fornitore=data.get("distanza_fornitore"),
             coll_trasporto=data.get("coll_trasporto"),
+            coll_trattamento=data.get("coll_trattamento"),
             prodottofornitore_id=fornitore_product.id  
         )
         db.session.add(nuova_associazione)

@@ -417,7 +417,8 @@ def add_product_or_fornitore_activity():
             nome_risorsa=data["nome_risorsa"],
             fase_produttiva=data.get("fase_produttiva"),
             distanza_fornitore=data.get("distanza_fornitore"),
-            coll_trasporto=data.get("coll_trasporto")
+            coll_trasporto=data.get("coll_trasporto"),
+            coll_trattamento=data.get("coll_trattamento")
         )
 
         db.session.add(new_association)
@@ -447,6 +448,7 @@ def add_product_or_fornitore_activity():
                 fase_produttiva=data.get("fase_produttiva"),
                 distanza_fornitore=data.get("distanza_fornitore"),
                 coll_trasporto=data.get("coll_trasporto"),
+                coll_trattamento=data.get("coll_trattamento"),
                 prodottofornitore_id=fornitore_product.id
             )
             db.session.add(nuova_associazione)
@@ -535,7 +537,8 @@ def get_full_activities_for_product(productid):
                 "nome_risorsa": assoc.nome_risorsa,
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
-                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None
             })
         else:
             # Attività normale - Recupera i dettagli del prodotto di riferimento
@@ -576,7 +579,8 @@ def get_full_activities_for_product(productid):
                 "nome_risorsa": assoc.nome_risorsa,
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
-                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None
             })
             result.append(activity_data)
 
