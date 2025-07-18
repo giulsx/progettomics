@@ -144,6 +144,7 @@ class Product_Activity(db.Model):
     distanza_fornitore = db.Column(db.Numeric)
     coll_trasporto = db.Column(db.UUID)
     coll_trattamento = db.Column(db.UUID)
+    q_annuale = db.Column(db.Boolean)
 
 
 

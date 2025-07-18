@@ -418,7 +418,8 @@ def add_product_or_fornitore_activity():
             fase_produttiva=data.get("fase_produttiva"),
             distanza_fornitore=data.get("distanza_fornitore"),
             coll_trasporto=data.get("coll_trasporto"),
-            coll_trattamento=data.get("coll_trattamento")
+            coll_trattamento=data.get("coll_trattamento"),
+            q_annuale=data.get("q_annuale")
         )
 
         db.session.add(new_association)
@@ -449,6 +450,7 @@ def add_product_or_fornitore_activity():
                 distanza_fornitore=data.get("distanza_fornitore"),
                 coll_trasporto=data.get("coll_trasporto"),
                 coll_trattamento=data.get("coll_trattamento"),
+                q_annuale=data.get("q_annuale"),  # Aggiunto q_annuale con default False
                 prodottofornitore_id=fornitore_product.id
             )
             db.session.add(nuova_associazione)
@@ -538,7 +540,8 @@ def get_full_activities_for_product(productid):
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
                 "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
-                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None,
+                "q_annuale": assoc.q_annuale
             })
         else:
             # Attività normale - Recupera i dettagli del prodotto di riferimento
@@ -580,7 +583,8 @@ def get_full_activities_for_product(productid):
                 "fase_produttiva": assoc.fase_produttiva,
                 "distanza_fornitore": assoc.distanza_fornitore,
                 "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
-                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None,
+                "q_annuale": assoc.q_annuales
             })
             result.append(activity_data)
 
