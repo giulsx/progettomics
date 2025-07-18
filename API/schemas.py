@@ -130,7 +130,7 @@ class ProductActivitySchema(Schema):
     distanza_fornitore = fields.Decimal()
     coll_trasporto = fields.UUID()
     coll_trattamento = fields.UUID()
-    q_annuale = fields.Boolean
+    q_annuale = fields.Boolean()
 
 # Schema: User_Product
 class UserProductSchema(Schema):

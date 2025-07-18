@@ -6,7 +6,7 @@ from schemas import ActivitySchema, ISICSectionSchema, ProductSchema, UtenteSche
 import uuid
 import hashlib
 
-product_bp = Blueprint("product_bp", __name__)
+product_bp = Blueprint("product_bpppp", __name__)
 
 
 #OTTENIMENTO  GEOGRAPHY DELL'ATTIVITà SELEZIONATA 

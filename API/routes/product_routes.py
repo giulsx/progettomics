@@ -164,7 +164,7 @@ def get_eol():
 #RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
 # SENZA FILTRI (API che stiamo usando attualmente)
 @product_bp.route("/activitiesandproductsnofiltri", methods=["GET"])
-def get_activities_and_fornitori_products_by_systemmodel():
+def get_activities_and_fornitori_products_by_systemmodel1():
     systemmodel = request.args.get("systemmodel")
 
     # Recupero attività filtrate per systemmodel (se presente)
@@ -197,8 +197,8 @@ def get_activities_and_fornitori_products_by_systemmodel():
 
 # RECUPERO DI TUTTE LE ATTIVITà DEL DB e TUTTI I PRODOTTI DEI FORNITORE (FILTRATI PER SYSTEMMODEL)
 # SENZA FILTRI ma con dettagli come unità di misura e nome del prodotto di riferimento
-@product_bp.route("/activitiesandproductsnofiltri", methods=["GET"])
-def get_activities_and_fornitori_products_by_systemmodel():
+@product_bp.route("/activitiesandproductsnofiltridetails", methods=["GET"])
+def get_activities_and_fornitori_products_by_systemmodel_details():
     systemmodel = request.args.get("systemmodel")
 
     # Recupero attività con dettagli aggiuntivi (reference_product_name, reference_product_unit)
@@ -254,7 +254,7 @@ def get_activities_and_fornitori_products_by_systemmodel():
 # RECUPERO DI TUTTE LE ATTIVITà DAL DB E TUTTI I PRODOTTI DEI FORNITORI
 # FILTRATI PER SYSTEMMODEL, TIPOLOGIA (ISICSection) E FORNITORE
 @product_bp.route("/activitiesandproductsfiltri", methods=["GET"])
-def get_activities_and_fornitori_products_by_filters():
+def get_activities_and_fornitori_products_by_filters2():
     systemmodel = request.args.get("systemmodel")
     tipologia = request.args.get("tipologia")  # ID della ISICSection
     fornitore_id = request.args.get("fornitoreid")  # ID dell'Utente fornitore
