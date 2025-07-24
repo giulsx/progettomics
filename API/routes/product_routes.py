@@ -515,6 +515,96 @@ def add_product_or_fornitore_activity():
         return jsonify({"error": "Specificare almeno 'activityid' o 'prodottofornitore_id'"}), 400
 
 
+## API per l'Aggiornamento delle Associazioni Prodotto-Attività
+# MODIFICA DI UN'ATTIVITÀ (NORMALE) O DI UN PRODOTTO FORNITORE ASSOCIATO A UN PRODOTTO UTENTE
+# Si basa su productid e activityid (per attività normali)
+# o su productid, prodottofornitore_id e activityid (per attività copiate da fornitore)
+@product_bp.route("/product-activity", methods=["PUT"])
+def update_product_activity_no_model_change():
+    data = request.get_json()
+
+    # Campi obbligatori per identificare l'associazione
+    productid = data.get("productid")
+    activityid = data.get("activityid")
+    prodottofornitore_id = data.get("prodottofornitore_id")
+
+    if not productid:
+        return jsonify({"error": "Campo 'productid' obbligatorio per identificare il prodotto base."}), 400
+
+    # Inizializza la query di base
+    query = Product_Activity.query.filter_by(productid=productid)
+
+    # Variabile per il messaggio di risposta
+    message = "Associazione aggiornata con successo."
+    
+    # Lista per tenere traccia delle associazioni trovate per l'aggiornamento
+    associations_to_update = []
+
+    # Logica per distinguere tra attività normale e attività da prodotto fornitore
+    if activityid and not prodottofornitore_id:
+        # Scenario 1: Aggiornamento di una singola attività normale
+        # Filtriamo per activityid e ci assicuriamo che prodottofornitore_id sia NULL
+        association = query.filter_by(activityid=activityid, prodottofornitore_id=None).first()
+
+        if not association:
+            return jsonify({"error": "Associazione attività normale non trovata per il prodotto specificato."}), 404
+        
+        associations_to_update.append(association)
+        message = "Attività normale aggiornata con successo."
+
+    elif activityid and prodottofornitore_id:
+        # Scenario 2: Aggiornamento di una singola attività specifica copiata da un prodotto fornitore
+        # Questo aggiornerà SOLO QUELLA SINGOLA RIGA che corrisponde a tutti e tre gli ID
+        association = query.filter_by(activityid=activityid, prodottofornitore_id=prodottofornitore_id).first()
+
+        if not association:
+            return jsonify({"error": "Associazione attività da fornitore non trovata per i parametri specificati."}), 404
+        
+        associations_to_update.append(association)
+        message = "Attività del prodotto fornitore (singola) aggiornata con successo."
+
+    elif prodottofornitore_id and not activityid:
+        # Scenario 3: Aggiornamento in blocco di TUTTE le attività copiate da un prodotto fornitore
+        # (se si vuole modificare un parametro che si applica a tutte le attività copiate)
+        associations = query.filter_by(prodottofornitore_id=prodottofornitore_id).all()
+
+        if not associations:
+            return jsonify({"message": "Nessuna attività associata trovata per il prodotto fornitore specificato."}), 404
+        
+        associations_to_update.extend(associations)
+        message = f"{len(associations)} attività del prodotto fornitore aggiornate con successo."
+
+    else:
+        return jsonify({"error": "Specificare 'activityid' (per attività normale), o 'prodottofornitore_id' (per attività fornitore), o entrambi per una specifica attività del fornitore."}), 400
+
+    # Applica gli aggiornamenti ai campi opzionali per tutte le associazioni trovate
+    for association in associations_to_update:
+        # Usiamo .get() per recuperare i valori, così se non sono presenti nel JSON, restituiscono None
+        # e non vengono applicati a meno che non siano esplicitamente passati come None.
+        if "amount" in data:
+            association.amount = data.get("amount")
+        if "fase_generale" in data:
+            association.fase_generale = data.get("fase_generale")
+        if "nome_risorsa" in data:
+            association.nome_risorsa = data.get("nome_risorsa")
+        if "fase_produttiva" in data:
+            association.fase_produttiva = data.get("fase_produttiva")
+        if "distanza_fornitore" in data:
+            association.distanza_fornitore = data.get("distanza_fornitore")
+        if "coll_trasporto" in data:
+            association.coll_trasporto = data.get("coll_trasporto")
+        if "coll_trattamento" in data:
+            association.coll_trattamento = data.get("coll_trattamento")
+        if "q_annuale" in data:
+            association.q_annuale = data.get("q_annuale") # I campi booleani come q_annuale spesso richiedono attenzione per i valori default/NULL
+
+    try:
+        db.session.commit()
+        return jsonify({"message": message}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Errore durante l'aggiornamento: {str(e)}"}), 500
+
 # ELIMINAZIONE DI UN'ATTIVITà(normale)/PRODOTTO FORTNITORE ASSOCIATA A UN PRODOTTO
 @product_bp.route("/product-activity", methods=["DELETE"])
 def delete_product_activity():
