@@ -146,8 +146,6 @@ class Product_Activity(db.Model):
     coll_trattamento = db.Column(db.UUID)
     q_annuale = db.Column(db.Boolean)
 
-
-
 # Tabella di associazione Utente - Prodotto
 class User_Product(db.Model):
     __tablename__ = "user_product"

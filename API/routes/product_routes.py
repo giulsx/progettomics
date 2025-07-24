@@ -209,7 +209,7 @@ def get_activities_and_fornitori_products_by_systemmodel_details():
             Unit.unitname.label("reference_product_unit")
         )
         .outerjoin(Activity_IntermediateExchange,
-                   (Activity.activityid == Activity_IntermediateExchange.activityid) &
+                   (Activity.id == Activity_IntermediateExchange.activityid) &
                    (Activity_IntermediateExchange.referenceproduct == True))
         .outerjoin(IntermediateExchange,
                    Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
@@ -330,7 +330,7 @@ def get_activities_and_fornitori_products_by_filters():
             Unit.unitname.label("reference_product_unit")
         )
         .outerjoin(Activity_IntermediateExchange,
-                   (Activity.activityid == Activity_IntermediateExchange.activityid) &
+                   (Activity.id == Activity_IntermediateExchange.activityid) &
                    (Activity_IntermediateExchange.referenceproduct == True))
         .outerjoin(IntermediateExchange,
                    Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
@@ -349,7 +349,7 @@ def get_activities_and_fornitori_products_by_filters():
         # Se le attività sono associate a fornitori tramite User_Activity (o simile)
         activity_query = (
             activity_query
-            .join(User_Activity, Activity.activityid == User_Activity.activityid)
+            .join(User_Activity, Activity.id == User_Activity.activityid)
             .filter(User_Activity.userid == fornitore_id)
         )
 
