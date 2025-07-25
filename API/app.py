@@ -7,6 +7,7 @@ from flask_cors import CORS
 from routes.product_routes import product_bp
 from routes.activity_routes import activity_bp
 from routes.user_routes import auth_bp
+from routes.certificazioni_routes import certificazioni_bp
 
  
 app = Flask(__name__)
@@ -25,6 +26,7 @@ ma.init_app(app)
 app.register_blueprint(product_bp)
 app.register_blueprint(activity_bp)
 app.register_blueprint(auth_bp)
+app.register_blueprint(certificazioni_bp)
 
 
 @app.route("/ping", methods=["GET"])

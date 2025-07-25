@@ -163,3 +163,21 @@ CREATE TABLE User_Product (
     FOREIGN KEY (userid) REFERENCES user(userid) ON DELETE CASCADE,
     FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
 );
+
+-- Tabella di associazione tra certificazione e Product
+CREATE TABLE Certificazione_Product (
+    certificazioneid UUID NOT NULL,
+    productid UUID NOT NULL,
+    PRIMARY KEY (certificazioneid, productid),
+    FOREIGN KEY (certificazioneid) REFERENCES Certificazione(certificazioneid) ON DELETE CASCADE,
+    FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
+);
+
+-- Tabella di associazione tra certificazione e ImpactIndicator
+CREATE TABLE Certificazione_ImpactIndicator (
+    certificazioneid UUID NOT NULL,
+    impactIndicatorId UUID NOT NULL,
+    PRIMARY KEY (certificazioneid, impactIndicatorId),
+    FOREIGN KEY (certificazioneid) REFERENCES Certificazione(certificazioneid) ON DELETE CASCADE,
+    FOREIGN KEY (impactIndicatorId) REFERENCES ImpactIndicator(impactIndicatorId) ON DELETE CASCADE
+);

@@ -1,68 +1,64 @@
 import requests
 import json
+import base64
 import uuid
 
-base_url = "http://localhost:8000" # Assicurati che questa URL e porta siano corrette
+# --- CONFIGURAZIONE DEL TEST ---
+BASE_URL = "http://127.0.0.1:8000" # Assicurati che questo sia l'indirizzo corretto del tuo server Flask
+CERTIFICAZIONI_ENDPOINT = f"{BASE_URL}/certificazioni"
 
-# --- Dati di Partenza (Valori ATTUALI nel tuo DB per la riga che vuoi modificare) ---
-# Questi valori devono corrispondere ESATTAMENTE alla riga esistente nel tuo database.
-# Copia/incolla questi UUID e gli altri valori direttamente dal tuo DB.
-current_db_values = {
-    "productid": "8ed88a45-b198-e482-a479-420ce96a004b",
-    "activityid": "00027245-d6be-527e-82d0-fcee42d50a9f", # Assicurati che questo UUID sia corretto nel tuo DB
-    "prodottofornitore_id": None, # O None se è NULL nel DB
-    "amount": 530,            # Deve essere il valore ATTUALE nel DB (usa .0 per i float)
-    "fase_generale": "materie prime",
-    "nome_risorsa": None,       # Deve essere None se NULL nel DB
-    "fase_produttiva": None,
-    "distanza_fornitore": 130, # Deve essere None se NULL nel DB
-    "coll_trasporto": "77d88a45-b198-e482-a479-420ce96a0049",
-    "coll_trattamento": None,
-    "q_annuale": None
-}
+# *** INSERISCI QUI I TUOI UUID REALI DAL DATABASE ***
+TEST_USER_ID = "02cf6730-f316-4bea-96df-b03138b6a1cf" 
+TEST_PRODUCT_ID = "8ed88a45-b198-e482-a479-420ce96a004b" 
 
-# --- Dati di Aggiornamento (Nuovi valori che vuoi impostare) ---
-# Contiene solo i campi che vuoi modificare e i loro NUOVI valori.
-new_update_values = {
-    "amount": 530,             # Il nuovo valore per 'amount'
-    "distanza_fornitore": 130,
-    "coll_trasporto" : "77d88a45-b198-e482-a479-420ce96a0049"  # Il nuovo valore per 'distanza_fornitore'
-}
 
-# --- Costruzione del Payload Finale ---
-# Combina i criteri di ricerca (valori attuali) con i dati di aggiornamento (nuovi valori).
-payload = {
-    "search_criteria": current_db_values,
-    "update_data": new_update_values
-}
+# --- FUNZIONE PER GENERARE UN PDF DI ESEMPIO (Base64) ---
+def generate_sample_pdf_base64():
+    # Un PDF minimale con "Hello, World!" per test.
+    pdf_content = b"%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n2 0 obj<</Type/Pages/Count 1/Kids[3 0 R]>>endobj\n3 0 obj<</Type/Page/MediaBox[0 0 612 792]/Parent 2 0 R/Contents 4 0 R>>endobj\n4 0 obj<</Length 11>>stream\nBT /F1 12 Tf 72 712 Td (Hello, World!) Tj ET\nendstream\nendobj\nxref\n0 5\n0000000000 65535 f\n0000000009 00000 n\n0000000056 00000 n\n0000000114 00000 n\n0000000216 00000 n\ntrailer<</Size 5/Root 1 0 R>>startxref\n304\n%%EOF"
+    return base64.b64encode(pdf_content).decode('utf-8')
 
-# --- Test di Validità Locale degli UUID in search_criteria ---
-# Questo blocco verifica che gli UUID nella sezione 'search_criteria' siano validi
-# PRIMA di inviare la richiesta HTTP. Questo ti aiuterà a catturare errori
-# "badly formed hexadecimal UUID string" localmente, risparmiando tempo.
-try:
-    _ = uuid.UUID(payload["search_criteria"]["productid"])
-    _ = uuid.UUID(payload["search_criteria"]["activityid"])
-    if payload["search_criteria"]["prodottofornitore_id"] is not None:
-        _ = uuid.UUID(payload["search_criteria"]["prodottofornitore_id"])
-    print("Verifica locale: Tutti gli UUID in 'search_criteria' sono formattati correttamente.")
-except ValueError as e:
-    print(f"ERRORE CRITICO LOCALE: Uno degli UUID in 'search_criteria' non è formattato correttamente: {e}")
-    print("Controlla attentamente gli UUID copiati dal tuo database per spazi extra o errori di battitura.")
-    exit() # Interrompe l'esecuzione se c'è un errore di formato UUID locale
+# --- DATI PER IL TEST DELLA NUOVA CERTIFICAZIONE ---
+def get_test_data():
+    data = {
+        "nomecertificazione": "Certificazione Singolo Prodotto Test",
+        "tipocertificazione": "Qualità Specifiche",
+        "entecertificatore": "Ente Test Semplificato",
+        "anno": 2023,
+        "certificazionepdf": generate_sample_pdf_base64(), # PDF di esempio
+        "userid": TEST_USER_ID, 
+        "productid": TEST_PRODUCT_ID # Questo è il campo che il server Flask si aspetta
+    }
+    return data
 
-print("Invio richiesta PUT con il seguente payload:")
-print(json.dumps(payload, indent=4))
+# --- ESECUZIONE DEL TEST ---
+def run_test():
+    print(f"Tentativo di creare una certificazione a: {CERTIFICAZIONI_ENDPOINT}")
 
-try:
-    response = requests.put(f"{base_url}/product-activity", json=payload)
-    response.raise_for_status() # Genera un'eccezione per risposte 4xx/5xx
-    print("\nStatus Code:", response.status_code)
-    print("Response:", response.json())
-except requests.exceptions.HTTPError as err:
-    print(f"\nHTTP Error: {err}")
-    # Stampa la risposta JSON dell'errore per maggiori dettagli dal server Flask
-    if err.response:
-        print("Response Error Details:", err.response.json())
-except requests.exceptions.RequestException as err:
-    print(f"\nRequest Error: {err}")
+    test_data = get_test_data()
+    print(f"\nDati inviati:\n{json.dumps(test_data, indent=2)}")
+
+    try:
+        response = requests.post(CERTIFICAZIONI_ENDPOINT, json=test_data)
+        
+        print(f"\nStato della risposta: {response.status_code}")
+        print(f"Corpo della risposta:\n{json.dumps(response.json(), indent=2)}")
+
+        if response.status_code == 201:
+            print("\nTEST SUPERATO: Certificazione creata con successo e associazione prodotto generata.")
+            created_cert = response.json()
+            print(f"ID Certificazione creata: {created_cert.get('certificazioneid')}")
+        else:
+            print("\nTEST FALLITO: Si è verificato un errore durante la creazione della certificazione.")
+            
+    except requests.exceptions.ConnectionError:
+        print("\nERRORE: Impossibile connettersi al server Flask. Assicurati che sia in esecuzione.")
+    except Exception as e:
+        print(f"\nSi è verificato un errore imprevisto: {e}")
+
+if __name__ == "__main__":
+    # Questo controllo assicura che tu abbia aggiornato i valori all'inizio dello script.
+    if TEST_USER_ID == "IL_TUO_USERID_ESISTENTE_QUI" or TEST_PRODUCT_ID == "IL_TUO_PRODUCTID_ESISTENTE_QUI":
+        print("ERRORE: Per favore, aggiorna TEST_USER_ID e TEST_PRODUCT_ID nello script con UUID validi dal tuo database.")
+    else:
+        run_test()

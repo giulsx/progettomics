@@ -161,3 +161,29 @@ class User_Activity(db.Model):
     activityid = db.Column(db.UUID, db.ForeignKey("activity.id"), primary_key=True)
     userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), primary_key=True)
 
+# Tabella: Certificazione
+class Certificazione(db.Model):
+    __tablename__ = "certificazione"
+    certificazioneid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    nomecertificazione = db.Column(db.Text, nullable=False)
+    tipocertificazione = db.Column(db.Text, nullable=False)
+    entecertificatore = db.Column(db.Text, nullable=False)
+    anno = db.Column(db.Integer, nullable=False)
+    certificazionepdf = db.Column(db.LargeBinary, nullable=True)  # PDF come BLOB
+    userid = db.Column(db.UUID, db.ForeignKey("utente.userid"), nullable=True)  # Opzionale
+
+# Tabella di associazione Certificazione - Prodotto
+class Certificazione_Product(db.Model):
+    __tablename__ = "certificazione_product"
+    productid = db.Column(db.UUID, db.ForeignKey("product.productid"), primary_key=True)
+    certificazioneid = db.Column(db.UUID, db.ForeignKey("certificazione.certificazioneid"), primary_key=True)   
+
+# Tabella di associazione Certificazione - ImpactIndicator
+class Certificazione_ImpactIndicator(db.Model):
+    __tablename__ = "certificazione_impactindicator"
+    certificazioneid = db.Column(db.UUID, db.ForeignKey("certificazione.certificazioneid"), primary_key=True)
+    impactindicatorid = db.Column(db.UUID, db.ForeignKey("impactindicator.impactindicatorId"), primary_key=True)
+
+
+    
+    

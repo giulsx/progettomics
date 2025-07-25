@@ -1,6 +1,7 @@
 from flask_marshmallow import Marshmallow
 from marshmallow import Schema, fields
 from models import *
+import base64 # Importa base64
 
 ma = Marshmallow() 
 
@@ -146,4 +147,51 @@ class UserActivitySchema(Schema):
     
     activityid = fields.UUID()
     userid = fields.UUID()
-    
+
+# schemas.py
+
+from marshmallow import Schema, fields, validate
+import base64
+import uuid
+
+# Schema: Certificazione_Product (questo schema non viene usato per il 'load' diretto in CertificazioneSchema,
+# ma è necessario per definire la struttura dell'associazione quando la crei manualmente)
+class CertificazioneProductSchema(Schema):
+    productid = fields.UUID(required=True)
+    certificazioneid = fields.UUID(dump_only=True)
+
+# Schema: Certificazione_ImpactIndicator (invariato, non coinvolto nel problema attuale)
+class CertificazioneImpactIndicatorSchema(Schema):
+    certificazioneid = fields.UUID(dump_only=True)
+    impactindicatorid = fields.UUID(required=True)
+
+# Schema: Certificazione
+class CertificazioneSchema(Schema):
+    certificazioneid = fields.UUID(dump_only=True) # Sarà generato dal database
+    nomecertificazione = fields.Str(required=True, validate=validate.Length(min=1))
+    tipocertificazione = fields.Str(required=True, validate=validate.Length(min=1))
+    entecertificatore = fields.Str(required=True, validate=validate.Length(min=1))
+    anno = fields.Integer(required=True)
+    certificazionepdf = fields.Method("get_pdf_base64", "load_pdf_base64", allow_none=True)
+    userid = fields.UUID(allow_none=True)
+
+    # *** AGGIUNGI/ASSICURATI CHE QUESTA RIGA SIA PRESENTE E CORRETTA ***
+    # Questo campo dice a Marshmallow di aspettarsi un 'productid' nel JSON in ingresso.
+    # 'load_only=True' significa che viene usato solo in fase di deserializzazione (input).
+    # 'allow_none=True' lo rende opzionale; se vuoi sia obbligatorio, usa 'required=True'.
+    productid = fields.UUID(load_only=True, allow_none=True) 
+
+    # Metodo per serializzare i bytes del PDF in Base64 per l'output JSON
+    def get_pdf_base64(self, obj):
+        if obj.certificazionepdf is not None:
+            return base64.b64encode(obj.certificazionepdf).decode('utf-8')
+        return None
+
+    # Metodo per deserializzare la stringa Base64 in bytes per il salvataggio nel DB
+    def load_pdf_base64(self, value):
+        if value is not None:
+            try:
+                return base64.b64decode(value)
+            except Exception as e:
+                raise ValueError(f"Dati PDF non validi (non è una stringa Base64): {e}")
+        return None
