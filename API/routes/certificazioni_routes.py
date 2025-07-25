@@ -3,8 +3,8 @@
 from flask import Blueprint, request, jsonify, abort
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from database import db
-from models import Certificazione, Certificazione_Product # Importa il modello di associazione
-from schemas import CertificazioneSchema # Non abbiamo più bisogno di CertificazioneProductSchema qui per il load
+from models import Certificazione, Certificazione_Product, Certificazione_ImpactIndicator, Product # Importa il modello di associazione
+from schemas import CertificazioneSchema, ProductSchema # Non abbiamo più bisogno di CertificazioneProductSchema qui per il load
 import uuid
 
 # Inizializza il Blueprint per le routes delle certificazioni
@@ -88,6 +88,116 @@ def create_certificazione():
     except SQLAlchemyError as e: # Cattura errori generici di SQLAlchemy
         db.session.rollback()
         return jsonify({"message": f"Errore del database: {str(e)}"}), 500
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"message": f"Errore interno del server: {str(e)}"}), 500
+    
+
+#### ELIMINAZIONE CERTIFICAZIONE E ASSOCIAZIONI ####
+@certificazioni_bp.route('/certificazioni/<uuid:certificazione_id>', methods=['DELETE'])
+def delete_certificazione(certificazione_id):
+    try:
+        # 1. Trova la certificazione
+        certificazione = Certificazione.query.get(certificazione_id)
+
+        if not certificazione:
+            return jsonify({"message": f"Certificazione con ID {certificazione_id} non trovata."}), 404
+
+        # 2. Inizia una transazione per garantire l'integrità
+        # (db.session.begin() è implicito con un try-except e db.session.commit()/rollback())
+
+        # 3. Elimina tutte le associazioni Certificazione_Product per questa certificazione
+        # Non è necessario un prodotto specifico, eliminiamo tutte le associazioni di quella certificazione
+        Certificazione_Product.query.filter_by(certificazioneid=certificazione_id).delete()
+        
+        # 4. Elimina tutte le associazioni Certificazione_ImpactIndicator per questa certificazione
+        Certificazione_ImpactIndicator.query.filter_by(certificazioneid=certificazione_id).delete()
+
+        # 5. Elimina la riga della Certificazione stessa
+        db.session.delete(certificazione)
+
+        # 6. Conferma tutte le eliminazioni nel database
+        db.session.commit()
+
+        return jsonify({"message": f"Certificazione con ID {certificazione_id} e tutte le sue associazioni eliminate con successo."}), 200
+
+    except SQLAlchemyError as e:
+        db.session.rollback() # Annulla tutte le operazioni se c'è un errore
+        return jsonify({"message": f"Errore del database durante l'eliminazione: {str(e)}"}), 500
+    except Exception as e:
+        db.session.rollback() # Annulla tutte le operazioni per sicurezza
+        return jsonify({"message": f"Errore interno del server: {str(e)}"}), 500
+    
+
+#### MODIFICA CERTIFICAZIONE ESISTENTE ####
+@certificazioni_bp.route('/certificazioni/<uuid:certificazione_id>', methods=['PATCH'])
+def update_certificazione(certificazione_id):
+    try:
+        json_data = request.get_json()
+        if not json_data:
+            return jsonify({"message": "Nessun dato JSON fornito nella richiesta."}), 400
+
+        # Trova la certificazione esistente
+        certificazione = Certificazione.query.get(certificazione_id)
+        if not certificazione:
+            return jsonify({"message": f"Certificazione con ID {certificazione_id} non trovata."}), 404
+
+        # Carica e valida i dati in ingresso.
+        # 'partial=True' è cruciale per le PATCH: Marshmallow ignorerà i campi mancanti nel JSON.
+        validated_data = certificazione_schema.load(json_data, partial=True)
+
+        # Applica gli aggiornamenti solo ai campi forniti nel JSON
+        for key, value in validated_data.items():
+            # Evita di aggiornare l'ID della certificazione
+            if key == 'certificazioneid':
+                continue
+            # Aggiorna il campo corrispondente nel modello della certificazione
+            setattr(certificazione, key, value)
+        
+        db.session.commit()
+
+        # Restituisci la certificazione aggiornata
+        return jsonify(certificazione_schema.dump(certificazione)), 200
+
+    except ValueError as e: # Errori di validazione di Marshmallow
+        db.session.rollback()
+        return jsonify({"message": f"Errore di validazione dei dati: {str(e)}"}), 400
+    except IntegrityError as e: # Errori di vincoli del DB (es. userid non esistente)
+        db.session.rollback()
+        return jsonify({"message": f"Errore di integrità del database: {str(e)}"}), 400
+    except SQLAlchemyError as e: # Errori generici di SQLAlchemy
+        db.session.rollback()
+        return jsonify({"message": f"Errore del database: {str(e)}"}), 500
+    except Exception as e: # Qualsiasi altro errore inatteso
+        db.session.rollback()
+        return jsonify({"message": f"Errore interno del server: {str(e)}"}), 500
+    
+    #### RECUPERO CERTIFICAZIONI PER PRODOTTO ####
+@certificazioni_bp.route('/products/<uuid:product_id>/certificazioni', methods=['GET'])
+def get_certificazioni_by_product(product_id):
+    try:
+        # 1. Verifica se il prodotto esiste (opzionale ma consigliato per una migliore gestione degli errori)
+        product = Product.query.get(product_id)
+        if not product:
+            return jsonify({"message": f"Prodotto con ID {product_id} non trovato."}), 404
+
+        # 2. Esegui la query per recuperare le certificazioni associate a quel product_id
+        # Unisci Certificazione con Certificazione_Product sulla base di certificazioneid
+        # e poi filtra per il productid desiderato.
+        certificazioni = db.session.query(Certificazione) \
+                             .join(Certificazione_Product, Certificazione.certificazioneid == Certificazione_Product.certificazioneid) \
+                             .filter(Certificazione_Product.productid == product_id) \
+                             .all()
+
+        # 3. Serializza le certificazioni trovate
+        # Usiamo certificazioni_schema (many=True) per serializzare una lista di oggetti
+        result = certificazioni_schema.dump(certificazioni)
+
+        return jsonify(result), 200
+
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        return jsonify({"message": f"Errore del database durante il recupero delle certificazioni: {str(e)}"}), 500
     except Exception as e:
         db.session.rollback()
         return jsonify({"message": f"Errore interno del server: {str(e)}"}), 500
