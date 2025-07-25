@@ -318,9 +318,9 @@ def get_activities_and_fornitori_products_by_filters2():
 @product_bp.route("/activitiesandproductswithdetails", methods=["GET"])
 def get_activities_and_fornitori_products_by_filters():
     systemmodel = request.args.get("systemmodel")
-    tipologia_id = request.args.get("tipologiaid")  # ID della ISICSection
-    fornitore_id = request.args.get("fornitoreid")  # ID dell'Utente fornitore
-
+    tipologia_id = request.args.get("tipologiaid") # ID della ISICSection
+    fornitore_id = request.args.get("fornitoreid") # ID dell'Utente fornitore
+ 
     # --- Filtri e dati aggiuntivi per le Attività ---
     # Iniziamo la query selezionando l'Activity e aggiungendo i campi che vogliamo
     activity_query = (
@@ -329,22 +329,15 @@ def get_activities_and_fornitori_products_by_filters():
             IntermediateExchange.intermediatename.label("reference_product_name"),
             Unit.unitname.label("reference_product_unit")
         )
-        .outerjoin(Activity_IntermediateExchange,
-                   (Activity.id == Activity_IntermediateExchange.activityid) &
-                   (Activity_IntermediateExchange.referenceproduct == True))
-        .outerjoin(IntermediateExchange,
-                   Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
-        .outerjoin(Unit,
-                   IntermediateExchange.unitid == Unit.unitid)
+        .outerjoin(Activity_IntermediateExchange, (Activity.id == Activity_IntermediateExchange.activityid) & (Activity_IntermediateExchange.referenceproduct == True))
+        .outerjoin(IntermediateExchange, Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
+        .outerjoin(Unit, IntermediateExchange.unitid == Unit.unitid)
     )
-
     if systemmodel:
         activity_query = activity_query.filter(Activity.systemmodel == systemmodel)
-    
     if tipologia_id:
         # Assumendo che la tabella Activity abbia un campo isicsection_id o simile
-        activity_query = activity_query.filter(Activity.isicsection_id == tipologia_id) 
-    
+        activity_query = activity_query.filter(Activity.isicsection_id == tipologia_id)
     if fornitore_id:
         # Se le attività sono associate a fornitori tramite User_Activity (o simile)
         activity_query = (
@@ -352,38 +345,39 @@ def get_activities_and_fornitori_products_by_filters():
             .join(User_Activity, Activity.id == User_Activity.activityid)
             .filter(User_Activity.userid == fornitore_id)
         )
-
     activities_with_details = activity_query.all()
-    
     activity_data = []
     for activity, ref_prod_name, ref_prod_unit in activities_with_details:
         activity_dict = ActivitySchema().dump(activity) # Serializza l'oggetto Activity
         activity_dict["reference_product_name"] = ref_prod_name
         activity_dict["reference_product_unit"] = ref_prod_unit
         activity_data.append(activity_dict)
-
-
+ 
     # --- Filtri per i Prodotti dei Fornitori (logica invariata) ---
     fornitori_products_query = (
-        db.session.query(Product)
+        db.session.query(Product, Utente.userid) # Aggiungi Utente.userid qui
         .join(User_Product, Product.productid == User_Product.productid)
         .join(Utente, User_Product.userid == Utente.userid)
         .filter(Utente.role == "fornitore")
     )
-    
+   
     if systemmodel:
         fornitori_products_query = fornitori_products_query.filter(Product.systemmodel == systemmodel)
-
+ 
     if tipologia_id:
-        fornitori_products_query = fornitori_products_query.filter(Product.tipologiaprodotto == tipologia_id) 
-    
+        fornitori_products_query = fornitori_products_query.filter(Product.tipologiaprodotto == tipologia_id)
+   
     if fornitore_id:
         fornitori_products_query = fornitori_products_query.filter(Utente.userid == fornitore_id)
-
-    fornitori_products = fornitori_products_query.all()
-    product_schema = ProductSchema(many=True)
-    fornitori_data = product_schema.dump(fornitori_products)
-
+ 
+    fornitori_products_with_userid = fornitori_products_query.all() # Ora contiene tuple (Product, userid)
+   
+    fornitori_data = []
+    for product, user_id in fornitori_products_with_userid:
+        product_dict = ProductSchema().dump(product)
+        product_dict["fornitoreid"] = str(user_id) # Aggiungi fornitoreid
+        fornitori_data.append(product_dict)
+ 
     return jsonify({
         "activities": activity_data,
         "fornitori_products": fornitori_data

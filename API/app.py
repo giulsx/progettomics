@@ -8,6 +8,7 @@ from routes.product_routes import product_bp
 from routes.activity_routes import activity_bp
 from routes.user_routes import auth_bp
 from routes.certificazioni_routes import certificazioni_bp
+from routes.indicatori_routes import indicatori_bp #
 
  
 app = Flask(__name__)
@@ -27,6 +28,7 @@ app.register_blueprint(product_bp)
 app.register_blueprint(activity_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(certificazioni_bp)
+app.register_blueprint(indicatori_bp) 
 
 
 @app.route("/ping", methods=["GET"])

@@ -70,11 +70,11 @@ class ElementaryExchange(db.Model):
 # Tabella: ImpactIndicator
 class ImpactIndicator(db.Model):
     __tablename__ = "impactindicator"
-    impactindicatorId = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
+    impactindicatorid = db.Column(db.UUID, primary_key=True, default=uuid.uuid4)
     impactname = db.Column(db.Text, nullable=False)
     amount = db.Column(db.Numeric)
-    impactmethodName = db.Column(db.Text, nullable=False)
-    impactcategoryName = db.Column(db.Text, nullable=False)
+    impactmethodname = db.Column(db.Text, nullable=False)
+    impactcategoryname = db.Column(db.Text, nullable=False)
     unitname = db.Column(db.Text, nullable=False)
 
 # Tabella: Activity
@@ -96,7 +96,7 @@ class CFs(db.Model):
     __tablename__ = "cfs"
     elementaryname = db.Column(db.Text, primary_key=True)
     impactmethodname = db.Column(db.Text, primary_key=True)
-    impactCategoryName = db.Column(db.Text, primary_key=True)
+    impactCategoryname = db.Column(db.Text, primary_key=True)
     impactname = db.Column(db.Text, primary_key=True)
     cf = db.Column(db.Numeric)
     unit = db.Column(db.Text)
@@ -182,8 +182,8 @@ class Certificazione_Product(db.Model):
 class Certificazione_ImpactIndicator(db.Model):
     __tablename__ = "certificazione_impactindicator"
     certificazioneid = db.Column(db.UUID, db.ForeignKey("certificazione.certificazioneid"), primary_key=True)
-    impactindicatorid = db.Column(db.UUID, db.ForeignKey("impactindicator.impactindicatorId"), primary_key=True)
+    impactindicatorid = db.Column(db.UUID, db.ForeignKey("impactindicator.impactindicatorid"), primary_key=True)
 
 
-    
+
     
