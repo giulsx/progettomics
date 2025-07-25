@@ -140,8 +140,9 @@ class Product_Activity(db.Model):
     amount = db.Column(db.Numeric)
     fase_generale = db.Column(db.Text, primary_key=True)
     fase_produttiva = db.Column(db.Text)
-    nome_fase = db.Column(db.Text)
+    nome_risorsa = db.Column(db.Text)
     distanza_fornitore = db.Column(db.Numeric)
+    prodottofornitore_id = db.Column(db.UUID, db.ForeignKey("product.productid"), nullable=True)  # Opzionale
     coll_trasporto = db.Column(db.UUID)
     coll_trattamento = db.Column(db.UUID)
     q_annuale = db.Column(db.Boolean)

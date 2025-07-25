@@ -126,10 +126,11 @@ class ProductActivitySchema(Schema):
     amount = fields.Decimal()
     fase_generale = fields.Str()
     fase_produttiva = fields.Str()
-    nome_fase = fields.Str()
+    nome_risorsa = fields.Str()
     distanza_fornitore = fields.Decimal()
     coll_trasporto = fields.UUID()
     coll_trattamento = fields.UUID()
+    prodottofornitore_id = fields.UUID(allow_none=True)
     q_annuale = fields.Boolean()
 
 # Schema: User_Product

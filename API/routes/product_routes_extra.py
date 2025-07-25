@@ -244,3 +244,81 @@ def get_activities_by_isic_and_systemmodel():
     activities = query.all()
     schema = ActivitySchema(many=True)
     return jsonify(schema.dump(activities))
+
+# RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+# RECUPERO DI TUTTE LE ATTIVITÀ E PRODOTTI (DEL FORNITORE) ASSOCIATI A UN PRODOTTO
+# CON DETTAGLI DEL PRODOTTO DI RIFERIMENTO PER LE ATTIVITÀ
+@product_bp.route("/products/<uuid:productid>/activities2/full", methods=["GET"])
+def get_full_activities_for_product(productid):
+    fase = request.args.get("fase")
+
+    # Recupera le associazioni Product_Activity
+    query = Product_Activity.query.filter_by(productid=productid)
+    if fase:
+        query = query.filter_by(fase=fase)
+
+    associations = query.all()
+    result = []
+
+    for assoc in associations:
+        if assoc.prodottofornitore_id:
+            # È una riga derivata da un prodotto fornitore (logica invariata)
+            prodotto_fornitore = Product.query.get(assoc.prodottofornitore_id)
+            result.append({
+                "prodottofornitore_id": str(assoc.prodottofornitore_id),
+                "nome_prodotto_fornitore": prodotto_fornitore.productname if prodotto_fornitore else None, # Ho corretto in .productname
+                "amount": str(assoc.amount),
+                "fase_generale": assoc.fase,
+                "nome_risorsa": assoc.nome_risorsa,
+                "fase_produttiva": assoc.fase_produttiva,
+                "distanza_fornitore": assoc.distanza_fornitore,
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None,
+                "q_annuale": assoc.q_annuale
+            })
+        else:
+            # Attività normale - Recupera i dettagli del prodotto di riferimento
+            activity_id = assoc.activityid
+
+            # Iniziamo la query per l'attività con i dettagli del prodotto di riferimento
+            activity_details_query = (
+                db.session.query(
+                    Activity,
+                    IntermediateExchange.intermediatename.label("reference_product_name"),
+                    Unit.unitname.label("reference_product_unit")
+                )
+                .filter(Activity.id == activity_id) # Filtra per l'activityid corrente
+                .outerjoin(Activity_IntermediateExchange,
+                           (Activity.id == Activity_IntermediateExchange.activityid) &
+                           (Activity_IntermediateExchange.referenceproduct == True))
+                .outerjoin(IntermediateExchange,
+                           Activity_IntermediateExchange.intermediateexchangeid == IntermediateExchange.intermediateexchangeid)
+                .outerjoin(Unit,
+                           IntermediateExchange.unitid == Unit.unitid)
+            )
+            
+            activity, ref_prod_name, ref_prod_unit = activity_details_query.first() # Prende il primo (e unico) risultato
+
+            if activity:
+                activity_data = ActivitySchema().dump(activity)
+                # Aggiungi i dettagli del prodotto di riferimento
+                activity_data["reference_product_name"] = ref_prod_name
+                activity_data["reference_product_unit"] = ref_prod_unit
+            else:
+                # Se l'attività non viene trovata, gestisci il caso (potrebbe essere un errore o dati inconsistenti)
+                activity_data = {} # O un messaggio di errore adeguato
+            
+            activity_data.update({
+                "prodottofornitore_id": None,
+                "amount": str(assoc.amount),
+                "fase_generale": assoc.fase_generale,
+                "nome_risorsa": assoc.nome_risorsa,
+                "fase_produttiva": assoc.fase_produttiva,
+                "distanza_fornitore": assoc.distanza_fornitore,
+                "coll_trasporto": str(assoc.coll_trasporto) if assoc.coll_trasporto else None,
+                "coll_trattamento": str(assoc.coll_trattamento) if assoc.coll_trattamento else None,
+                "q_annuale": assoc.q_annuales
+            })
+            result.append(activity_data)
+
+    return jsonify(result), 200
