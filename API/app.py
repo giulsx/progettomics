@@ -8,11 +8,12 @@ from routes.product_routes import product_bp
 from routes.activity_routes import activity_bp
 from routes.user_routes import auth_bp
 from routes.certificazioni_routes import certificazioni_bp
-from routes.indicatori_routes import indicatori_bp #
+from routes.indicatori_routes import indicatori_bp
+from routes.calcolo_routes import impact_bp # Assicurati che questo import sia corretto
 
  
 app = Flask(__name__)
-CORS(app)  
+CORS(app)   
 
 # Configurazione del database
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
@@ -29,7 +30,7 @@ app.register_blueprint(activity_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(certificazioni_bp)
 app.register_blueprint(indicatori_bp) 
-
+app.register_blueprint(impact_bp, url_prefix='/impact')
 
 @app.route("/ping", methods=["GET"])
 def ping():

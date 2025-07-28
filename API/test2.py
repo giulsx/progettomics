@@ -1,108 +1,151 @@
+import unittest
 import requests
 import json
 import uuid
-import time # Utile per un piccolo ritardo se necessario tra il delete e il re-delete
+import decimal # Importa il modulo decimal per confronti precisi
 
-# --- Configurazione API ---
-BASE_URL = "http://localhost:8000"  # Assicurati che l'URL del tuo server Flask sia corretto
-DELETE_ENDPOINT = f"{BASE_URL}/certificazione-impact-indicator" # Endpoint per eliminare l'associazione
+# URL di base della tua API Flask
+# !!! IMPORTANTE: Assicurati che il tuo server Flask sia in ascolto su questa porta (e.g., 5000 o 8000)
+# e che il tuo blueprint 'impact_bp' sia registrato sotto '/impact' nella tua app Flask principale.
+BASE_URL = "http://127.0.0.1:8000/impact/calculate_product_impact" 
 
-# --- ID dell'Associazione Esistente da Eliminare ---
-# *** IMPORTANTISSIMO: SOSTITUISCI QUESTI UUID CON VALORI REALI DAL TUO DATABASE ***
-# Devi fornire l'ID di una Certificazione E un ImpactIndicator che SONO GIÀ ASSOCIATI.
-CERTIFICAZIONE_ID_TO_DELETE = "4c3d7542-3f48-466b-8438-6bb6db62dac8" # <<< ID Certificazione ESISTENTE NELL'ASSOCIAZIONE
-IMPACT_INDICATOR_ID_TO_DELETE = "524c2091-5506-4d28-b921-faf83946272a" # <<< ID ImpactIndicator ESISTENTE NELL'ASSOCIAZIONE
+class TestImpactCalculationAPI(unittest.TestCase):
 
+    # UUID di esempio per i test. 
+    # Sostituiscili con UUID reali **esistenti nel tuo database** # per garantire che i test operino su dati significativi.
+    # Se questi ID non esistono o non riflettono gli scenari, i test falliranno.
+    VALID_PRODUCT_ID = "0ed88a45-b198-e482-a479-420ce96a004b"  # Esempio: productId con attività associate
+    PRODUCT_ID_NO_ACTIVITIES = "" # Esempio: productId valido ma senza attività
+    INVALID_PRODUCT_ID_FORMAT = "invalid-uuid-string" # Stringa che non è un UUID valido
+    
+    # Parametri di impatto di default usati dalla tua API
+    DEFAULT_IMPACT_NAME = "global warming potential (GWP100)"
+    DEFAULT_IMPACT_CATEGORY = "climate change"
+    DEFAULT_IMPACT_METHOD = "EF v3.0"
 
-# --- Funzione helper per inviare richieste HTTP ---
-def send_api_request(method, endpoint, payload=None, test_description=""):
-    """Invia una richiesta HTTP e stampa la risposta."""
-    print(f"\n--- Esecuzione Test: {test_description} ---")
-    if payload:
-        print("Payload inviato:")
-        print(json.dumps(payload, indent=4))
-    else:
-        print("Nessun payload inviato.")
+    def test_01_missing_product_id(self):
+        """
+        Testa la gestione di una richiesta senza il parametro 'productId'.
+        Ci aspettiamo uno stato 400 Bad Request.
+        """
+        print("\n--- Esecuzione test_01_missing_product_id ---")
+        response = requests.get(BASE_URL)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Parametro 'productId' mancante.", response.json().get("error"))
+        print(f"Risposta: {json.dumps(response.json(), indent=2)}")
 
-    try:
-        response = requests.request(method, endpoint, json=payload)
-        response.raise_for_status()  # Genera un'eccezione per codici di stato 4xx/5xx
-        print(f"Status Code: {response.status_code}")
-        # La DELETE non restituisce un corpo JSON se tutto va bene (200 OK o 204 No Content)
-        if response.status_code not in [200, 204]:
-            try:
-                print("Risposta dal server:")
-                print(json.dumps(response.json(), indent=4))
-            except json.JSONDecodeError:
-                print(f"Risposta non JSON: {response.text}")
-        elif response.status_code == 200: # Se il tuo Flask restituisce 200 con un messaggio
-            try:
-                print("Risposta dal server:")
-                print(json.dumps(response.json(), indent=4))
-            except json.JSONDecodeError:
-                print(f"Risposta non JSON: {response.text}")
-        print(f"Test '{test_description}' completato con successo.")
-        return response
-    except requests.exceptions.HTTPError as http_err:
-        print(f"ERRORE HTTP nel test '{test_description}': {http_err}")
-        if http_err.response:
-            try:
-                print("Dettagli errore dal server:")
-                print(json.dumps(http_err.response.json(), indent=4))
-            except json.JSONDecodeError:
-                print(f"Risposta di errore non JSON: {http_err.response.text}")
-        print(f"Test '{test_description}' FALLITO.")
-    except requests.exceptions.RequestException as req_err:
-        print(f"ERRORE DI CONNESSIONE nel test '{test_description}': {req_err}")
-        print(f"Assicurati che il tuo server Flask sia in esecuzione su {BASE_URL}.")
-        print(f"Test '{test_description}' FALLITO.")
-    except Exception as e:
-        print(f"ERRORE IMPREVISTO nel test '{test_description}': {e}")
-        print(f"Test '{test_description}' FALLITO.")
-    return None
+    def test_02_invalid_product_id_format(self):
+        """
+        Testa la gestione di un 'productId' con formato non valido (non UUID).
+        Ci aspettiamo uno stato 400 Bad Request.
+        """
+        print("\n--- Esecuzione test_02_invalid_product_id_format ---")
+        params = {'productId': self.INVALID_PRODUCT_ID_FORMAT}
+        response = requests.get(BASE_URL, params=params)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("Formato 'productId' non valido.", response.json().get("error"))
+        print(f"Risposta: {json.dumps(response.json(), indent=2)}")
 
-# --- Inizio del Test di Eliminazione Associazione ---
+    def test_03_valid_product_id_no_activities(self):
+        """
+        Testa un 'productId' valido ma che non ha attività associate nel database.
+        Ci aspettiamo uno stato 404 Not Found e un messaggio appropriato, con impatto zero.
+        """
+        print("\n--- Esecuzione test_03_valid_product_id_no_activities ---")
+        params = {'productId': self.PRODUCT_ID_NO_ACTIVITIES}
+        response = requests.get(BASE_URL, params=params)
+        data = response.json()
+        self.assertEqual(response.status_code, 404)
+        self.assertIn("Nessuna attività associata trovata", data.get("message"))
+        # Modificato: si aspetta una stringa, e poi la converte in Decimal per il confronto numerico
+        self.assertEqual(decimal.Decimal(data.get("total_impact")), decimal.Decimal('0.0'))
+        self.assertEqual(data.get("impacts_by_fase"), {})
+        print(f"Risposta: {json.dumps(data, indent=2)}")
 
-print("\n### Inizio del Test: Eliminazione di un'Associazione Certificazione-Indicatore (Fornita Esternamente) ###")
+    def test_04_successful_impact_calculation(self):
+        """
+        Testa un calcolo dell'impatto di successo per un prodotto esistente
+        con i parametri di impatto di default.
+        Ci aspettiamo uno stato 200 OK. L'impatto potrebbe essere '0.0' se il VALID_PRODUCT_ID
+        non ha dati che generano impatto, ma la richiesta è comunque valida.
+        """
+        print("\n--- Esecuzione test_04_successful_impact_calculation ---")
+        params = {
+            'productId': self.VALID_PRODUCT_ID,
+            'impactName': self.DEFAULT_IMPACT_NAME,
+            'impactCategoryName': self.DEFAULT_IMPACT_CATEGORY,
+            'impactMethodName': self.DEFAULT_IMPACT_METHOD
+        }
+        response = requests.get(BASE_URL, params=params)
+        data = response.json()
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("total_impact", data)
+        self.assertIn("impacts_by_fase", data)
+        # Modificato: ci aspettiamo una stringa, non un float.
+        self.assertIsInstance(data["total_impact"], str) 
+        self.assertIsInstance(data["impacts_by_fase"], dict)
+        # Aggiungi asserzioni più specifiche se conosci i risultati attesi per VALID_PRODUCT_ID
+        # Esempio: self.assertGreater(decimal.Decimal(data["total_impact"]), decimal.Decimal('0.0')) # Se ti aspetti un impatto positivo
+        print(f"Risposta: {json.dumps(data, indent=2)}")
 
-# FASE 1: Esegui l'operazione DELETE
-print("\n--- FASE 1: Esecuzione dell'operazione DELETE ---")
+    def test_05_successful_impact_calculation_with_fase_filter(self):
+        """
+        Testa il calcolo dell'impatto con un filtro 'faseGenerale' specifico.
+        Ci aspettiamo uno stato 200 OK e l'impatto solo per la fase specificata.
+        !!! IMPORTANTE: Sostituisci 'materie prime' con una fase_generale esistente nel tuo DB
+        per il VALID_PRODUCT_ID specificato.
+        """
+        print("\n--- Esecuzione test_05_successful_impact_calculation_with_fase_filter ---")
+        FaseGeneraleDaFiltrare = "materie prime" # Esempio: Assicurati che esista nel tuo DB per VALID_PRODUCT_ID
+        params = {
+            'productId': self.VALID_PRODUCT_ID,
+            'impactName': self.DEFAULT_IMPACT_NAME,
+            'impactCategoryName': self.DEFAULT_IMPACT_CATEGORY,
+            'impactMethodName': self.DEFAULT_IMPACT_METHOD,
+            'filterFaseGenerale': FaseGeneraleDaFiltrare
+        }
+        response = requests.get(BASE_URL, params=params)
+        data = response.json()
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("total_impact", data)
+        self.assertIn("impacts_by_fase", data)
+        # Modificato: ci aspettiamo una stringa, non un float.
+        self.assertIsInstance(data["total_impact"], str) 
+        self.assertIsInstance(data["impacts_by_fase"], dict)
+        self.assertEqual(len(data["impacts_by_fase"]), 1) # Ci aspettiamo solo una fase
+        self.assertIn(FaseGeneraleDaFiltrare, data["impacts_by_fase"])
+        # Esempio: self.assertGreater(decimal.Decimal(data["total_impact"]), decimal.Decimal('0.0')) # Se ti aspetti un impatto positivo per questa fase
+        print(f"Risposta: {json.dumps(data, indent=2)}")
 
-delete_payload = {
-    "certificazioneid": CERTIFICAZIONE_ID_TO_DELETE,
-    "impactindicatorid": IMPACT_INDICATOR_ID_TO_DELETE
-}
+    def test_06_fase_filter_not_found(self):
+        """
+        Testa il calcolo dell'impatto con un filtro 'faseGenerale' che non esiste
+        per il prodotto specificato.
+        Ci aspettiamo uno stato 404 Not Found e impatto zero.
+        """
+        print("\n--- Esecuzione test_06_fase_filter_not_found ---")
+        NonExistentFase = "FaseInesistente"
+        params = {
+            'productId': self.VALID_PRODUCT_ID,
+            'impactName': self.DEFAULT_IMPACT_NAME,
+            'impactCategoryName': self.DEFAULT_IMPACT_CATEGORY,
+            'impactMethodName': self.DEFAULT_IMPACT_METHOD,
+            'filterFaseGenerale': NonExistentFase
+        }
+        response = requests.get(BASE_URL, params=params)
+        data = response.json()
+        self.assertEqual(response.status_code, 404)
+        self.assertIn("Nessun impatto trovato per la fase", data.get("message"))
+        # Modificato: si aspetta una stringa, e poi la converte in Decimal per il confronto numerico
+        self.assertEqual(decimal.Decimal(data.get("total_impact")), decimal.Decimal('0.0'))
+        self.assertEqual(data.get("impacts_by_fase"), {}) # Ci aspettiamo un dizionario vuoto
+        print(f"Risposta: {json.dumps(data, indent=2)}")
 
-delete_response_obj = send_api_request("DELETE", DELETE_ENDPOINT, delete_payload, "Eliminazione Associazione")
+    # Puoi aggiungere altri test per scenari specifici, ad esempio:
+    # - Test con un productId che causa errori interni del server (es. dipendenze mancanti nel DB)
+    # - Test con valori di impactName, impactCategoryName, impactMethodName non standard
+    # - Test con un productId per il quale sono presenti solo scambi elementari o solo intermedi
+    # - Test con prodotti che hanno 'prodottofornitore_id' per verificare la ricorsione
 
-# Verifica il risultato dell'operazione DELETE
-if delete_response_obj and delete_response_obj.status_code == 200:
-    print("\nVerifica dei risultati dell'eliminazione:")
-    print("Associazione eliminata con successo!")
-    print(f"Certificazione ID: {CERTIFICAZIONE_ID_TO_DELETE}, ImpactIndicator ID: {IMPACT_INDICATOR_ID_TO_DELETE}")
-    print("Test di eliminazione completato con successo!")
-else:
-    print("\nTEST FALLITO: L'operazione DELETE non è riuscita come previsto.")
-
-# FASE 2 (Opzionale ma consigliata): Tenta di eliminare la stessa associazione di nuovo
-# Dovrebbe risultare in un 404, indicando che l'associazione non esiste più.
-print("\n--- FASE 2: Tentativo di eliminare la stessa associazione (dovrebbe fallire con 404) ---")
-print("Payload per tentativo di re-eliminazione:")
-print(json.dumps(delete_payload, indent=4))
-
-# Esegui la richiesta direttamente senza la funzione helper per catturare specificamente il 404
-re_delete_response_obj = requests.delete(DELETE_ENDPOINT, json=delete_payload)
-
-if re_delete_response_obj.status_code == 404:
-    print(f"Status Code atteso (404 Not Found) ricevuto per il tentativo di re-eliminazione. L'associazione è stata correttamente rimossa.")
-    try:
-        print("Risposta dal server:")
-        print(json.dumps(re_delete_response_obj.json(), indent=4))
-    except json.JSONDecodeError:
-        print(f"Risposta non JSON: {re_delete_response_obj.text}")
-else:
-    print(f"ATTENZIONE: Status Code inatteso ({re_delete_response_obj.status_code}) per il tentativo di re-eliminazione.")
-    if re_delete_response_obj.content:
-        print(f"Risposta: {re_delete_response_obj.text}")
-
-print("\n### Fine del Test ###")
+if __name__ == '__main__':
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
