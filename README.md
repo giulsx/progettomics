@@ -217,9 +217,12 @@
   }
 ]
 ```
-## ♻️ Indicatori di Impatto API – `routes/indicatori_routes.py`
+# ♻️ Indicatori di Impatto API – `routes/indicatori_routes.py`
 
-### 1. **Recupera indicatori da CSV**
+Permette di recuperare tutti gli indicatori, medoti e categorie di impatto (con la relativa unità di misura), permette anche di filtrarli. 
+I dati vengono presi da un CSV contenuto nella cartella API/data/indicatori.csv
+
+## 1. **Recupera indicatori da CSV**
 - **GET** `/indicatori_impatto`
 - **Parametri opzionali:**  
   - `impactmethodname`  
@@ -240,9 +243,9 @@
 
 ---
 
-## 📜 Certificazioni API – `routes/certificazioni_routes.py`
+# 📜 Certificazioni API – `routes/certificazioni_routes.py`
 
-### 1. **Crea una nuova certificazione**
+## 1. **Crea una nuova certificazione**
 - **POST** `/certificazioni`
 ```json
 {
@@ -254,10 +257,10 @@
 }
 ```
 
-### 2. **Elimina una certificazione (e relative associazioni)**
+## 2. **Elimina una certificazione (e relative associazioni)**
 - **DELETE** `/certificazioni/<certificazione_id>`
 
-### 3. **Modifica una certificazione esistente**
+## 3. **Modifica una certificazione esistente**
 - **PATCH** `/certificazioni/<certificazione_id>`
 ```json
 {
@@ -268,10 +271,10 @@
 }
 ```
 
-### 4. **Recupera certificazioni associate a un prodotto**
+## 4. **Recupera certificazioni associate a un prodotto**
 - **GET** `/products/<product_id>/certificazioni`
 
-### 5. **Associa un indicatore di impatto a una certificazione**
+## 5. **Associa un indicatore di impatto a una certificazione**
 - **POST** `/certificazione-impact-indicator`
 ```json
 {
@@ -284,7 +287,7 @@
 }
 ```
 
-### 6. **Modifica un’associazione certificazione-indicatore**
+## 6. **Modifica un’associazione certificazione-indicatore**
 - **PUT** `/certificazione-impact-indicator`
 ```json
 {
@@ -303,7 +306,7 @@
 }
 ```
 
-### 7. **Rimuovi l’associazione tra una certificazione e un indicatore**
+## 7. **Rimuovi l’associazione tra una certificazione e un indicatore**
 - **DELETE** `/certificazione-impact-indicator`
 ```json
 {
