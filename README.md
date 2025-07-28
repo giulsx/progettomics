@@ -217,7 +217,100 @@
   }
 ]
 ```
+## ♻️ Indicatori di Impatto API – `routes/indicatori_routes.py`
 
+### 1. **Recupera indicatori da CSV**
+- **GET** `/indicatori_impatto`
+- **Parametri opzionali:**  
+  - `impactmethodname`  
+  - `impactcategoryname`  
+  - `impactindicatorname`
+
+**Esempio risposta:**
+```json
+[
+  {
+    "impactmethodname": "EF 3.0",
+    "impactcategoryname": "Climate change",
+    "impactindicatorname": "GHG emissions",
+    "unitname": "kg CO2 eq"
+  }
+]
+```
+
+---
+
+## 📜 Certificazioni API – `routes/certificazioni_routes.py`
+
+### 1. **Crea una nuova certificazione**
+- **POST** `/certificazioni`
+```json
+{
+  "nome": "Ecolabel",
+  "ente_certificatore": "EU Commission",
+  "anno": 2024,
+  "descrizione": "Certificazione ambientale europea per prodotti ecologici.",
+  "prodottoid": "uuid-prodotto"
+}
+```
+
+### 2. **Elimina una certificazione (e relative associazioni)**
+- **DELETE** `/certificazioni/<certificazione_id>`
+
+### 3. **Modifica una certificazione esistente**
+- **PATCH** `/certificazioni/<certificazione_id>`
+```json
+{
+  "nome": "Ecolabel Updated",
+  "ente_certificatore": "European Commission",
+  "anno": 2025,
+  "descrizione": "Versione aggiornata della certificazione EU Ecolabel."
+}
+```
+
+### 4. **Recupera certificazioni associate a un prodotto**
+- **GET** `/products/<product_id>/certificazioni`
+
+### 5. **Associa un indicatore di impatto a una certificazione**
+- **POST** `/certificazione-impact-indicator`
+```json
+{
+  "method": "EF 3.0",
+  "category": "Climate change",
+  "impactindicator": "GHG emissions",
+  "amount": 12.5,
+  "unitname": "kg CO2 eq",
+  "certificazioneid": "uuid-certificazione"
+}
+```
+
+### 6. **Modifica un’associazione certificazione-indicatore**
+- **PUT** `/certificazione-impact-indicator`
+```json
+{
+  "search_criteria": {
+    "certificazioneid": "old-cert-id",
+    "impactindicatorid": "old-imp-id"
+  },
+  "new_impact_indicator_data": {
+    "method": "EF 3.0",
+    "category": "Water use",
+    "impactindicator": "Water consumption",
+    "amount": 2.3,
+    "unitname": "m3"
+  },
+  "certificazioneid": "old-cert-id"
+}
+```
+
+### 7. **Rimuovi l’associazione tra una certificazione e un indicatore**
+- **DELETE** `/certificazione-impact-indicator`
+```json
+{
+  "certificazioneid": "uuid-certificazione",
+  "impactindicatorid": "uuid-indicatore"
+}
+```
 
 
  
